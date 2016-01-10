@@ -56,7 +56,7 @@
 		96DDBF7F1C424C8800A752E6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBF591C424C8800A752E6 /* UIView+Extension.swift */; };
 		96DDBF801C424C8800A752E6 /* UIViewController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBF5A1C424C8800A752E6 /* UIViewController +Extension.swift */; };
 		96DDBF811C424C8800A752E6 /* UIWindow +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBF5B1C424C8800A752E6 /* UIWindow +Extension.swift */; };
-		96DDBF871C42571700A752E6 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBF861C42571700A752E6 /* Array.swift */; };
+		96DDBF871C42571700A752E6 /* Array +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBF861C42571700A752E6 /* Array +Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +133,7 @@
 		96DDBF591C424C8800A752E6 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		96DDBF5A1C424C8800A752E6 /* UIViewController +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController +Extension.swift"; sourceTree = "<group>"; };
 		96DDBF5B1C424C8800A752E6 /* UIWindow +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow +Extension.swift"; sourceTree = "<group>"; };
-		96DDBF861C42571700A752E6 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		96DDBF861C42571700A752E6 /* Array +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array +Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				96DDBF361C424C8800A752E6 /* Dictionary +Extension.swift */,
-				96DDBF861C42571700A752E6 /* Array.swift */,
+				96DDBF861C42571700A752E6 /* Array +Extension.swift */,
 				96DDBF371C424C8800A752E6 /* Double+Extension.swift */,
 				96DDBF381C424C8800A752E6 /* Foundation.swift */,
 				96DDBF391C424C8800A752E6 /* Frame+Extension.swift */,
@@ -455,7 +455,7 @@
 				96DDBF7D1C424C8800A752E6 /* UITextField+Extension.swift in Sources */,
 				96DDBF741C424C8800A752E6 /* UIImageView +Extension.swift in Sources */,
 				96DDBF5E1C424C8800A752E6 /* Foundation.swift in Sources */,
-				96DDBF871C42571700A752E6 /* Array.swift in Sources */,
+				96DDBF871C42571700A752E6 /* Array +Extension.swift in Sources */,
 				96DDBF7E1C424C8800A752E6 /* UITextView+Extension.swift in Sources */,
 				96DDBF7C1C424C8800A752E6 /* UITableViewCell +Extention.swift in Sources */,
 				96DDBF7A1C424C8800A752E6 /* UITabBarController+UITabBar.swift in Sources */,

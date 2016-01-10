@@ -14,6 +14,12 @@
 		96DDBE741C4246DF00A752E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE721C4246DF00A752E6 /* LaunchScreen.storyboard */; };
 		96DDBE7F1C4246DF00A752E6 /* _jchc_ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE7E1C4246DF00A752E6 /* _jchc_ExtensionTests.swift */; };
 		96DDBE8A1C4246DF00A752E6 /* _jchc_ExtensionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE891C4246DF00A752E6 /* _jchc_ExtensionUITests.swift */; };
+		96DDBECC1C42478100A752E6 /* WBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE9C1C42478100A752E6 /* WBLog.swift */; };
+		96DDBECD1C42478100A752E6 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE9F1C42478100A752E6 /* HttpTool.m */; };
+		96DDBECE1C42478100A752E6 /* Frame+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBEA11C42478100A752E6 /* Frame+Extension.swift */; };
+		96DDBECF1C42478100A752E6 /* HMAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBEA21C42478100A752E6 /* HMAnimatedTransitioning.swift */; };
+		96DDBED01C42478100A752E6 /* HMPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBEA31C42478100A752E6 /* HMPresentationController.swift */; };
+		96DDBED11C42478100A752E6 /* HMTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBEA41C42478100A752E6 /* HMTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,13 @@
 		96DDBE851C4246DF00A752E6 /* 4jchc-ExtensionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "4jchc-ExtensionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE891C4246DF00A752E6 /* _jchc_ExtensionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _jchc_ExtensionUITests.swift; sourceTree = "<group>"; };
 		96DDBE8B1C4246DF00A752E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96DDBE9C1C42478100A752E6 /* WBLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLog.swift; sourceTree = "<group>"; };
+		96DDBE9E1C42478100A752E6 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
+		96DDBE9F1C42478100A752E6 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		96DDBEA11C42478100A752E6 /* Frame+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Frame+Extension.swift"; sourceTree = "<group>"; };
+		96DDBEA21C42478100A752E6 /* HMAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		96DDBEA31C42478100A752E6 /* HMPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMPresentationController.swift; sourceTree = "<group>"; };
+		96DDBEA41C42478100A752E6 /* HMTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +110,7 @@
 		96DDBE681C4246DF00A752E6 /* 4jchc-Extension */ = {
 			isa = PBXGroup;
 			children = (
+				96DDBE9B1C42478100A752E6 /* Custom【扩展延伸】 */,
 				96DDBE691C4246DF00A752E6 /* AppDelegate.swift */,
 				96DDBE6B1C4246DF00A752E6 /* ViewController.swift */,
 				96DDBE6D1C4246DF00A752E6 /* Main.storyboard */,
@@ -123,6 +137,36 @@
 				96DDBE8B1C4246DF00A752E6 /* Info.plist */,
 			);
 			path = "4jchc-ExtensionUITests";
+			sourceTree = "<group>";
+		};
+		96DDBE9B1C42478100A752E6 /* Custom【扩展延伸】 */ = {
+			isa = PBXGroup;
+			children = (
+				96DDBE9C1C42478100A752E6 /* WBLog.swift */,
+				96DDBE9D1C42478100A752E6 /* 文件上传下载工具抽取 */,
+				96DDBEA01C42478100A752E6 /* 自定义Modal动画 */,
+			);
+			path = "Custom【扩展延伸】";
+			sourceTree = "<group>";
+		};
+		96DDBE9D1C42478100A752E6 /* 文件上传下载工具抽取 */ = {
+			isa = PBXGroup;
+			children = (
+				96DDBE9E1C42478100A752E6 /* HttpTool.h */,
+				96DDBE9F1C42478100A752E6 /* HttpTool.m */,
+			);
+			path = "文件上传下载工具抽取";
+			sourceTree = "<group>";
+		};
+		96DDBEA01C42478100A752E6 /* 自定义Modal动画 */ = {
+			isa = PBXGroup;
+			children = (
+				96DDBEA11C42478100A752E6 /* Frame+Extension.swift */,
+				96DDBEA21C42478100A752E6 /* HMAnimatedTransitioning.swift */,
+				96DDBEA31C42478100A752E6 /* HMPresentationController.swift */,
+				96DDBEA41C42478100A752E6 /* HMTransition.swift */,
+			);
+			path = "自定义Modal动画";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +300,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DDBECE1C42478100A752E6 /* Frame+Extension.swift in Sources */,
 				96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */,
+				96DDBECC1C42478100A752E6 /* WBLog.swift in Sources */,
 				96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */,
+				96DDBED01C42478100A752E6 /* HMPresentationController.swift in Sources */,
+				96DDBED11C42478100A752E6 /* HMTransition.swift in Sources */,
+				96DDBECD1C42478100A752E6 /* HttpTool.m in Sources */,
+				96DDBECF1C42478100A752E6 /* HMAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "4jchc-Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "swift.-jchc-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "4jchc-Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "swift.-jchc-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +536,7 @@
 				96DDBE901C4246DF00A752E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96DDBE911C4246DF00A752E6 /* Build configuration list for PBXNativeTarget "4jchc-ExtensionTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +545,7 @@
 				96DDBE931C4246DF00A752E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96DDBE941C4246DF00A752E6 /* Build configuration list for PBXNativeTarget "4jchc-ExtensionUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +554,7 @@
 				96DDBE961C4246DF00A752E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,3 +1,82 @@
+
+
+
+import UIKit
+
+extension UIButton {
+    
+    /**
+     便利构造函数
+     
+     - parameter imageName:       图片名称
+     - parameter backgroundImageName: 背景图片名称
+     
+     - returns: Button (图片-背景图片)
+     */
+    convenience init(Nor_Hig_Name: String, Nor_Hig_BG_Name: String){
+        self.init()
+        
+        setImage(UIImage(named: Nor_Hig_Name), forState: UIControlState.Normal)
+        setImage(UIImage(named: Nor_Hig_Name + "_highlighted"), forState: UIControlState.Highlighted)
+        setBackgroundImage(UIImage(named: Nor_Hig_BG_Name), forState: UIControlState.Normal)
+        setBackgroundImage(UIImage(named: Nor_Hig_BG_Name + "_highlighted"), forState: UIControlState.Highlighted)
+        
+        //根据图片 自动适应大小
+        sizeToFit()
+    }
+    
+    /**
+     设置Button背景图片 便利构造函数
+     
+     - parameter title:      标题
+     - parameter titleColor: 标题颜色
+     - parameter backgroundImageName: 背景图片名称
+     
+     - returns:  Button(标题-背景图片)
+     */
+    convenience init(title: String, titleColor:UIColor, backgroundImageName:String) {
+        self.init()
+        
+        setTitle(title, forState: .Normal)
+        setTitleColor(titleColor, forState: .Normal)
+        setBackgroundImage(UIImage(named: backgroundImageName), forState: .Normal)
+        
+    }
+    
+    /**
+     设置Button图片 便利构造函数
+     
+     - parameter title:      标题
+     - parameter titleColor: 标题颜色
+     - parameter fontSize:   标题字体大小
+     - parameter ImageName:  图片名称
+     
+     - returns: Button(标题-图片)
+     */
+    convenience init(title: String, titleColor:UIColor,fontSize: CGFloat, ImageName:String) {
+        self.init()
+        
+        setTitle(title, forState: .Normal)
+        setTitleColor(titleColor, forState: .Normal)
+        setImage(UIImage(named: ImageName), forState: .Normal)
+        titleLabel?.font = UIFont.systemFontOfSize(fontSize)
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //import UIKit
 //import Foundation
 //

@@ -33,11 +33,12 @@ let JDNotificationSwithInAppDelegate = "JDNotificationSwithInAppDelegate"
 
 
 
-// MARK: - 全局函数，可以直接使用
-/// # 延迟在主线程执行函数
+
+
+///  延迟在主线程执行函数
 ///
 /// - parameter delta:    延迟时间
-/// - parameter callFunc: 要执行的闭包
+/// - parameter callFunc: 要执行的闭包方法
 func delay(delta: Double, callFunc: ()->()) {
     
     dispatch_after(
@@ -49,20 +50,19 @@ func delay(delta: Double, callFunc: ()->()) {
 }
 
 
-//// 自定义的log
-//// 在 BuildSettting 中 搜索 other swift flags 里DEBUG项 而不是在主的列表添加,那样release也添加了 `-D DEBUG`
-//
-////         __FILE__
-////__LINE__
-////__FUNCTION__
+
+/// 自定义的log
+/// 在 BuildSettting 中 搜索 other swift flags 里DEBUG项 而不是在主的列表添加,那样release也添加了 `-D DEBUG`
+
 /**
- DEBUG下打印函数
+DEBUG下打印函数
  
  - parameter message: 需要输入的信息
  - parameter file:    文件名
  - parameter method:  调用print的方法
  - parameter line:    打印函数 所在的行号
  */
+
 func printLog<T>(message: T,
     file: String = __FILE__,
     method: String = __FUNCTION__,
@@ -74,9 +74,8 @@ func printLog<T>(message: T,
     #else
         //print("\(message)")
     #endif
+
 }
-
-
 
 
 

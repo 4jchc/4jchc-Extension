@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		960A46381C43C9C300C6BDE6 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */; };
+		960A463A1C43ED8400C6BDE6 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */; };
+		960A463C1C43F46700C6BDE6 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A463B1C43F46700C6BDE6 /* TitleButton.swift */; };
 		96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE691C4246DF00A752E6 /* AppDelegate.swift */; };
 		96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE6B1C4246DF00A752E6 /* ViewController.swift */; };
 		96DDBE6F1C4246DF00A752E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE6D1C4246DF00A752E6 /* Main.storyboard */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		960A463B1C43F46700C6BDE6 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 		96DDBE661C4246DF00A752E6 /* 4jchc-Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4jchc-Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE691C4246DF00A752E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DDBE6B1C4246DF00A752E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				96DDBF481C424C8800A752E6 /* UIBarButtonItem+Extension.swift */,
 				96DDBF491C424C8800A752E6 /* UIButton+Extention.swift */,
 				96DDBF4A1C424C8800A752E6 /* UIButton+Extention副本.swift */,
+				960A463B1C43F46700C6BDE6 /* TitleButton.swift */,
 				96DDBF4B1C424C8800A752E6 /* UIColor+Extension.swift */,
 				96DDBF4C1C424C8800A752E6 /* UIImage+Extension.swift */,
 				96DDBF4D1C424C8800A752E6 /* UIImage+Scale.swift */,
@@ -280,6 +285,7 @@
 				96DDBF521C424C8800A752E6 /* UIScreen+Extension.swift */,
 				96DDBF531C424C8800A752E6 /* UIStoryboard.swift */,
 				96DDBF541C424C8800A752E6 /* UITabBarController+UITabBar.swift */,
+				960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */,
 				96DDBF551C424C8800A752E6 /* UITableView +Extention.swift */,
 				96DDBF561C424C8800A752E6 /* UITableViewCell +Extention.swift */,
 				96DDBF571C424C8800A752E6 /* UITextField+Extension.swift */,
@@ -432,6 +438,7 @@
 				96DDBF661C424C8800A752E6 /* NSLayoutConstraint+Extension.swift in Sources */,
 				96DDBF6D1C424C8800A752E6 /* UIApplication +Extension.swift in Sources */,
 				96DDBF7F1C424C8800A752E6 /* UIView+Extension.swift in Sources */,
+				960A463C1C43F46700C6BDE6 /* TitleButton.swift in Sources */,
 				96DDBF681C424C8800A752E6 /* NSString-Size+Extension.swift in Sources */,
 				96DDBF691C424C8800A752E6 /* NSString+Emoji+Extension.swift in Sources */,
 				96DDBF7B1C424C8800A752E6 /* UITableView +Extention.swift in Sources */,
@@ -461,6 +468,7 @@
 				96DDBF5E1C424C8800A752E6 /* Foundation.swift in Sources */,
 				96DDBF871C42571700A752E6 /* Array +Extension.swift in Sources */,
 				96DDBF7E1C424C8800A752E6 /* UITextView+Extension.swift in Sources */,
+				960A463A1C43ED8400C6BDE6 /* UIView+AutoLayout.swift in Sources */,
 				96DDBF7C1C424C8800A752E6 /* UITableViewCell +Extention.swift in Sources */,
 				96DDBF7A1C424C8800A752E6 /* UITabBarController+UITabBar.swift in Sources */,
 				96DDBF721C424C8800A752E6 /* UIImage+Extension.swift in Sources */,

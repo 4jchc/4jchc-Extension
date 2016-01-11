@@ -5,15 +5,15 @@ import UIKit
 extension UIBarButtonItem{
     
     //给 UIBarButtonItem分类添加一个方法 返回一个 UIBarButtonItem对象
-    class func ItemWithTitleImageTarget(imageName: String = "", title: String = "", target: AnyObject?, action: Selector)->UIBarButtonItem {
+    class func ItemWithTitleImageTarget(image_Nor_Hig_name: String = "", title: String = "", target: AnyObject?, action: Selector)->UIBarButtonItem {
         //创建一个 button
         let button = UIButton()
         //添加点击事件
         button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
         //添加图片
-        if imageName.characters.count > 0 {
-            button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
-            button.setImage(UIImage(named: "\(imageName)_highlighted"), forState: UIControlState.Highlighted)
+        if image_Nor_Hig_name.characters.count > 0 {
+            button.setImage(UIImage(named: image_Nor_Hig_name), forState: UIControlState.Normal)
+            button.setImage(UIImage(named: "\(image_Nor_Hig_name)_highlighted"), forState: UIControlState.Highlighted)
         }
         
         //添加字体
@@ -42,14 +42,14 @@ extension UIBarButtonItem{
      *  @param highImage 高亮的图片
      *  @return 创建完的item
      */ //ItemWithImageTarget
-    class func ItemWithImageTarget(target:AnyObject?,action:Selector,image:NSString,hightImage:NSString) ->UIBarButtonItem{
+    class func ItemWithImageTarget(target:AnyObject?,action:Selector,image:String,hightImage:String) ->UIBarButtonItem{
         
         let btn:UIButton = UIButton(type: UIButtonType.Custom)
         btn.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
         
         // 设置图片
-        btn.setBackgroundImage(UIImage(named: image as String), forState: UIControlState.Normal)
-        btn.setBackgroundImage(UIImage(named: hightImage as String), forState: UIControlState.Highlighted)
+        btn.setBackgroundImage(UIImage(named: image ), forState: UIControlState.Normal)
+        btn.setBackgroundImage(UIImage(named: hightImage ), forState: UIControlState.Highlighted)
         
         // 设置尺寸
         btn.frame.size = btn.currentBackgroundImage!.size;
@@ -75,6 +75,24 @@ extension UIBarButtonItem{
         self.init(imageName: nil, highlightedImageName: nil, title: title, target: target, action: action)
     }
     
+    
+    
+    
+    
+    
+    convenience init(image_Nor_Hig_name:String, target: AnyObject?, action: String?)
+    {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: image_Nor_Hig_name), forState: UIControlState.Normal)
+        btn.setImage(UIImage(named: image_Nor_Hig_name + "_highlighted"), forState: UIControlState.Highlighted)
+        if action != nil
+        {
+            // 如果是自己封装一个按钮, 最好传入字符串, 然后再将字符串包装为Selector
+            btn.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        btn.sizeToFit()
+        self.init(customView: btn)
+    }
     convenience init(imageName: String, highlightedImageName: String, target: AnyObject?, action: Selector) {
         self.init(imageName: imageName, highlightedImageName: highlightedImageName, title: nil, target: target, action: action)
     }

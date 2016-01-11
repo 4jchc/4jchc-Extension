@@ -30,11 +30,20 @@ extension UIColor {
     // 随机色
     static var randomColor:UIColor{
         get{
-            return UIColor(red: CGFloat(Double(arc4random_uniform(256))/255.0), green: CGFloat(Double(arc4random_uniform(256))/255.0), blue: CGFloat(Double(arc4random_uniform(256))/255.0), alpha: 1.0)
+            return UIColor(red: randomNumber(), green: randomNumber(), blue: randomNumber() , alpha: 1.0)
         }
     }
     
-
+//    class func randomColor() -> UIColor {
+//        return UIColor(red: randomNumber(), green: randomNumber(), blue: randomNumber() , alpha: 1.0)
+//    }
+    
+    class func randomNumber() -> CGFloat {
+        // 0 ~ 255
+        return CGFloat(arc4random_uniform(256)) / CGFloat(255)
+    }
+    
+    
     //UIColor(red: <#123#>/255.0, green: <#123#>/255.0, blue: <#123#>/255.0, alpha: 1.0)
     
     class func RGB(r:CGFloat,_ g:CGFloat, _ b:CGFloat, _ alpha:CGFloat)->UIColor{

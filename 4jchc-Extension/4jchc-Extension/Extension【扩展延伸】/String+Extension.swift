@@ -123,28 +123,36 @@
         
         
         
-        
-        
+
+
         
 
   
-            ///  在字符串前拼接文档目录
+            ///  将当前字符串拼接到doc目录后面
             func documentPath() -> String {
+                
+//                let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
+//                return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+                
                 let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last
                 //path.stringByAppendingPathComponent(self)
                 return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
             }
             
-            ///  在字符串前拼接缓存目录
+            ///  将当前字符串拼接到cache目录后面
             func cachePath() -> String {
+                
+//                let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
+//                return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
                 let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last
                 
                 return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
             }
             
-            ///  在字符串前拼接临时目录
+            ///  将当前字符串拼接到tmp目录后面
             func tempPath() -> String {
-                 //NSTemporaryDirectory().stringByAppendingPathComponent(self)
+//                let path = NSTemporaryDirectory() as NSString
+//                return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
                 return NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(self).path!
             }
       

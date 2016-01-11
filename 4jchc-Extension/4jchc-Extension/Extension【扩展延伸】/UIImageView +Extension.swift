@@ -15,6 +15,14 @@ public extension UIImageView {
         
         self.image = self.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
     }
+    ///  设置UIImageView图片的便利构造函数
+    ///
+    ///  - parameter imageName: 图片名称String
+    ///
+    ///  - returns:  UIImageView对象
+    convenience init(imageName: String) {
+        self.init(image: UIImage(named: imageName))
+    }
 }
 
 

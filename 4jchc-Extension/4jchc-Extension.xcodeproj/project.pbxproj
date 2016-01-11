@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960A46381C43C9C300C6BDE6 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */; };
 		96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE691C4246DF00A752E6 /* AppDelegate.swift */; };
 		96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE6B1C4246DF00A752E6 /* ViewController.swift */; };
 		96DDBE6F1C4246DF00A752E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE6D1C4246DF00A752E6 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		96DDBE661C4246DF00A752E6 /* 4jchc-Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4jchc-Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE691C4246DF00A752E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DDBE6B1C4246DF00A752E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				96DDBF401C424C8800A752E6 /* NSLayoutConstraint+Extension.swift */,
 				96DDBF411C424C8800A752E6 /* NSObject +Extension.swift */,
 				96DDBF421C424C8800A752E6 /* NSString-Size+Extension.swift */,
+				960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */,
 				96DDBF431C424C8800A752E6 /* NSString+Emoji+Extension.swift */,
 				96DDBF441C424C8800A752E6 /* NSTimer +Extension.swift */,
 				96DDBF451C424C8800A752E6 /* String+Extension.swift */,
@@ -442,6 +445,7 @@
 				96DDBF6B1C424C8800A752E6 /* String+Extension.swift in Sources */,
 				96DDBF751C424C8800A752E6 /* UIImageView+SDWebImage.swift in Sources */,
 				96DDBF641C424C8800A752E6 /* NSDictionary +Extension.swift in Sources */,
+				960A46381C43C9C300C6BDE6 /* NSObject+Extension.swift in Sources */,
 				96DDBF601C424C8800A752E6 /* Int +Extension.swift in Sources */,
 				96DDBF711C424C8800A752E6 /* UIColor+Extension.swift in Sources */,
 				96DDBF621C424C8800A752E6 /* NSData+Extension.swift in Sources */,
@@ -608,6 +612,7 @@
 				INFOPLIST_FILE = "4jchc-Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "swift.-jchc-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -620,6 +625,7 @@
 				INFOPLIST_FILE = "4jchc-Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "swift.-jchc-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

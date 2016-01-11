@@ -10,8 +10,10 @@ import UIKit
 
 
 extension NSString{
-
-    //MARK: 💗根据字体设置高度
+    
+    
+    //MARK: - 💗根据字体设置高度
+    /// 💗根据字体设置高度
     func sizeWithText(text: String?, font: UIFont, maxSize: CGSize) -> CGSize{
         if text != nil  {
             
@@ -33,19 +35,20 @@ extension NSString{
         let maxSize: CGSize = CGSizeMake(maxW,CGFloat.max);
         let rect = self.boundingRectWithSize(maxSize, options:NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attrs, context: nil)
         return rect.size;
-    
+        
     }
-
-        func fileSize()->Int{
+    //MARK: - 计算文件大小
+    /// 计算文件大小
+    func fileSize()->Int{
         // 文件管理者
         let mgr: NSFileManager = NSFileManager.defaultManager()
         // 判断是否为文件
         var di: ObjCBool  = false;
         let exists: Bool = mgr.fileExistsAtPath(self as String, isDirectory: &di)
-
+        
         // 文件\文件夹不存在
         if (exists == false) {return 0}
-    
+        
         if (di) { // self是一个文件夹
             // 遍历caches里面的所有内容 --- 直接和间接内容
             let subpaths: NSArray = mgr.subpathsAtPath(self as String)!
@@ -57,9 +60,9 @@ extension NSString{
                 var di:ObjCBool = true
                 let exists: Bool = mgr.fileExistsAtPath(self as String, isDirectory: &di)
                 if (exists == false) { // 文件
-                let attributes: NSDictionary = try! mgr.attributesOfItemAtPath(fullSubpath as String)
+                    let attributes: NSDictionary = try! mgr.attributesOfItemAtPath(fullSubpath as String)
                     
-                
+                    
                     totalByteSize = totalByteSize + Int(attributes.fileSize())
                 }
             }
@@ -68,14 +71,25 @@ extension NSString{
             let attributes: NSDictionary = try! mgr.attributesOfItemAtPath(self as String)
             return Int(attributes.fileSize())
             
-           
+            
         }
+    }
+    
+    
+    //MARK: - 根据给出的日期转换成相应的NSDate
+    /// 根据给出的日期转换成相应的NSDate
+    func dateFromFormateString(dateFormate:NSString) -> NSDate {
+        let dateFormatter:NSDateFormatter = NSDateFormatter()
+        var defaultFormate = "yyyy-MM-dd HH:mm"
+        if !dateFormate.isEqualToString("") {
+            defaultFormate = dateFormate as String
+        }
+        dateFormatter.dateFormat = defaultFormate
+        return dateFormatter.dateFromString(self as String)!
     }
     
     
     
     
     
-    
-
 }

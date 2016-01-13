@@ -23,22 +23,34 @@
         
 //        public func characterCount() -> Int {
 //            
-//            return (self.utf16) as Int
-//        }
-//        
-//        public func length() -> Int {
 //            
-//            return count(self.utf16)
+//            return Int(self.utf16)//(self.utf16) as Int
 //        }
         
+        public func length() -> Int {
+            
+            return self.utf16.count//count(self.utf16)
+        }
+        //MARK: - 包含字符串
+        /// 包含字符串
         public func contains(find: String) -> Bool {
             
-            if let _ = self.rangeOfString(find) {
-                return true
-            }
-            return false
+//            if let _ = self.rangeOfString(find) {
+//                return true
+//            }
+//            return false
+             return self.rangeOfString(find) != nil
+            
+        }
+        //MARK: 是否包含小写字母
+        /// 是否包含小写字母
+        func containsLowercaseString(aString: String) -> Bool {
+            
+            return self.lowercaseString.rangeOfString(aString.lowercaseString) != nil
         }
         
+        //MARK: - 替换字符串
+        /// 替换字符串
         public func replaceString(string:String, withString:String) -> String {
             
             return self.stringByReplacingOccurrencesOfString(string, withString: withString, options: NSStringCompareOptions.LiteralSearch, range: nil)
@@ -59,46 +71,47 @@
             return self.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
         }
         
-//        public func base64Encode() -> String {
-//            
-//            return self.toData().base64String()
-//        }
-//        
-//        public func base64Decode() -> String {
-//            
-//            return NSDataFromBase64String().toString()
-//        }
-//        
-//        public func toData() -> NSData {
-//            
-//            return (self as NSString).dataUsingEncoding(NSUTF8StringEncoding)!
-//        }
-//        
-//        public func toDate(format: String) -> NSDate {
-//            
-//            return NSDate.dateFromString(self, format: format)
-//        }
-//        
+        public func base64Encode() -> String {
+            
+            return self.toData().base64String()
+        }
+        
+        public func base64Decode() -> String {
+            
+            return NSDataFromBase64String().toString()
+        }
+        
+        public func toData() -> NSData {
+            
+            return (self as NSString).dataUsingEncoding(NSUTF8StringEncoding)!
+        }
+        
+        public func toDate(format: String) -> NSDate {
+            
+            return NSDate.dateFromString(self, format: format)
+        }
+//
         
         
         
         
         // MARK: - get characters
         
-//        public subscript (i: Int) -> Character {
-//            
-//            return self[advancedby(self.startIndex, i)]
-//        }
-//        
-//        public subscript (i: Int) -> String {
-//            
-//            return String(self[i] as Character)
-//        }
-//        
-//        public subscript (r: Range<Int>) -> String {
-//            
-//            return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
-//        }
+        public subscript (i: Int) -> Character {
+           
+            return  self[self.startIndex.advancedBy(i)]
+        }
+        
+        public subscript (i: Int) -> String {
+            
+            return String(self[i] as Character)
+        }
+        
+        public subscript (r: Range<Int>) -> String {
+            
+           return substringWithRange(Range(start: self.startIndex.advancedBy(r.startIndex), end: self.startIndex.advancedBy(r.endIndex)))
+           
+        }
         
         
         
@@ -201,8 +214,11 @@
 //            return nil
 //        }
         
-        
-        
+        //MARK: - 包含http
+        /// 包含http
+        func isHttpLocalPath() -> Bool {
+            return self.rangeOfString("http") == nil
+        }
         
     }
     

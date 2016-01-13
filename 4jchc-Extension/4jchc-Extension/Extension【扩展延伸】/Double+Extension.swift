@@ -16,6 +16,11 @@ public extension Double {
         return String(format: "%.2f", self)
     }
 
-    
+    //MARK: - 保留几位小数
+    /// 保留几位小数
+    public func toNumberOfDecimal(decimals:Int) -> String {
+        
+        return String(format: "%.\(decimals)f", self)
+    }
     
 }

@@ -16,7 +16,8 @@ public extension UILabel {
         return label.frame.height
     }
     
-    
+    //MARK: - 文字-内容-颜色-字体-相对与屏幕两边的偏移量
+ 
     /**
      文字-内容-颜色-字体-相对与屏幕两边的偏移量
      
@@ -41,7 +42,17 @@ public extension UILabel {
             // 设置换行宽度
             preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 2 * screenInset
             textAlignment = .Left
-        }    }
+        }
+    }
+    
+
+
+    
+    
+    
+    
+    
+    
 }
 
 

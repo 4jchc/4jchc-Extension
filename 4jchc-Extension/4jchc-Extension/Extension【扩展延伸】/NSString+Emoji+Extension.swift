@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSString{
+    
+    //MARK: - emoji字符
     ///  将十六进制的编码转为emoji字符
     ///
     ///  - parameter intCode: 十六进制的编码
@@ -24,6 +27,7 @@ extension NSString{
         str = str?.stringByReplacingOccurrencesOfString("\0", withString: "")
         return str!
     }
+    //MARK:  将十六进制的编码转为emoji字符
     ///  将十六进制的编码转为emoji字符
     ///
     ///  - parameter stringCode: 十六进制的编码
@@ -44,7 +48,9 @@ extension NSString{
         return ((((num | (c & 0x3F000) >> 4) | (c & 0xFC0) << 10) | (c & 0x1C0000) << 18) | (c & 0x3F) << 24)
     }
     
-    // 判断是否是emoji表情
+  
+    //MARK: 判断是否是emoji表情
+    /// 判断是否是emoji表情
     var isEmoji:Bool{
         var returnValue=false
         
@@ -82,4 +88,24 @@ extension NSString{
         
         return returnValue
     }
+    
+    
+    
+    
+    
+    //countElements(text)改为text.characters.count
+    class func attributedStringForText(text: String) -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSStrokeColorAttributeName, value: UIColor.blackColor(), range: NSRange(location: 0, length: (text.characters.count)))
+        attributeString.addAttribute(NSStrokeWidthAttributeName, value: -2, range: NSRange(location: 0, length: (text.characters.count)))
+        
+        return attributeString
+    }
+    
+    
+    
+    
+    
+    
+    
 }

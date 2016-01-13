@@ -10,6 +10,8 @@
 		960A46381C43C9C300C6BDE6 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */; };
 		960A463A1C43ED8400C6BDE6 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */; };
 		960A463C1C43F46700C6BDE6 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960A463B1C43F46700C6BDE6 /* TitleButton.swift */; };
+		962BF9AC1C45F48100EDA225 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BF9AB1C45F48100EDA225 /* NSMutableAttributedString.swift */; };
+		962BF9AE1C45FD6E00EDA225 /* NSURL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BF9AD1C45FD6E00EDA225 /* NSURL+Extension.swift */; };
 		96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE691C4246DF00A752E6 /* AppDelegate.swift */; };
 		96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE6B1C4246DF00A752E6 /* ViewController.swift */; };
 		96DDBE6F1C4246DF00A752E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE6D1C4246DF00A752E6 /* Main.storyboard */; };
@@ -83,6 +85,8 @@
 		960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		960A463B1C43F46700C6BDE6 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
+		962BF9AB1C45F48100EDA225 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		962BF9AD1C45FD6E00EDA225 /* NSURL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Extension.swift"; sourceTree = "<group>"; };
 		96DDBE661C4246DF00A752E6 /* 4jchc-Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4jchc-Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE691C4246DF00A752E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DDBE6B1C4246DF00A752E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -252,8 +256,8 @@
 		96DDBF2B1C42498C00A752E6 /* Extension【扩展延伸】 */ = {
 			isa = PBXGroup;
 			children = (
-				96DDBF361C424C8800A752E6 /* Dictionary +Extension.swift */,
 				96DDBF861C42571700A752E6 /* Array +Extension.swift */,
+				96DDBF361C424C8800A752E6 /* Dictionary +Extension.swift */,
 				96DDBF371C424C8800A752E6 /* Double+Extension.swift */,
 				96DDBF381C424C8800A752E6 /* Foundation.swift */,
 				96DDBF391C424C8800A752E6 /* Frame+Extension.swift */,
@@ -263,18 +267,20 @@
 				96DDBF3D1C424C8800A752E6 /* NSDate+Extension.swift */,
 				96DDBF3E1C424C8800A752E6 /* NSDictionary +Extension.swift */,
 				96DDBF401C424C8800A752E6 /* NSLayoutConstraint+Extension.swift */,
+				962BF9AB1C45F48100EDA225 /* NSMutableAttributedString.swift */,
 				96DDBF411C424C8800A752E6 /* NSObject +Extension.swift */,
-				96DDBF421C424C8800A752E6 /* NSString-Size+Extension.swift */,
 				960A46371C43C9C300C6BDE6 /* NSObject+Extension.swift */,
+				962BF9AD1C45FD6E00EDA225 /* NSURL+Extension.swift */,
+				96DDBF421C424C8800A752E6 /* NSString-Size+Extension.swift */,
 				96DDBF431C424C8800A752E6 /* NSString+Emoji+Extension.swift */,
 				96DDBF441C424C8800A752E6 /* NSTimer +Extension.swift */,
 				96DDBF451C424C8800A752E6 /* String+Extension.swift */,
+				960A463B1C43F46700C6BDE6 /* TitleButton.swift */,
 				96DDBF461C424C8800A752E6 /* UIAlertController+Extension.swift */,
 				96DDBF471C424C8800A752E6 /* UIApplication +Extension.swift */,
 				96DDBF481C424C8800A752E6 /* UIBarButtonItem+Extension.swift */,
 				96DDBF491C424C8800A752E6 /* UIButton+Extention.swift */,
 				96DDBF4A1C424C8800A752E6 /* UIButton+Extention副本.swift */,
-				960A463B1C43F46700C6BDE6 /* TitleButton.swift */,
 				96DDBF4B1C424C8800A752E6 /* UIColor+Extension.swift */,
 				96DDBF4C1C424C8800A752E6 /* UIImage+Extension.swift */,
 				96DDBF4D1C424C8800A752E6 /* UIImage+Scale.swift */,
@@ -285,11 +291,11 @@
 				96DDBF521C424C8800A752E6 /* UIScreen+Extension.swift */,
 				96DDBF531C424C8800A752E6 /* UIStoryboard.swift */,
 				96DDBF541C424C8800A752E6 /* UITabBarController+UITabBar.swift */,
-				960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */,
 				96DDBF551C424C8800A752E6 /* UITableView +Extention.swift */,
 				96DDBF561C424C8800A752E6 /* UITableViewCell +Extention.swift */,
 				96DDBF571C424C8800A752E6 /* UITextField+Extension.swift */,
 				96DDBF581C424C8800A752E6 /* UITextView+Extension.swift */,
+				960A46391C43ED8400C6BDE6 /* UIView+AutoLayout.swift */,
 				96DDBF591C424C8800A752E6 /* UIView+Extension.swift */,
 				96DDBF5A1C424C8800A752E6 /* UIViewController +Extension.swift */,
 				96DDBF5B1C424C8800A752E6 /* UIWindow +Extension.swift */,
@@ -428,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962BF9AE1C45FD6E00EDA225 /* NSURL+Extension.swift in Sources */,
 				96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */,
 				96DDBF6F1C424C8800A752E6 /* UIButton+Extention.swift in Sources */,
 				96DDBF5F1C424C8800A752E6 /* Frame+Extension.swift in Sources */,
@@ -439,6 +446,7 @@
 				96DDBF6D1C424C8800A752E6 /* UIApplication +Extension.swift in Sources */,
 				96DDBF7F1C424C8800A752E6 /* UIView+Extension.swift in Sources */,
 				960A463C1C43F46700C6BDE6 /* TitleButton.swift in Sources */,
+				962BF9AC1C45F48100EDA225 /* NSMutableAttributedString.swift in Sources */,
 				96DDBF681C424C8800A752E6 /* NSString-Size+Extension.swift in Sources */,
 				96DDBF691C424C8800A752E6 /* NSString+Emoji+Extension.swift in Sources */,
 				96DDBF7B1C424C8800A752E6 /* UITableView +Extention.swift in Sources */,

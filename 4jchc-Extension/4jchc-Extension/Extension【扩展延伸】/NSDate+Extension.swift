@@ -214,3 +214,168 @@ extension NSDate{
     
     
 }
+
+
+
+//MARK: - 使用oc的框架 NSDate+Escort.m
+//extension NSDate {
+//    
+//    class func dayNames() -> [String] {
+//        
+//        let dayNames = [NSLocalizedString("Sunday", comment:""),
+//            NSLocalizedString("Monday", comment:""),
+//            NSLocalizedString("Tuesday", comment:""),
+//            NSLocalizedString("Wednesday", comment:""),
+//            NSLocalizedString("Thursday", comment:""),
+//            NSLocalizedString("Friday", comment:""),
+//            NSLocalizedString("Saturday", comment:"")]
+//        
+//        if let uCalendar = self.AZ.currentCalendar() {
+//            let namesBefore = Array(dayNames[0..<uCalendar.firstWeekday])
+//            var names = Array(dayNames[uCalendar.firstWeekday..<dayNames.count])
+//            names.extend(namesBefore)
+//            
+//            return names
+//        }
+//        
+//        return dayNames
+//    }
+//    
+//    class func shortDayNames() -> [String] {
+//        
+//        let dayNames = [NSLocalizedString("Su", comment:""),
+//            NSLocalizedString("Mo", comment:""),
+//            NSLocalizedString("Tu", comment:""),
+//            NSLocalizedString("We", comment:""),
+//            NSLocalizedString("Th", comment:""),
+//            NSLocalizedString("Fr", comment:""),
+//            NSLocalizedString("Sa", comment:"")]
+//        
+//        if let uCalendar = self.AZ_currentCalendar() {
+//            let namesBefore = Array(dayNames[0..<uCalendar.firstWeekday])
+//            var names = Array(dayNames[uCalendar.firstWeekday..<dayNames.count])
+//            names.extend(namesBefore)
+//            
+//            return names
+//        }
+//        
+//        return dayNames
+//    }
+//    
+//    class func monthNames() -> [String] {
+//        
+//        let monthNames = [NSLocalizedString("January", comment:""),
+//            NSLocalizedString("February", comment:""),
+//            NSLocalizedString("March", comment:""),
+//            NSLocalizedString("April", comment:""),
+//            NSLocalizedString("May", comment:""),
+//            NSLocalizedString("June", comment:""),
+//            NSLocalizedString("July", comment:""),
+//            NSLocalizedString("August", comment:""),
+//            NSLocalizedString("September", comment:""),
+//            NSLocalizedString("October", comment:""),
+//            NSLocalizedString("November", comment:""),
+//            NSLocalizedString("December", comment:"")
+//        ]
+//        
+//        return monthNames
+//    }
+//    
+//    
+//    func relativeDateString() -> String {
+//        var result: String!
+//        // calculate how many days are between self and current time
+//        let daysBetween = self.dateAtStartOfDay().daysAfterDate(NSDate().dateAtStartOfDay())
+//        switch daysBetween {
+//        case 0:
+//            result = NSLocalizedString("Today", comment: "Word")
+//        case 1:
+//            result = NSLocalizedString("Tomorrow", comment: "Word")
+//        case -1:
+//            result = NSLocalizedString("Yesterday", comment: "Word")
+//        case let x where x < -1:
+//            result = NSLocalizedString("N_DaysAgo", comment: "Word").stringByReplacingTokensWithStrings(("NUMBER", String(abs(x))))
+//        case let x where x > 1:
+//            result = NSLocalizedString("In_N_Days", comment: "Word").stringByReplacingTokensWithStrings(("NUMBER", String(x)))
+//        default:
+//            result = "unknown"
+//        }
+//        
+//        return result
+//    }
+//    
+//    func dayAndMonthWithOptionalYearString() -> String {
+//        var formatter: NSDateFormatter!
+//        if self.year == NSDate().year {
+//            formatter = NSDateFormatter.sharedDateFormatterWithFormat("d MMMM")
+//        }
+//        else {
+//            formatter = NSDateFormatter.sharedDateFormatterWithFormat("d MMMM yyyy")
+//        }
+//        
+//        return formatter.stringFromDate(self)
+//    }
+//    
+//    class func dayDate(aDayNumber: Int, inMonthNumber:Int, inYearNumber: Int) -> NSDate? {
+//        var date: NSDate?
+//        if let uCalendar = self.AZ_currentCalendar() {
+//            var components = uCalendar.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: self.new())
+//            components.day = aDayNumber
+//            components.month = inMonthNumber
+//            components.year = inYearNumber
+//            date = uCalendar.dateFromComponents(components)
+//        }
+//        return date;
+//    }
+//    
+//    func dateOfDayFromSameMonth(aDayNumber: Int) -> NSDate? {
+//        var date: NSDate?
+//        if let uCalendar = NSDate.AZ_currentCalendar() {
+//            var components = uCalendar.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitWeekday, fromDate: self)
+//            components.day = aDayNumber
+//            date = uCalendar.dateFromComponents(components)
+//        }
+//        return date;
+//    }
+//    
+//    class func firstDayOfYear(aYearNumber: Int) -> NSDate? {
+//        var date: NSDate?
+//        if let uCalendar = self.AZ_currentCalendar() {
+//            var components = uCalendar.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: self.new())
+//            components.day = 1
+//            components.month = 1
+//            components.year = aYearNumber
+//            date = uCalendar.dateFromComponents(components)
+//        }
+//        return date;
+//    }
+//    
+//    class func firstDayOfMonth(aMonthNumber:Int, inYearNumber: Int) -> NSDate? {
+//        var date: NSDate?
+//        if let uCalendar = self.AZ_currentCalendar() {
+//            var components = uCalendar.components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear, fromDate: self.new())
+//            components.day = 1
+//            components.month = aMonthNumber
+//            components.year = inYearNumber
+//            date = uCalendar.dateFromComponents(components)
+//        }
+//        return date;
+//    }
+//    
+//    class func firstDayOfWeek(aWeekNumber:Int, inYearNumber: Int, firstWeekday: Int) -> NSDate? {
+//        var date: NSDate?
+//        if let uCalendar = self.AZ_currentCalendar() {
+//            var components = uCalendar.components(.CalendarUnitWeekday | .CalendarUnitWeekOfYear | .CalendarUnitYear, fromDate: self.new())
+//            components.weekday = firstWeekday
+//            components.weekOfYear = aWeekNumber
+//            components.year = inYearNumber
+//            date = uCalendar.dateFromComponents(components)
+//        }
+//        return date;
+//    }
+//    
+//}
+//
+
+
+

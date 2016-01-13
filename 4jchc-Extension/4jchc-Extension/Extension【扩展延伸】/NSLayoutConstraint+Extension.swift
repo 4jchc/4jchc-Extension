@@ -121,26 +121,37 @@ extension NSLayoutConstraint {
     class func constraintsWithVisualFormat(visualFormat: String,  options: NSLayoutFormatOptions, views: [String : AnyObject]) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraintsWithVisualFormat(visualFormat, options: options, metrics: nil, views: views)
     }
-    
-    
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
 }
+
+
+
+extension NSLayoutConstraint {
+    //MARK: - precise 精密的(明确的,严谨的)
+    /// precise 精密的(明确的,严谨的)
+    @IBInspectable var preciseConstant: Int {
+        get {
+            return Int(constant * UIScreen.mainScreen().scale)
+        }
+        set {
+            let res = CGFloat(newValue) / UIScreen.mainScreen().scale
+            constant = res//CGFloat(newValue) / UIScreen.mainScreen().scale
+        }
+    }
+    //MARK: - Subtraction .减去(扣除)
+    /// Subtraction .减去(扣除)
+    @IBInspectable var constantBySubtractionOnePixelOnAnyDevice: CGFloat {
+        get {
+            return CGFloat(constant)
+        }
+        set {
+            constant = newValue - 1 / UIScreen.mainScreen().scale
+        }
+    }
+}
+
+
+
+
+
+

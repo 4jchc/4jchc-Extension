@@ -62,43 +62,128 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
-    
-    
-    
-    
 
+    public convenience init(hex: String, alpha: CGFloat) {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
     
-//    public convenience init(hex: String) {
-//        
-//        self.init(hex: hex, alpha: CGFloat(1.0))
-//    }
-//    
-//    public convenience init(hex: String, alpha: CGFloat) {
-//        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
-//        
-//        if (cString.hasPrefix("#")) {
-//            cString = cString.substringFromIndex(advance(cString.startIndex, 1))
-//        }
-//        
-//        if (count(cString) != 6) {
-//            
-//            self.init(red: 0, green: 0, blue: 0, alpha: 0)
-//        }
-//        else {
-//            
-//            var rgbValue:UInt32 = 0
-//            NSScanner(string: cString).scanHexInt(&rgbValue)
-//            
-//            self.init(
-//                red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-//                green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-//                blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-//                alpha: alpha
-//            )
-//        }
-//    }
-//    
+        if (cString.hasPrefix("#")) {
+            
+            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
+        }
+        
+        if (cString.characters.count != 6) {
+            
+            self.init(red: 0, green: 0, blue: 0, alpha: 0)
+        }
+        else {
+            
+            var rgbValue:UInt32 = 0
+            NSScanner(string: cString).scanHexInt(&rgbValue)
+            
+            self.init(
+                red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                alpha: alpha
+            )
+        }
+    }
+    
+ 
     
 }
+
+
+public extension UIColor {
+    
+    public var lighterColor: UIColor {
+        var r = CGFloat(0)
+        var g = CGFloat(0)
+        var b = CGFloat(0)
+        var a = CGFloat(0)
+        if getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return UIColor(red: min(r + 0.2, 1.0), green: min(g + 0.2, 1.0), blue: min(b + 0.2, 1.0), alpha: a)
+        } else {
+            assert(false, "Unable to get lighter color for color: \(self)")
+            return self
+        }
+    }
+    
+    public var darkerColor: UIColor {
+        var r = CGFloat(0)
+        var g = CGFloat(0)
+        var b = CGFloat(0)
+        var a = CGFloat(0)
+        if getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return UIColor(red: min(r - 0.2, 1.0), green: min(g - 0.2, 1.0), blue: min(b - 0.2, 1.0), alpha: a)
+        } else {
+            assert(false, "Unable to get lighter color for color: \(self)")
+            return self
+        }
+    }
+    
+}
+
+
+
+
+
+
+import Foundation
+
+
+extension UIColor {
+    //MARK: - Lilac 紫丁香(淡紫色);adj.淡紫色的
+    /// Lilac 紫丁香(淡紫色);adj.淡紫色的
+    class func wishesLilac() -> UIColor {
+        // light purple
+        return UIColor(red: 186.0/255.0, green: 164.0/255.0, blue: 212.0/255.0, alpha: 1.0)
+    }
+    
+    class func wishesPurple() -> UIColor {
+        // dark purple
+        return UIColor(red: 59.0/255.0, green: 32.0/255.0, blue: 89.0/255.0, alpha: 1.0)
+    }
+    
+    class func wishesWhite() -> UIColor {
+        // plain white
+        return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    class func wishesGray() -> UIColor {
+        // gray
+        return UIColor(red: 117.0/255.0, green: 117.0/255.0, blue: 117.0/255.0, alpha: 1.0)
+    }
+    
+    class func wishesGrayLight() -> UIColor {
+        // gray
+        return UIColor(red: 187.0/255.0, green: 187.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+    }
+    
+    class func wishesPink() -> UIColor {
+        // pink
+        return UIColor(red: 248.0/255.0, green: 106.0/255.0, blue: 162.0/255.0, alpha: 1.0)
+    }
+    
+    class func wishesYellow() -> UIColor {
+        // yellow
+        return UIColor(red: 248.0/255.0, green: 184.0/255.0, blue: 1.0/255.0, alpha: 1.0)
+    }
+}
+
+extension UIColor {
+    func colorByChangingRed(redChange: CGFloat, greenChange: CGFloat, blueChange: CGFloat, alphaChange: CGFloat) -> UIColor {
+        var rgba = [CGFloat](count: 4, repeatedValue: 0.0)
+        getRed(&rgba[0], green: &rgba[1], blue: &rgba[2], alpha: &rgba[3])
+        rgba[0] = min(max(rgba[0] + redChange, 0.0), 1.0)
+        rgba[1] = min(max(rgba[1] + greenChange, 0.0), 1.0)
+        rgba[2] = min(max(rgba[2] + blueChange, 0.0), 1.0)
+        rgba[3] = min(max(rgba[3] + alphaChange, 0.0), 1.0)
+        
+        return UIColor(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: rgba[3])
+    }
+}
+
+
 
 

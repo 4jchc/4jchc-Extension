@@ -54,7 +54,7 @@ public extension UIViewController {
 //        
 //        return vc
 //    }
-//    
+    
     
     
     
@@ -76,3 +76,19 @@ public extension UIViewController {
         return topController!
     }
 }
+
+
+extension UIViewController {
+    
+    @IBAction func popAction() {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func dismissAction() {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}
+
+
+

@@ -5,7 +5,9 @@ import UIKit
 class UIButtonTool: UIButton {
     
     
-    ///*****✅剪切图片的尺寸****改变图片的位置
+   
+    //MARK: - ✅剪切图片的尺寸****改变图片的位置
+    /// ✅剪切图片的尺寸****改变图片的位置
     override func imageRectForContentRect(contentRect: CGRect) -> CGRect {
         
         let imageW:CGFloat = 40;
@@ -30,8 +32,9 @@ class UIButtonTool: UIButton {
     //            }
     //        }
     
-    /// 没有高亮状态的按钮
-    /// 重写setFrame方法
+    
+    //MARK:  没有高亮状态的按钮,重写setFrame方法
+    /// 没有高亮状态的按钮,重写setFrame方法
     override var highlighted: Bool {
         
         didSet{
@@ -39,15 +42,17 @@ class UIButtonTool: UIButton {
         }
     }
     
-    
-    ///设置正常-高亮状态
+    //MARK:  设置正常-高亮状态
+    /// 设置正常-高亮状态
     func setNormal_Highlighted_BG(nbg:String, _ hbg:String){
         
         self.setBackgroundImage(UIImage(named: nbg), forState: UIControlState.Normal)
         self.setBackgroundImage(UIImage(named: hbg), forState: UIControlState.Highlighted)
         
     }
-    ///设置正常-高亮拉升后状态
+    
+    //MARK: - 设置正常-高亮拉升后状态
+    /// 设置正常-高亮拉升后状态
     func setla拉升Normal_Highlighted_BG(nbg:String, _ hbg:String){
         //用到uiimage的扩展方法
 
@@ -57,7 +62,11 @@ class UIButtonTool: UIButton {
     }
     
     
-    
+  func setTitleColor(color: UIColor?, forStates states: [UIControlState]) {
+            for state in states {
+                setTitleColor(color, forState: state)
+            }
+        }
     
     
     

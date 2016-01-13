@@ -34,4 +34,39 @@ extension NSURL {
     func isHttpLocalPath() -> Bool {
         return self.absoluteString.rangeOfString("http") == nil
     }
+    
+    
+    
+    func createDirectoryIfNecesserary() throws {
+        if let path = path where !NSFileManager.defaultManager().fileExistsAtPath(path) {
+            try NSFileManager.defaultManager().createDirectoryAtURL(self,
+                withIntermediateDirectories: true, attributes: nil)
+        }
+    }
+    
+    static func temporaryURL() -> NSURL{
+        
+        return try! NSFileManager.defaultManager().URLForDirectory(NSSearchPathDirectory.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true).URLByAppendingPathComponent(NSUUID().UUIDString)
+    }
+    
+    static var documentsURL: NSURL{
+        
+        return try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

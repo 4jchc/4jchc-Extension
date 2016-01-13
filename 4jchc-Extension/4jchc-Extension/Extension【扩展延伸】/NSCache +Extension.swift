@@ -94,6 +94,31 @@ internal class NSCache_Delegate: NSObject, NSCacheDelegate {
     }
 }
 
-
+public extension NSCache {
+    subscript(key: AnyObject) -> AnyObject? {
+        get {
+            return objectForKey(key)
+        }
+        set {
+            if let value: AnyObject = newValue {
+                setObject(value, forKey: key)
+            } else {
+                removeObjectForKey(key)
+            }
+        }
+    }
+    public func setFloat(value: Float, forKey: AnyObject) {
+        setObject(value, forKey: forKey)
+    }
+    public func floatForKey(forKey: AnyObject) -> Float? {
+        return objectForKey(forKey) as? Float
+    }
+    public func setData(value: NSData, forKey: AnyObject) {
+        setObject(value, forKey: forKey)
+    }
+    public func dataForKey(forKey: AnyObject) -> NSData? {
+        return objectForKey(forKey) as? NSData
+    }
+}
 
 

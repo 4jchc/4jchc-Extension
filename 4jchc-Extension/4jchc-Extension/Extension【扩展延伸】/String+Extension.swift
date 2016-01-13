@@ -27,7 +27,7 @@
 //            return Int(self.utf16)//(self.utf16) as Int
 //        }
         
-        public func length() -> Int {
+        public func lengthUTF16() -> Int {
             
             return self.utf16.count//count(self.utf16)
         }
@@ -220,6 +220,316 @@
             return self.rangeOfString("http") == nil
         }
         
+        
+        
+        
+        
+        
+        /// Get the length of a string
+        ///
+        /// - returns: 字符串的长度
+        public func length() ->Int {
+            return self.characters.count
+        }
+        
+        // MARK: Trim整修 API
+        
+        /// 去掉字符串前后的空格，根据参数确定是否过滤换行符
+        ///
+        /// - parameter trimNewline 是否过滤换行符，默认为false
+        ///
+        /// - returns:   处理后的字符串
+        public func trim(trimNewline: Bool = false) ->String {
+            if trimNewline {
+                return self.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+            }
+            
+            return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
+        }
+        
+        /// 去掉字符串前面的空格，根据参数确定是否过滤换行符
+        ///
+        /// - parameter trimNewline 是否过滤换行符，默认为false
+        ///
+        /// - returns:   处理后的字符串
+        public func trimLeft(trimNewline: Bool = false) ->String {
+            if self.isEmpty {
+                return self
+            }
+            
+            var index = self.startIndex
+            while index != self.endIndex {
+                let ch = self.characters[index]
+                if ch == Character(" ") {
+                    index++
+                    continue
+                } else if ch == Character("\n") {
+                    if trimNewline {
+                        index++
+                        continue
+                    } else {
+                        break
+                    }
+                }
+                
+                break
+            }
+            
+            return self.substringFromIndex(index)
+        }
+        
+        /// 去掉字符串后面的空格，根据参数确定是否过滤换行符
+        ///
+        /// - parameter trimNewline 是否过滤换行符，默认为false
+        ///
+        /// - returns:   处理后的字符串
+        public func trimRight(trimNewline: Bool = false) ->String {
+            if self.isEmpty {
+                return self
+            }
+            
+            var index = self.endIndex.predecessor()
+            while index != self.startIndex {
+                let ch = self.characters[index]
+                if ch == Character(" ") {
+                    index--
+                    continue
+                } else if ch == Character("\n") {
+                    if trimNewline {
+                        index--
+                        continue
+                    } else {
+                        index++
+                        break
+                    }
+                }
+                
+                break
+            }
+            
+            return self.substringToIndex(index)
+        }
+        
+        // MARK: Substring子串 API
+        
+        /// 获取子串的起始位置。
+        ///
+        /// - parameter substring 待查找的子字符串
+        ///
+        /// - returns:  如果找不到子串，返回NSNotFound，否则返回其所在起始位置
+        public func location(substring: String) ->Int {
+            return (self as NSString).rangeOfString(substring).location
+        }
+        
+        /// 根据起始位置和长度获取子串。
+        ///
+        /// - parameter location  获取子串的起始位置
+        /// - parameter length    获取子串的长度
+        ///
+        /// - returns:  如果位置和长度都合理，则返回子串，否则返回nil
+        public func substring(location: Int, length: Int) ->String? {
+            if location < 0 && location >= self.length() {
+                return nil
+            }
+            
+            if length <= 0 || length >= self.length() {
+                return nil
+            }
+            
+            return (self as NSString).substringWithRange(NSMakeRange(location, length))
+        }
+        
+        /// 根据下标获取对应的字符。若索引正确，返回对应的字符，否则返回nil
+        ///
+        /// - parameter index 索引位置
+        ///
+        /// - returns: 如果位置正确，返回对应的字符，否则返回nil
+        public subscript(index: Int) ->Character? {
+            get {
+                if let str = substring(index, length: 1) {
+                    return Character(str)
+                }
+                
+                return nil
+            }
+        }
+        
+        /// 判断字符串是否包含子串。
+        ///
+        /// - parameter substring 子串
+        ///
+        /// - returns:  如果找到，返回true,否则返回false
+        public func isContain(substring: String) ->Bool {
+            return (self as NSString).containsString(substring)
+        }
+        
+        // MARK: Alpha+num API
+        
+        /// 判断字符串是否全是数字组成
+        ///
+        /// - returns:  若为全数字组成，返回true，否则返回false
+        public func isOnlyNumbers() ->Bool {
+            let set = NSCharacterSet.decimalDigitCharacterSet().invertedSet
+            let range = (self as NSString).rangeOfCharacterFromSet(set)
+            
+            return range.location == NSNotFound
+        }
+        
+        /// 判断字符串是否全是字母组成
+        ///
+        /// - returns:  若为全字母组成，返回true，否则返回false
+        public func isOnlyLetters() ->Bool {
+            let set = NSCharacterSet.letterCharacterSet().invertedSet
+            let range = (self as NSString).rangeOfCharacterFromSet(set)
+            
+            return range.location == NSNotFound
+        }
+        
+        /// 判断字符串是否全是字母和数字组成
+        ///
+        /// - returns:  若为全字母和数字组成，返回true，否则返回false
+        public func isAlphanum() ->Bool {
+            let set = NSCharacterSet.alphanumericCharacterSet().invertedSet
+            let range = (self as NSString).rangeOfCharacterFromSet(set)
+            
+            return range.location == NSNotFound
+        }
+        
+        // MARK: Validation 确认 API
+        
+        /// 判断字符串是否是有效的邮箱格式
+        ///
+        /// - returns:  若为有效的邮箱格式，返回true，否则返回false
+        public func isValidEmail() ->Bool {
+            let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", regEx)
+            
+            return predicate.evaluateWithObject(self)
+        }
+        
+        
+        
+        
+        
+        
     }
     
+extension String {
+    
+    var length1: Int {
+        
+        return self.characters.count
+    }
+//    var length: Int {
+//        
+//        return self.characters.count
+//    }
+    // MARK: - Localization
+    
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func localizedWithArgs(args: CVarArgType...) -> String {
+        switch (args.count) { // temporary fix until swift not know how to pass variadic parameters
+        case 0: return String.localizedStringWithFormat(self.localized())
+        case 1: return String.localizedStringWithFormat(self.localized(), args[0])
+        case 2: return String.localizedStringWithFormat(self.localized(), args[0], args[1])
+        case 3: return String.localizedStringWithFormat(self.localized(), args[0], args[1], args[2])
+        case 4: return String.localizedStringWithFormat(self.localized(), args[0], args[1], args[2], args[3])
+        case 5: return String.localizedStringWithFormat(self.localized(), args[0], args[1], args[2], args[3], args[4])
+        default: fatalError("Too much arguments")
+        }
+    }
+    
+    // MARK: - Regex
+    
+    func match(pattern: String, options: NSRegularExpressionOptions = NSRegularExpressionOptions(rawValue: 0)) -> Bool
+    {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return false
+        }
+        return regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, length1)) != nil
+    }
+    
+    func matches(pattern: String, options: NSRegularExpressionOptions = NSRegularExpressionOptions(rawValue: 0)) -> [NSTextCheckingResult]
+    {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return []
+        }
+        return regex.matchesInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, length1))//length
+    }
+    
+    func stringByReplacingMatches(pattern: String, options: NSRegularExpressionOptions = NSRegularExpressionOptions(rawValue: 0), template: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return self
+        }
+        return regex.stringByReplacingMatchesInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, length1), withTemplate: template)
+    }
+    
+}
+
+
+
+
+
+extension String {
+    // MARK:
+    // MARK: public. Instance
+    
+//    func componentsSeparatedByCharacter(separator: Character) -> [String] {
+//        // prepare array of components
+//        let componentsArray = split(self, maxSplit: Int.max, allowEmptySlices: false, isSeparator: { $0 == separator})
+//        return componentsArray
+//    }
+    
+//    func MD5() -> String {
+//        let data = (self as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+//        if let hash = data?.MD5() {
+//            return hash
+//        }
+//        
+//        return self
+//    }
+    
+    func stringByReplacingTokensWithStrings(tokenValuePairs: (token: String, value: String)...) -> String {
+        // find all tokens and then replace them with provided values
+        var result = self
+        for pair in tokenValuePairs {
+            result = result.stringByReplacingOccurrencesOfString("{\(pair.token)}", withString: pair.value, options: .CaseInsensitiveSearch)
+        }
+        return result
+    }
+    
+    func trimFirst(n: Int) -> String {//advance(self.startIndex, n)
+        return self.substringFromIndex(self.startIndex.advancedBy(n))
+    }
+    
+    func trimLast(n: Int) -> String {
+        return self.substringToIndex(self.startIndex.advancedBy(-1*n))
+    }
+    
+    func sizeWithFont(font: UIFont, maxWidth: CGFloat) -> CGSize {
+        let nsString = self as NSString
+        let attributes = [NSFontAttributeName: font]
+        let size = nsString.boundingRectWithSize(CGSize(width: maxWidth, height: CGFloat.max),
+            options: .UsesLineFragmentOrigin,
+            attributes: attributes,
+            context: nil).size
+        
+        return size
+    }
+    
+    // MARK: static
+    
+    static func uniqueString() -> String {
+        return NSProcessInfo.processInfo().globallyUniqueString
+    }
+    
+}
+
+
+
+
+
 

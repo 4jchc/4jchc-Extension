@@ -35,10 +35,8 @@ extension UIImage {
     ////*****✅/ 写入桌面
     //还没实现
     //   d.writeToFile("/Users/jiangjin/Desktop/newImage.png", atomically: true)
-    
-        
     return newImage;
-        
+    
 }
     
     
@@ -173,4 +171,117 @@ extension UIImage {
     }
     
   }
+public extension UIImage {
+    
+    //MARK: - 返回一个固定尺寸图片
+    /// 返回一个固定尺寸图片
+    func imageWithSize(newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    //MARK: - 返回一个固定尺寸图片的颜色
+    /// 返回一个固定尺寸图片的颜色
+    class func imageFromColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+    
+//        let rect = CGRect(origin: CGPointZero, size: size)
+//        UIGraphicsBeginImageContext(rect.size);
+//        let context = UIGraphicsGetCurrentContext();
+//        
+//        CGContextSetFillColorWithColor(context, color.CGColor);
+//        CGContextFillRect(context, rect);
+        
+        
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 
+    /// Instantiate UIImage or nil if data is nil or image canot be instantiated.
+    /// - parameter dataOrNil: Image data or nil.
+    convenience init?(dataOrNil: NSData?) {
+        if let d = dataOrNil {
+            self.init(data: d)
+        } else {
+            return nil
+        }
+    }
+}
+extension UIImage {
+    
+    convenience init(color: UIColor, size: CGSize, transparentInsets:UIEdgeInsets = UIEdgeInsetsZero) {
+        var coloredRect = CGRect()
+        coloredRect.origin.x = transparentInsets.left
+        coloredRect.origin.y = transparentInsets.top
+        coloredRect.size.width = size.width - transparentInsets.left - transparentInsets.right
+        coloredRect.size.height = size.height - transparentInsets.top - transparentInsets.bottom
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(coloredRect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        self.init(CGImage: image.CGImage!)
+    }
+    
+    convenience init(fromView view: UIView) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
+        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(CGImage:image.CGImage!)
+    }
+    
+    
+
+    //MARK: - Rotating n.旋转的,旋转性的
+    /// Rotating n.旋转的,旋转性的
+    func imageByRotatingFor(angle: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextTranslateCTM(context, size.width / 2.0, size.height / 2.0)
+        CGContextRotateCTM(context, angle)
+        self.drawInRect(CGRect(origin: CGPoint(x: -size.width / 2.0, y: -size.height / 2.0), size: size))
+        
+        let result = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext()
+        
+        return result
+    }
+    //MARK: - Subtracting减法
+    /// Subtracting减法
+    
+    func imageBySubtractingImage(maskImage: UIImage, drawnAtPoint drawPoint: CGPoint) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+        
+        drawAtPoint(CGPointZero)
+        maskImage.drawAtPoint(drawPoint, blendMode: CGBlendMode.DestinationOut, alpha: 1.0)
+        
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return result
+    }
+    //MARK: - Rounding绕行；使变圆；
+    /// Rounding绕行；使变圆；
+    func imageByRoundingCorners(cornerRadius: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+        
+        UIBezierPath(roundedRect: CGRect(origin: CGPointZero, size: size), cornerRadius: cornerRadius).addClip()
+        drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return result
+    }
+    
+}

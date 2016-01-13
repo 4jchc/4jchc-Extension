@@ -154,11 +154,7 @@ public extension NSDictionary {
         return result.copy() as! NSDictionary
     }
     
-    
-    
-    
-    
-    
+
     func mapValues<Key, T>(f : AnyObject -> T) -> [Key:T] {
         var result : [Key:T] = [:]
         enumerateKeysAndObjectsUsingBlock { (key, value, _) -> Void in
@@ -169,14 +165,39 @@ public extension NSDictionary {
         }
         return result
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
 }
+
+
+public extension NSDictionary {
+    public enum Errors: ErrorType {
+        case UnableToWriteToFile(String)
+        case UnableToReadFromURL(NSURL)
+    }
+    public func hasKey<T: AnyObject where T: Equatable>(key: T) -> Bool {
+        return allKeys.filter { element in return (element as? T) == key }.count == 1
+    }
+    public func writePlistToFile(path: String, atomically: Bool) throws {
+        if !writeToFile(path, atomically: atomically) {
+            throw Errors.UnableToWriteToFile(path)
+        }
+    }
+    public static func readPlistFromURL(plistURL: NSURL) throws -> NSDictionary {
+        guard let plist = NSDictionary(contentsOfURL: plistURL) else {
+            throw Errors.UnableToReadFromURL(plistURL)
+        }
+        return plist
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

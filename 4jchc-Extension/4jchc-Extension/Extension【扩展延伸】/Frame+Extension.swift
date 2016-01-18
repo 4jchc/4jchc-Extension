@@ -91,3 +91,21 @@ extension UIView{
         }
     }
 }
+
+
+
+
+//public extension CGPoint {
+//    func isFarFromPoint(point: CGPoint, minimumDistance: CGFloat = 0) -> Bool {
+//        return self.distanceTo(point) >= minimumDistance
+//    }
+//}
+
+extension CGSize {
+    var area: CGFloat {
+        return width * height
+    }
+}
+
+
+

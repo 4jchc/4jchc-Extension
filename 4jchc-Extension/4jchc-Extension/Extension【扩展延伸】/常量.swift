@@ -21,9 +21,11 @@ let IS_IPHONE_5 = IS_IPHONE && SCREEN_MAX_LENGTH == 568.0
 let IS_IPHONE_6 = IS_IPHONE && SCREEN_MAX_LENGTH == 667.0
 let IS_IPHONE_6P = IS_IPHONE && SCREEN_MAX_LENGTH == 736.0
 
-let IS_IPAD = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad
 
-let IS_RETINA = UIScreen.mainScreen().scale>=2.0
+let IS_IPAD = UIDevice.currentDevice().userInterfaceIdiom == .Pad
+
+
+let IS_RETINA = UIScreen.mainScreen().scale>=2.0 //&& UIScreen.mainScreen().respondsToSelector("scale")
 
 
 

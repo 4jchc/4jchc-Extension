@@ -2,7 +2,7 @@
 
 
 import Foundation
-
+import UIKit
 public func removeObject<T : Equatable>(object: T, inout fromArray array: [T]){
     
     let index = array.indexOf(object)
@@ -58,6 +58,29 @@ func convertDateFormater(date: String) -> String {
     return timeStamp
 }
 
+//MARK: - cell选中时颜色的改变
+///  cell选中时颜色的改变
+func animateCellSelection(cell:UITableViewCell) {
+    
+    //fade cell background blue to white
+    cell.backgroundColor = UIColor.redColor()//cellSelectionColor
+    UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+        cell.backgroundColor = UIColor.whiteColor()
+        }) { (done:Bool) -> Void in
+    }
+}
 
+//MARK: - 延时执行闭包
+///  延时执行闭包
+func delay(delay:Double, closure:()->()) {
+    
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure
+    )
+}
 
 

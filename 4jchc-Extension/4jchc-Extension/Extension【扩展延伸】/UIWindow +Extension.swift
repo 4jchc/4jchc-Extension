@@ -1,10 +1,4 @@
-//
-//  UIWindow.swift
-//  WeiBo
-//
-//  Created by 叶锋雷 on 15/9/25.
-//  Copyright © 2015年 叶锋雷. All rights reserved.
-//
+
 
 import Foundation
 import UIKit

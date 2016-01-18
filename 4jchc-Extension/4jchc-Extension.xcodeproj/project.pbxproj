@@ -11,6 +11,7 @@
 		9686503F1C4C910F00A8D995 /* SKSpriteNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */; };
 		968650411C4C9AC100A8D995 /* NSError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650401C4C9AC100A8D995 /* NSError+Extension.swift */; };
 		968650A21C4CB91800A8D995 /* 常量.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650A11C4CB91800A8D995 /* 常量.swift */; };
+		968650A51C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650A41C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift */; };
 		96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE691C4246DF00A752E6 /* AppDelegate.swift */; };
 		96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE6B1C4246DF00A752E6 /* ViewController.swift */; };
 		96DDBE6F1C4246DF00A752E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE6D1C4246DF00A752E6 /* Main.storyboard */; };
@@ -109,6 +110,7 @@
 		9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extension.swift"; sourceTree = "<group>"; };
 		968650401C4C9AC100A8D995 /* NSError+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Extension.swift"; sourceTree = "<group>"; };
 		968650A11C4CB91800A8D995 /* 常量.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "常量.swift"; sourceTree = "<group>"; };
+		968650A41C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTextureAtlas+Extension.swift"; sourceTree = "<group>"; };
 		96DDBE661C4246DF00A752E6 /* 4jchc-Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4jchc-Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE691C4246DF00A752E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DDBE6B1C4246DF00A752E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */,
 				96E19B791C4B9B3D00EDEC6C /* SKProduct+Extension.swift */,
 				96E19B7A1C4B9B3D00EDEC6C /* SKScene+Extension.swift */,
+				968650A41C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift */,
 				96E19B7B1C4B9B3D00EDEC6C /* SKTAudioExtension.swift */,
 				96E19B7C1C4B9B3D00EDEC6C /* SKTEffectExtension.swift */,
 				96E19B7D1C4B9B3D00EDEC6C /* SKTexture+Extension.swift */,
@@ -532,6 +535,7 @@
 				96E19B4C1C4B9B0E00EDEC6C /* NSDate+Extension.swift in Sources */,
 				96E19B671C4B9B0E00EDEC6C /* UIKit+Extension.swift in Sources */,
 				96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */,
+				968650A51C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift in Sources */,
 				96E19B3F1C4B9B0E00EDEC6C /* Array +Extension.swift in Sources */,
 				96DDBED01C42478100A752E6 /* HMPresentationController.swift in Sources */,
 				96E19B611C4B9B0E00EDEC6C /* UIColor+Extension.swift in Sources */,

@@ -4,16 +4,40 @@ import Foundation
 import UIKit
 extension UIBarButtonItem{
     
+    /*
+    1.如果在func前面加上class, 就相当于OC中的+
+    2.首先setBackgroundImage，image会随着button的大小而改变，图片自动会拉伸来适应button的大小，这个时候任然可以设置button的title，image不会挡住title；
+    相反的的setImage，图片不会进行拉伸，原比例的显示在button上，此时再设置title，title将无法显示，因此可以根据需求选中方法；
+    
+    */
+    
+    
+    
+    
+    
+    /// 自定义UIButton按钮设置正常&高亮&点击事件
+    class func ItemWithBarButtonItem(imageName:String, target: AnyObject?, action:Selector) ->UIBarButtonItem {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+        btn.setImage(UIImage(named: imageName + "_highlighted"), forState: UIControlState.Highlighted)
+        btn.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        btn.sizeToFit()
+        return UIBarButtonItem(customView: btn)
+    }
+    
+    
+    
     //给 UIBarButtonItem分类添加一个方法 返回一个 UIBarButtonItem对象
-    class func ItemWithTitleImageTarget(image_Nor_Hig_name: String = "", title: String = "", target: AnyObject?, action: Selector)->UIBarButtonItem {
+    /// 自定义UIButton按钮设置正常&高亮&点击事件---title文字
+    class func ItemWithTitleImageTarget(image_Nor_Hig_Name: String = "", title: String = "", target: AnyObject?, action: Selector)->UIBarButtonItem {
         //创建一个 button
         let button = UIButton()
         //添加点击事件
         button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
         //添加图片
-        if image_Nor_Hig_name.characters.count > 0 {
-            button.setImage(UIImage(named: image_Nor_Hig_name), forState: UIControlState.Normal)
-            button.setImage(UIImage(named: "\(image_Nor_Hig_name)_highlighted"), forState: UIControlState.Highlighted)
+        if image_Nor_Hig_Name.characters.count > 0 {
+            button.setImage(UIImage(named: image_Nor_Hig_Name), forState: UIControlState.Normal)
+            button.setImage(UIImage(named: "\(image_Nor_Hig_Name)_highlighted"), forState: UIControlState.Highlighted)
         }
         
         //添加字体
@@ -41,7 +65,7 @@ extension UIBarButtonItem{
      *  @param image     图片
      *  @param highImage 高亮的图片
      *  @return 创建完的item
-     */ //ItemWithImageTarget
+     */ 
     class func ItemWithImageTarget(target:AnyObject?,action:Selector,image:String,hightImage:String) ->UIBarButtonItem{
         
         let btn:UIButton = UIButton(type: UIButtonType.Custom)

@@ -48,6 +48,7 @@ extension SKSpriteNode{
 
 
 extension SKNode{
+    
     func setBitMasks(categoryBitMask categoryBitMask: UInt32, collisionBitMask: UInt32, contactTestBitMask: UInt32){
         if let physicsBody = self.physicsBody{
             physicsBody.categoryBitMask = categoryBitMask

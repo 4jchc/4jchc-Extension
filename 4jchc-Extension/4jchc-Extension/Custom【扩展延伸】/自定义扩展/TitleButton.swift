@@ -1,23 +1,23 @@
 //
 //  TitleButton.swift
-//  DSWeibo
+//  4jchc-Extension
 //
-//  Created by xiaomage on 15/9/7.
-//  Copyright © 2015年 小码哥. All rights reserved.
+//  Created by 蒋进 on 16/1/29.
+//  Copyright © 2016年 sijichcai. All rights reserved.
 //
 
 import UIKit
-
+//MARK: - 转换图片和文字的位置
 class TitleButton: UIButton {
-
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        setImage(UIImage(named: "navigationbar_arrow_down"), forState: UIControlState.Normal)
-        setImage(UIImage(named: "navigationbar_arrow_up"), forState: UIControlState.Selected)
+        setImage(UIImage(named: "<#navigationbar_arrow_down#>"), forState: UIControlState.Normal)
+        setImage(UIImage(named: "<#navigationbar_arrow_down#>"), forState: UIControlState.Selected)
         self.sizeToFit()
-  
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

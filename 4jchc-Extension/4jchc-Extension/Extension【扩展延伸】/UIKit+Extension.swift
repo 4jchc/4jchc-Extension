@@ -5,9 +5,11 @@
 //  Created by 蒋进 on 15/12/26.
 //  Copyright © 2015年 sijichcai. All rights reserved.
 //
-//import Foundation
+import Foundation
 import UIKit
 
+
+//MARK: - 弧度
 ///弧度
 func radians(degrees:CGFloat) ->CGFloat {
     
@@ -15,26 +17,7 @@ func radians(degrees:CGFloat) ->CGFloat {
     
 }
 
-/// tabBar底部栏 颜色
-let JDAppearanceTintColor = UIColor.orangeColor()
-
-/// 用户账户本地存储文件名
-let JDAccountNameLocal = "account.plist"
-
-/// 沙盒 版本号
-let JDSandboxVersionKey = "sandboxVersionKey"
-
-/// 用户请求是否成功的 闭包
-typealias JDSuccessedCallBack = (isSuccess: Bool) -> ()
-
-/// 界面切换 给appDelegate的通知
-let JDNotificationSwithInAppDelegate = "JDNotificationSwithInAppDelegate"
-
-
-
-
-
-
+//MARK: - 延迟在主线程执行函数
 ///  延迟在主线程执行函数
 ///
 /// - parameter delta:    延迟时间
@@ -50,13 +33,12 @@ func delay(delta: Double, callFunc: ()->()) {
 }
 
 
-
-/// 自定义的log
-/// 在 BuildSettting 中 搜索 other swift flags 里DEBUG项 而不是在主的列表添加,那样release也添加了 `-D DEBUG`
+//MARK: - 自定义在DEBUG下的打印print
+/// 自定义的DEBUG下的打印print
+//MARK: - 在 BuildSettting 中 搜索 other swift flags 里DEBUG项
+//MARK: 而不是在主的列表添加,那样release也添加了 `-D DEBUG`
 
 /**
-DEBUG下打印函数
- 
  - parameter message: 需要输入的信息
  - parameter file:    文件名
  - parameter method:  调用print的方法

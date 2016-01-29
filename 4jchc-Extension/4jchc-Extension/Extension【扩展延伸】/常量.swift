@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: - 苹果尺寸判断
 
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
@@ -29,5 +30,27 @@ let IS_RETINA = UIScreen.mainScreen().scale>=2.0 //&& UIScreen.mainScreen().resp
 
 
 let kFontSize = ((IS_IPAD) ? 40 : 14)
+
+
+//MARK: - 微博常量
+
+/// tabBar底部栏 颜色
+let JDAppearanceTintColor = UIColor.orangeColor()
+
+/// 用户账户本地存储文件名
+let JDAccountNameLocal = "account.plist"
+
+/// 沙盒 版本号
+let JDSandboxVersionKey = "sandboxVersionKey"
+
+
+//MARK: 闭包通知常量
+
+/// 用户请求是否成功的 闭包
+typealias JDSuccessedCallBack = (isSuccess: Bool) -> ()
+
+/// 界面切换 给appDelegate的通知
+let JDNotificationSwithInAppDelegate = "JDNotificationSwithInAppDelegate"
+
 
 

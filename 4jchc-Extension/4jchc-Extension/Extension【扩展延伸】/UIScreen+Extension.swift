@@ -10,12 +10,12 @@ import UIKit
 
 extension UIScreen {
     
-    // 提供直接返回屏幕高度
+    /// 提供直接返回屏幕高度
     class func height() -> CGFloat {
         return UIScreen.mainScreen().bounds.height
     }
     
-    // 提供直接返回屏幕宽度
+    /// 提供直接返回屏幕宽度
     class func width() -> CGFloat {
         return UIScreen.mainScreen().bounds.width
     }

@@ -9,24 +9,26 @@
 import UIKit
 
 
+//MARK: - 微博版时间设置
 extension NSDate{
     
-    /**
-     *  判断某个时间是否为今年
-     */
+    @available(iOS 7.0,*)
+    //MARK:适用于IOS8以前
+    //MARK: - 判断是否为- 今年
+    ///  判断是否为- 今年
     func isThisYear()->Bool{
         let calendar: NSCalendar  = NSCalendar.currentCalendar()
-        // 获得某个时间的年月日时分秒
+        // 获得的年月日时分秒
         let dateCmps: NSDateComponents  = calendar.components(NSCalendarUnit.Year, fromDate:self.dynamicType.init())
-       
+        
         let nowCmps: NSDateComponents  = calendar.components(NSCalendarUnit.Year, fromDate: NSDate())
-
+        
         return dateCmps.year == nowCmps.year;
     }
     
-    /**
-     *  判断某个时间是否为昨天
-     */
+    
+    //MARK: - 判断是否为- 昨天
+    ///  判断是否为- 昨天
     func isYesterday() ->Bool{
         var now: NSDate  = NSDate()
         
@@ -39,7 +41,7 @@ extension NSDate{
         let dateStr: NSString  = fmt.stringFromDate(self)
         // 2014-10-18
         let nowStr: NSString  = fmt.stringFromDate(now)
- 
+        
         
         // 2014-10-30 00:00:00
         let date: NSDate = fmt.dateFromString(dateStr as String)!
@@ -49,16 +51,16 @@ extension NSDate{
         let calendar: NSCalendar = NSCalendar.currentCalendar()
         
         let unit: NSCalendarUnit = [NSCalendarUnit.Year , NSCalendarUnit.Month , NSCalendarUnit.Day]
-
+        
         let cmps: NSDateComponents  = calendar.components(unit, fromDate: date, toDate: now, options: NSCalendarOptions())
         
-
+        
         return cmps.year == 0 && cmps.month == 0 && cmps.day == 1;
     }
     
-    /**
-     *  判断某个时间是否为今天
-     */
+    
+    //MARK: - 判断是否为- 今天
+    ///  判断是否为- 今天
     func isToday()->Bool
     {
         let now: NSDate  = NSDate()
@@ -68,29 +70,12 @@ extension NSDate{
         let dateStr: NSString  = fmt.stringFromDate(self)
         // 2014-10-18
         let nowStr: NSString  = fmt.stringFromDate(now)
-
+        
         
         return dateStr.isEqualToString(nowStr as String)
     }
     
     
-   
-    
-    //MARK: - 新增2
-    class func dateWithStr(time: String) ->NSDate {
-        
-        // 1.将服务器返回给我们的时间字符串转换为NSDate
-        // 1.1.创建formatter
-        let formatter = NSDateFormatter()
-        // 1.2.设置时间的格式
-        formatter.dateFormat = "EEE MMM d HH:mm:ss Z yyyy"
-        // 1.3设置时间的区域(真机必须设置, 否则可能不能转换成功)
-        formatter.locale = NSLocale(localeIdentifier: "en")
-        // 1.4转换字符串, 转换好的时间是去除时区的时间
-        let createdDate = formatter.dateFromString(time)!
-        
-        return createdDate
-    }
     
     /**
      刚刚(一分钟内)
@@ -99,13 +84,16 @@ extension NSDate{
      昨天 HH:mm(昨天)
      MM-dd HH:mm(一年内)
      yyyy-MM-dd HH:mm(更早期)
+     NS Calendar-日历
      */
+     //MARK: - 时间描述-刚刚-X分钟前-X小时前-昨天
+     ///  时间描述-刚刚-X分钟前-X小时前-昨天
     var descriptionDate:String{
         
         let calendar = NSCalendar.currentCalendar()
         
         // 1.判断是否是今天
-        if calendar.isDateInToday(self)
+        if calendar.isDateInToday(self)// @available(iOS 8.0, *)
         {
             // 1.0获取当前时间和系统时间之间的差距(秒数)
             let since = Int(NSDate().timeIntervalSinceDate(self))
@@ -157,10 +145,29 @@ extension NSDate{
     
     
     
+    //MARK: - 将- 时间字符串转换为-NSDate
+    ///  将- 时间字符串转换为-NSDate
+    class func dateWithStr(time: String) ->NSDate {
+        
+        // 1.1.创建formatter
+        let formatter = NSDateFormatter()
+        // 1.2.设置时间的格式
+        formatter.dateFormat = "EEE MMM d HH:mm:ss Z yyyy"
+        // 1.3设置时间的区域(真机必须设置, 否则可能不能转换成功)
+        formatter.locale = NSLocale(localeIdentifier: "en")
+        // 1.4转换字符串, 转换好的时间是去除时区的时间
+        let createdDate = formatter.dateFromString(time)!
+        
+        return createdDate
+    }
     
     
-    
-    
+}
+
+
+
+
+extension NSDate{
     
     
     
@@ -216,12 +223,11 @@ extension NSDate{
 }
 
 
-
 //MARK: - 使用oc的框架 NSDate+Escort.m
 //extension NSDate {
-//    
+//
 //    class func dayNames() -> [String] {
-//        
+//
 //        let dayNames = [NSLocalizedString("Sunday", comment:""),
 //            NSLocalizedString("Monday", comment:""),
 //            NSLocalizedString("Tuesday", comment:""),
@@ -229,20 +235,20 @@ extension NSDate{
 //            NSLocalizedString("Thursday", comment:""),
 //            NSLocalizedString("Friday", comment:""),
 //            NSLocalizedString("Saturday", comment:"")]
-//        
+//
 //        if let uCalendar = self.AZ.currentCalendar() {
 //            let namesBefore = Array(dayNames[0..<uCalendar.firstWeekday])
 //            var names = Array(dayNames[uCalendar.firstWeekday..<dayNames.count])
 //            names.extend(namesBefore)
-//            
+//
 //            return names
 //        }
-//        
+//
 //        return dayNames
 //    }
-//    
+//
 //    class func shortDayNames() -> [String] {
-//        
+//
 //        let dayNames = [NSLocalizedString("Su", comment:""),
 //            NSLocalizedString("Mo", comment:""),
 //            NSLocalizedString("Tu", comment:""),
@@ -250,20 +256,20 @@ extension NSDate{
 //            NSLocalizedString("Th", comment:""),
 //            NSLocalizedString("Fr", comment:""),
 //            NSLocalizedString("Sa", comment:"")]
-//        
+//
 //        if let uCalendar = self.AZ_currentCalendar() {
 //            let namesBefore = Array(dayNames[0..<uCalendar.firstWeekday])
 //            var names = Array(dayNames[uCalendar.firstWeekday..<dayNames.count])
 //            names.extend(namesBefore)
-//            
+//
 //            return names
 //        }
-//        
+//
 //        return dayNames
 //    }
-//    
+//
 //    class func monthNames() -> [String] {
-//        
+//
 //        let monthNames = [NSLocalizedString("January", comment:""),
 //            NSLocalizedString("February", comment:""),
 //            NSLocalizedString("March", comment:""),
@@ -277,11 +283,11 @@ extension NSDate{
 //            NSLocalizedString("November", comment:""),
 //            NSLocalizedString("December", comment:"")
 //        ]
-//        
+//
 //        return monthNames
 //    }
-//    
-//    
+//
+//
 //    func relativeDateString() -> String {
 //        var result: String!
 //        // calculate how many days are between self and current time
@@ -300,10 +306,10 @@ extension NSDate{
 //        default:
 //            result = "unknown"
 //        }
-//        
+//
 //        return result
 //    }
-//    
+//
 //    func dayAndMonthWithOptionalYearString() -> String {
 //        var formatter: NSDateFormatter!
 //        if self.year == NSDate().year {
@@ -312,10 +318,10 @@ extension NSDate{
 //        else {
 //            formatter = NSDateFormatter.sharedDateFormatterWithFormat("d MMMM yyyy")
 //        }
-//        
+//
 //        return formatter.stringFromDate(self)
 //    }
-//    
+//
 //    class func dayDate(aDayNumber: Int, inMonthNumber:Int, inYearNumber: Int) -> NSDate? {
 //        var date: NSDate?
 //        if let uCalendar = self.AZ_currentCalendar() {
@@ -327,7 +333,7 @@ extension NSDate{
 //        }
 //        return date;
 //    }
-//    
+//
 //    func dateOfDayFromSameMonth(aDayNumber: Int) -> NSDate? {
 //        var date: NSDate?
 //        if let uCalendar = NSDate.AZ_currentCalendar() {
@@ -337,7 +343,7 @@ extension NSDate{
 //        }
 //        return date;
 //    }
-//    
+//
 //    class func firstDayOfYear(aYearNumber: Int) -> NSDate? {
 //        var date: NSDate?
 //        if let uCalendar = self.AZ_currentCalendar() {
@@ -349,7 +355,7 @@ extension NSDate{
 //        }
 //        return date;
 //    }
-//    
+//
 //    class func firstDayOfMonth(aMonthNumber:Int, inYearNumber: Int) -> NSDate? {
 //        var date: NSDate?
 //        if let uCalendar = self.AZ_currentCalendar() {
@@ -361,7 +367,7 @@ extension NSDate{
 //        }
 //        return date;
 //    }
-//    
+//
 //    class func firstDayOfWeek(aWeekNumber:Int, inYearNumber: Int, firstWeekday: Int) -> NSDate? {
 //        var date: NSDate?
 //        if let uCalendar = self.AZ_currentCalendar() {

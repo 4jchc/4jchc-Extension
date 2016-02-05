@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		9657FE3D1C52354500EB1D1B /* SpriteKit+临时代码段.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657FE3C1C52354500EB1D1B /* SpriteKit+临时代码段.swift */; };
+		965947141C5CFFE000BE4617 /* CGGeometry几何类方法总结.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965947131C5CFFE000BE4617 /* CGGeometry几何类方法总结.swift */; };
+		96624F2E1C5C841A00E673B5 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96624F2D1C5C841A00E673B5 /* CALayer.swift */; };
 		9676E7D51C4685B20003E61E /* Gcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676E7D41C4685B20003E61E /* Gcd.swift */; };
 		9686503F1C4C910F00A8D995 /* SKSpriteNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */; };
 		968650411C4C9AC100A8D995 /* NSError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650401C4C9AC100A8D995 /* NSError+Extension.swift */; };
 		968650A21C4CB91800A8D995 /* 常量.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650A11C4CB91800A8D995 /* 常量.swift */; };
 		968650A51C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650A41C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift */; };
 		968650AF1C4D32BE00A8D995 /* NSArray+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650AE1C4D32BE00A8D995 /* NSArray+Extension.swift */; };
+		96B9D17C1C5B41A40037F52B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B9D17B1C5B41A40037F52B /* Animation.swift */; };
 		96C7B8181C5B0C57000A176C /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C7B8171C5B0C57000A176C /* TitleButton.swift */; };
+		96C7B81F1C5B223F000A176C /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C7B81E1C5B223F000A176C /* PopoverPresentationController.swift */; };
 		96DDBE6A1C4246DF00A752E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE691C4246DF00A752E6 /* AppDelegate.swift */; };
 		96DDBE6C1C4246DF00A752E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DDBE6B1C4246DF00A752E6 /* ViewController.swift */; };
 		96DDBE6F1C4246DF00A752E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DDBE6D1C4246DF00A752E6 /* Main.storyboard */; };
@@ -58,11 +62,9 @@
 		96E19B5D1C4B9B0E00EDEC6C /* UIApplication +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B261C4B9B0E00EDEC6C /* UIApplication +Extension.swift */; };
 		96E19B5E1C4B9B0E00EDEC6C /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B271C4B9B0E00EDEC6C /* UIBarButtonItem+Extension.swift */; };
 		96E19B5F1C4B9B0E00EDEC6C /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B281C4B9B0E00EDEC6C /* UIButton+Extention.swift */; };
-		96E19B601C4B9B0E00EDEC6C /* UIButton+Extention副本.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B291C4B9B0E00EDEC6C /* UIButton+Extention副本.swift */; };
 		96E19B611C4B9B0E00EDEC6C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2A1C4B9B0E00EDEC6C /* UIColor+Extension.swift */; };
 		96E19B621C4B9B0E00EDEC6C /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2B1C4B9B0E00EDEC6C /* UIDevice.swift */; };
 		96E19B631C4B9B0E00EDEC6C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2C1C4B9B0E00EDEC6C /* UIImage+Extension.swift */; };
-		96E19B641C4B9B0E00EDEC6C /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2D1C4B9B0E00EDEC6C /* UIImage+Scale.swift */; };
 		96E19B651C4B9B0E00EDEC6C /* UIImageView +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2E1C4B9B0E00EDEC6C /* UIImageView +Extension.swift */; };
 		96E19B661C4B9B0E00EDEC6C /* UIImageView+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B2F1C4B9B0E00EDEC6C /* UIImageView+SDWebImage.swift */; };
 		96E19B671C4B9B0E00EDEC6C /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E19B301C4B9B0E00EDEC6C /* UIKit+Extension.swift */; };
@@ -108,13 +110,17 @@
 
 /* Begin PBXFileReference section */
 		9657FE3C1C52354500EB1D1B /* SpriteKit+临时代码段.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpriteKit+临时代码段.swift"; sourceTree = "<group>"; };
+		965947131C5CFFE000BE4617 /* CGGeometry几何类方法总结.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGGeometry几何类方法总结.swift"; sourceTree = "<group>"; };
+		96624F2D1C5C841A00E673B5 /* CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		9676E7D41C4685B20003E61E /* Gcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gcd.swift; sourceTree = "<group>"; };
 		9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extension.swift"; sourceTree = "<group>"; };
 		968650401C4C9AC100A8D995 /* NSError+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Extension.swift"; sourceTree = "<group>"; };
 		968650A11C4CB91800A8D995 /* 常量.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "常量.swift"; sourceTree = "<group>"; };
 		968650A41C4CCB1900A8D995 /* SKTextureAtlas+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTextureAtlas+Extension.swift"; sourceTree = "<group>"; };
 		968650AE1C4D32BE00A8D995 /* NSArray+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArray+Extension.swift"; sourceTree = "<group>"; };
+		96B9D17B1C5B41A40037F52B /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		96C7B8171C5B0C57000A176C /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
+		96C7B81E1C5B223F000A176C /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
 		96DDBE661C4246DF00A752E6 /* 4jchc-Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4jchc-Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DDBE691C4246DF00A752E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DDBE6B1C4246DF00A752E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -165,11 +171,9 @@
 		96E19B261C4B9B0E00EDEC6C /* UIApplication +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication +Extension.swift"; sourceTree = "<group>"; };
 		96E19B271C4B9B0E00EDEC6C /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		96E19B281C4B9B0E00EDEC6C /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
-		96E19B291C4B9B0E00EDEC6C /* UIButton+Extention副本.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention副本.swift"; sourceTree = "<group>"; };
 		96E19B2A1C4B9B0E00EDEC6C /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		96E19B2B1C4B9B0E00EDEC6C /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		96E19B2C1C4B9B0E00EDEC6C /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		96E19B2D1C4B9B0E00EDEC6C /* UIImage+Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		96E19B2E1C4B9B0E00EDEC6C /* UIImageView +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView +Extension.swift"; sourceTree = "<group>"; };
 		96E19B2F1C4B9B0E00EDEC6C /* UIImageView+SDWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SDWebImage.swift"; sourceTree = "<group>"; };
 		96E19B301C4B9B0E00EDEC6C /* UIKit+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
@@ -232,6 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				96C7B8171C5B0C57000A176C /* TitleButton.swift */,
+				96C7B81E1C5B223F000A176C /* PopoverPresentationController.swift */,
+				96B9D17B1C5B41A40037F52B /* Animation.swift */,
+				96624F2D1C5C841A00E673B5 /* CALayer.swift */,
+				965947131C5CFFE000BE4617 /* CGGeometry几何类方法总结.swift */,
 			);
 			path = "自定义扩展";
 			sourceTree = "<group>";
@@ -359,11 +367,9 @@
 				96E19B261C4B9B0E00EDEC6C /* UIApplication +Extension.swift */,
 				96E19B271C4B9B0E00EDEC6C /* UIBarButtonItem+Extension.swift */,
 				96E19B281C4B9B0E00EDEC6C /* UIButton+Extention.swift */,
-				96E19B291C4B9B0E00EDEC6C /* UIButton+Extention副本.swift */,
 				96E19B2A1C4B9B0E00EDEC6C /* UIColor+Extension.swift */,
 				96E19B2B1C4B9B0E00EDEC6C /* UIDevice.swift */,
 				96E19B2C1C4B9B0E00EDEC6C /* UIImage+Extension.swift */,
-				96E19B2D1C4B9B0E00EDEC6C /* UIImage+Scale.swift */,
 				96E19B2E1C4B9B0E00EDEC6C /* UIImageView +Extension.swift */,
 				96E19B2F1C4B9B0E00EDEC6C /* UIImageView+SDWebImage.swift */,
 				96E19B301C4B9B0E00EDEC6C /* UIKit+Extension.swift */,
@@ -542,7 +548,10 @@
 				96E19B461C4B9B0E00EDEC6C /* Int +Extension.swift in Sources */,
 				96E19B521C4B9B0E00EDEC6C /* NSMutableAttributedString.swift in Sources */,
 				96E19B751C4B9B0E00EDEC6C /* UIWindow +Extension.swift in Sources */,
+				96624F2E1C5C841A00E673B5 /* CALayer.swift in Sources */,
+				96C7B81F1C5B223F000A176C /* PopoverPresentationController.swift in Sources */,
 				9657FE3D1C52354500EB1D1B /* SpriteKit+临时代码段.swift in Sources */,
+				965947141C5CFFE000BE4617 /* CGGeometry几何类方法总结.swift in Sources */,
 				96C7B8181C5B0C57000A176C /* TitleButton.swift in Sources */,
 				96E19B541C4B9B0E00EDEC6C /* NSObject+Extension.swift in Sources */,
 				96E19B551C4B9B0E00EDEC6C /* NSOperationQueue+Extension.swift in Sources */,
@@ -551,7 +560,6 @@
 				96E19B401C4B9B0E00EDEC6C /* ColorType.swift in Sources */,
 				96E19B701C4B9B0E00EDEC6C /* UITextField+Extension.swift in Sources */,
 				96E19B411C4B9B0E00EDEC6C /* Dictionary +Extension.swift in Sources */,
-				96E19B601C4B9B0E00EDEC6C /* UIButton+Extention副本.swift in Sources */,
 				96E19B631C4B9B0E00EDEC6C /* UIImage+Extension.swift in Sources */,
 				96E19B4C1C4B9B0E00EDEC6C /* NSDate+Extension.swift in Sources */,
 				96E19B671C4B9B0E00EDEC6C /* UIKit+Extension.swift in Sources */,
@@ -565,6 +573,7 @@
 				96E19B721C4B9B0E00EDEC6C /* UIView+AutoLayout.swift in Sources */,
 				96E19B821C4B9B3D00EDEC6C /* SKTAudioExtension.swift in Sources */,
 				96E19B471C4B9B0E00EDEC6C /* NSBlockOperation.swift in Sources */,
+				96B9D17C1C5B41A40037F52B /* Animation.swift in Sources */,
 				96E19B5C1C4B9B0E00EDEC6C /* UIAlertController+Extension.swift in Sources */,
 				9686503F1C4C910F00A8D995 /* SKSpriteNode+Extension.swift in Sources */,
 				96E19B6C1C4B9B0E00EDEC6C /* UIStoryboard.swift in Sources */,
@@ -578,7 +587,6 @@
 				96E19B4E1C4B9B0E00EDEC6C /* NSDictionary +Extension.swift in Sources */,
 				968650411C4C9AC100A8D995 /* NSError+Extension.swift in Sources */,
 				96E19B581C4B9B0E00EDEC6C /* NSTimer +Extension.swift in Sources */,
-				96E19B641C4B9B0E00EDEC6C /* UIImage+Scale.swift in Sources */,
 				96E19B741C4B9B0E00EDEC6C /* UIViewController +Extension.swift in Sources */,
 				96E19B731C4B9B0E00EDEC6C /* UIView+Extension.swift in Sources */,
 				96E19B621C4B9B0E00EDEC6C /* UIDevice.swift in Sources */,

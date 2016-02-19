@@ -2,13 +2,14 @@
 
 import UIKit
 ///*****✅重写UIButton的方法不用调用
-class UIButtonTool: UIButton {
+extension UIButton {
     
     
     
     //MARK: - ✅剪切图片的尺寸****改变图片的位置
     /// ✅剪切图片的尺寸****改变图片的位置
-    override func imageRectForContentRect(contentRect: CGRect) -> CGRect {
+    
+    class func imageRectForContentRect(contentRect: CGRect) -> CGRect {
         
         let imageW:CGFloat = 40;
         let imageH:CGFloat = 47;
@@ -33,16 +34,16 @@ class UIButtonTool: UIButton {
     //        }
     
     
-    //MARK: - 没有高亮状态的按钮,重写setFrame方法
+    //MARK:  没有高亮状态的按钮,重写setFrame方法
     /// 没有高亮状态的按钮,重写setFrame方法
-    override var highlighted: Bool {
+    override public var highlighted: Bool {
         
         didSet{
             super.highlighted = false
         }
     }
     
-    //MARK: - 设置正常-高亮状态
+    //MARK:  设置正常-高亮状态
     /// 设置正常-高亮状态
     func setNormal_Highlighted_BG(nbg:String, _ hbg:String){
         
@@ -51,7 +52,7 @@ class UIButtonTool: UIButton {
         
     }
     
-    //MARK: - 设置正常-高亮拉升后状态
+    //MARK:  设置正常-高亮拉升后状态
     /// 设置正常-高亮拉升后状态
     func setla拉升Normal_Highlighted_BG(nbg:String, _ hbg:String){
         //用到uiimage的扩展方法
@@ -209,11 +210,11 @@ btn.addTarget(self, action: "btnClick:", forControlEvents: UIControlEvents.Touch
 //    }
 
 
-
+//MARK: - 按钮的颜色--边框
 extension UIButton {
     
     
-    //MARK: - 按钮--默认背景色
+    //MARK: 按钮--默认背景色
     ///  按钮--默认背景色
     class var defaultBackgroundColor : UIColor {
         
@@ -223,7 +224,7 @@ extension UIButton {
         }
     }
     
-    //MARK: - 按钮--不可用背景色
+    //MARK:  按钮--不可用背景色
     ///  按钮--不可用背景色
     class var enabledBackgroundColor : UIColor {
         
@@ -234,7 +235,7 @@ extension UIButton {
     }
     
     
-    //MARK: - 按钮--Border边框默认颜色
+    //MARK:  按钮--Border边框默认颜色
     ///  按钮--Border边框默认颜色
     class var defaultBorderColor : UIColor {
         
@@ -243,31 +244,35 @@ extension UIButton {
             return UIColor.orangeColor()
         }
     }
-    //MARK: - 登录-按钮边框样式
+    //MARK:  登录-按钮边框样式
     ///  登录-按钮边框样式
     func loginBorderStyle() {
         
         self.layer.borderColor = UIButton.defaultBorderColor.CGColor
         self.layer.borderWidth = 1.0
         self.backgroundColor = UIButton.defaultBackgroundColor
+        // corner边角 Radius使...成圆角
         self.layer.cornerRadius = 5
+        // masks遮罩 To Bounds界线
         self.layer.masksToBounds = true
     }
-    //MARK: - 登出-按钮边框样式
+    //MARK:  登出-按钮边框样式
     ///  登出-按钮边框样式
     func loginNoBorderStyle() {
         
         self.backgroundColor = UIButton.defaultBackgroundColor
+        // corner边角 Radius使...成圆角
         self.layer.cornerRadius = 5
+        // masks遮罩 To Bounds界线
         self.layer.masksToBounds = true
     }
     
     
 }
 
-
+//MARK: - 按钮-统一背景不同的图片和文字
 extension UIButton {
-    //MARK: - 按钮-统一背景不同的图片和文字
+    //MARK:  按钮-统一背景不同的图片和文字
     ///  按钮-统一背景不同的图片和文字
     class func createButton(imageName: String, title: String) -> UIButton{
         let btn = UIButton()
@@ -280,5 +285,46 @@ extension UIButton {
         return btn
     }
     
+    
+}
+
+//MARK: - 💗自定义按钮--图片在上-文字在下
+class XMGVerticalButton: UIButton {
+    
+    
+    func setup(){
+        
+        self.titleLabel!.textAlignment = NSTextAlignment.Center;
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        //fatalError("init(coder:) has not been implemented")
+        
+    }
+    
+    override func awakeFromNib() {
+        setup()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // 调整图片
+        self.imageView!.x = 0;
+        self.imageView!.y = 0;
+        self.imageView!.width = self.width;
+        self.imageView!.height = self.imageView!.width;
+        
+        // 调整文字
+        self.titleLabel!.x = 0;
+        self.titleLabel!.y = self.imageView!.height;
+        self.titleLabel!.width = self.width;
+        self.titleLabel!.height = self.height - self.titleLabel!.y;
+    }
     
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 
-
+//VFL
 extension NSLayoutConstraint {
+    
     //重写description.有错误会打印identifier
     override public var description: String {
         let id = identifier ?? ""
@@ -20,7 +21,8 @@ extension NSLayoutConstraint {
     func setAsSeparator() {
         self.constant = 1.0 / UIScreen.mainScreen().scale
     }
-    
+    //MARK: - 填充父类
+    ///  填充父类
     class func constraintsToFillSuperview(view: UIView) -> [NSLayoutConstraint]{
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -84,6 +86,8 @@ extension NSLayoutConstraint {
     
     
     @available(iOS 8.0, *)
+    //MARK: - multiplier乘法器
+    ///  multiplier乘法器
     func setMultiplier(multiplier:CGFloat) {
         
         let newConstraint = NSLayoutConstraint(
@@ -149,7 +153,6 @@ extension NSLayoutConstraint {
         }
     }
 }
-
 
 
 

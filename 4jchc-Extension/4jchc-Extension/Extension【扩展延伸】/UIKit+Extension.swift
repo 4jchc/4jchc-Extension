@@ -61,4 +61,19 @@ func printLog<T>(message: T,
 
 
 
+class WBLog{
+    static func Log(message:String){
+        #if DEBUG
+            NSLog(message)
+        #endif
+    }
+    
+    static func Log(format: String, args: CVarArgType){
+        #if DEBUG
+            NSLog(format, args)
+        #endif
+    }
+}
+
+
 

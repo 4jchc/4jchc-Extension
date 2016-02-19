@@ -2,37 +2,83 @@
 import UIKit
 import Foundation
 
+
+
+
+extension UIView {
+    
+    class func viewFromXib() -> UIView? {
+        return self.viewFromXib(self.className())//self.nameOfClass
+    }
+    
+    class func viewFromXib(xibName: String) -> UIView? {
+        return NSBundle.mainBundle().loadNibNamed(xibName, owner: nil, options: nil) [0] as? UIView
+    }
+    
+    class func loadFromNibNamed(nibName: String, bundle : NSBundle? = nil) -> UIView? {
+        
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiateWithOwner(nil, options: nil).first as? UIView
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - 💗非自动布局代码
 public extension UIView {
     
+    //MARK:  取消--指定--视图的 autoresizing 属性
+    ///  取消--指定--视图的 autoresizing 属性
     public class func disableAutoresizingMasksInViews(views: UIView...) {
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    /// 取消所有子视图的 autoresizing 属性
+    //MARK:  取消所有子视图的 autoresizing 属性
+    ///  取消所有子视图的 autoresizing 属性
     func disableSubviewsAutoresizing() {
         for v in subviews {
+            //translates-转化 Autoresizing MaskInto Constraints-系统规定参数
             v.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
     /**
-     Adds multiple subviews in order. Later arguments are placed on top of the views
-     preceding them.
+     Adds multiple-多样的subviews in order顺序. Later arguments参数 are placed on top of the views
+     preceding在前的 them.
      */
+     //MARK:  添加多视图
+     ///  添加多样的视图
     public func addSubviews(views: UIView ...) {
         for view in views {
             self.addSubview(view)
         }
     }
-    
+    //MARK:  添加-多-视图--Fill并且填充
+    ///  添加-多-视图--Fill并且填充
     public func addSubviewsAndFill(views: UIView ...) {
         for view in views {
             self.addSubviewAndFill(view)
         }
     }
-    
+    //MARK:  添加-单-视图--Fill并且填充
+    ///  添加-单-视图--Fill并且填充
     public func addSubviewAndFill(view: UIView) {
         self.addSubview(view)
         
@@ -77,6 +123,8 @@ public extension UIView {
      Returns the name of this class based on a (poor?) assumption that it is the last
      token in the fully qualified class name assigned by Swift.
      */
+     //MARK: - 返回这个类的名称
+     ///  返回这个类的名称
     class func className() -> String {
         let description = self.classForCoder().description()
         if let className = description.componentsSeparatedByString(".").last {
@@ -85,8 +133,6 @@ public extension UIView {
         fatalError("\(__FUNCTION__): This method no longer works for getting the Swift class name.")
     }
     
-    
-    ///*✅***********💗**********************
     
     
     
@@ -201,21 +247,7 @@ public extension UIView {
 //    
 //    
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ///*✅***********💗**********************
-    
+
     
     
     // MARK: - Constraints

@@ -175,6 +175,23 @@ class ImageLoader {
         
     }
 }
+/*
+
+    // MARK: 微博行高的缓存, 利用字典作为容器. key就是微博的id, 值就是对应微博的行高
+    var rowCache: [Int: CGFloat] = [Int: CGFloat]()
+    // 1.取出对应行的模型
+    let height = rowCache[status.id]
+    // 5.缓存行高
+    rowCache[status.id] = rowHeight
+    //MARK: 内存警告
+    override func didReceiveMemoryWarning() {
+    // 清空缓存
+    rowCache.removeAll()
+
+    }
+
+*/
+
 
 
 

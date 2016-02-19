@@ -5,20 +5,29 @@
 //  Created by 李南江 on 15/9/1.
 //  Copyright © 2015年 xiaomage. All rights reserved.
 //
+//MARK: - 参考单词
 
+
+/*
+1.Tile--平铺
+2.horizontal--水平的
+3.Vertical--垂直的
+4.Align--排列 Inner--内部的
+
+*/
 import UIKit
 /**
-    对齐类型枚举，设置控件相对于父视图的位置
-  - TopLeft:      左上
-  - TopRight:     右上
-  - TopCenter:    中上
-  - BottomLeft:   左下
-  - BottomRight:  右下
-  - BottomCenter: 中下
-  - CenterLeft:   左中
-  - CenterRight:  右中
-  - Center: 中中
-*/
+ 对齐类型枚举，设置控件相对于父视图的位置
+ - TopLeft:      左上
+ - TopRight:     右上
+ - TopCenter:    中上
+ - BottomLeft:   左下
+ - BottomRight:  右下
+ - BottomCenter: 中下
+ - CenterLeft:   左中
+ - CenterRight:  右中
+ - Center: 中中
+ */
 public enum XMG_AlignType {
     case TopLeft
     case TopRight
@@ -34,72 +43,72 @@ public enum XMG_AlignType {
         let attributes = XMG_LayoutAttributes()
         
         switch self {
-            case .TopLeft:
-                attributes.horizontals(.Left, to: .Left).verticals(.Top, to: .Top)
-                
-                if isInner {
-                    return attributes
-                } else if isVertical {
-                    return attributes.verticals(.Bottom, to: .Top)
-                } else {
-                    return attributes.horizontals(.Right, to: .Left)
-                }
-            case .TopRight:
-                attributes.horizontals(.Right, to: .Right).verticals(.Top, to: .Top)
-                
-                if isInner {
-                    return attributes
-                } else if isVertical {
-                    return attributes.verticals(.Bottom, to: .Top)
-                } else {
-                    return attributes.horizontals(.Left, to: .Right)
-                }
-            case .BottomLeft:
-                attributes.horizontals(.Left, to: .Left).verticals(.Bottom, to: .Bottom)
-                
-                if isInner {
-                    return attributes
-                } else if isVertical {
-                    return attributes.verticals(.Top, to: .Bottom)
-                } else {
-                    return attributes.horizontals(.Right, to: .Left)
-                }
-            case .BottomRight:
-                attributes.horizontals(.Right, to: .Right).verticals(.Bottom, to: .Bottom)
-                
-                if isInner {
-                    return attributes
-                } else if isVertical {
-                    return attributes.verticals(.Top, to: .Bottom)
-                } else {
-                    return attributes.horizontals(.Left, to: .Right)
-                }
+        case .TopLeft:
+            attributes.horizontals(.Left, to: .Left).verticals(.Top, to: .Top)
+            
+            if isInner {
+                return attributes
+            } else if isVertical {
+                return attributes.verticals(.Bottom, to: .Top)
+            } else {
+                return attributes.horizontals(.Right, to: .Left)
+            }
+        case .TopRight:
+            attributes.horizontals(.Right, to: .Right).verticals(.Top, to: .Top)
+            
+            if isInner {
+                return attributes
+            } else if isVertical {
+                return attributes.verticals(.Bottom, to: .Top)
+            } else {
+                return attributes.horizontals(.Left, to: .Right)
+            }
+        case .BottomLeft:
+            attributes.horizontals(.Left, to: .Left).verticals(.Bottom, to: .Bottom)
+            
+            if isInner {
+                return attributes
+            } else if isVertical {
+                return attributes.verticals(.Top, to: .Bottom)
+            } else {
+                return attributes.horizontals(.Right, to: .Left)
+            }
+        case .BottomRight:
+            attributes.horizontals(.Right, to: .Right).verticals(.Bottom, to: .Bottom)
+            
+            if isInner {
+                return attributes
+            } else if isVertical {
+                return attributes.verticals(.Top, to: .Bottom)
+            } else {
+                return attributes.horizontals(.Left, to: .Right)
+            }
             // 仅内部 & 垂直参照需要
-            case .TopCenter:
-                attributes.horizontals(.CenterX, to: .CenterX).verticals(.Top, to: .Top)
-                return isInner ? attributes : attributes.verticals(.Bottom, to: .Top)
+        case .TopCenter:
+            attributes.horizontals(.CenterX, to: .CenterX).verticals(.Top, to: .Top)
+            return isInner ? attributes : attributes.verticals(.Bottom, to: .Top)
             // 仅内部 & 垂直参照需要
-            case .BottomCenter:
-                attributes.horizontals(.CenterX, to: .CenterX).verticals(.Bottom, to: .Bottom)
-                return isInner ? attributes : attributes.verticals(.Top, to: .Bottom)
+        case .BottomCenter:
+            attributes.horizontals(.CenterX, to: .CenterX).verticals(.Bottom, to: .Bottom)
+            return isInner ? attributes : attributes.verticals(.Top, to: .Bottom)
             // 仅内部 & 水平参照需要
-            case .CenterLeft:
-                attributes.horizontals(.Left, to: .Left).verticals(.CenterY, to: .CenterY)
-                return isInner ? attributes : attributes.horizontals(.Right, to: .Left)
+        case .CenterLeft:
+            attributes.horizontals(.Left, to: .Left).verticals(.CenterY, to: .CenterY)
+            return isInner ? attributes : attributes.horizontals(.Right, to: .Left)
             // 仅内部 & 水平参照需要
-            case .CenterRight:
-                attributes.horizontals(.Right, to: .Right).verticals(.CenterY, to: .CenterY)
-                return isInner ? attributes : attributes.horizontals(.Left, to: .Right)
+        case .CenterRight:
+            attributes.horizontals(.Right, to: .Right).verticals(.CenterY, to: .CenterY)
+            return isInner ? attributes : attributes.horizontals(.Left, to: .Right)
             // 仅内部参照需要
-            case .Center:
-                return XMG_LayoutAttributes(horizontal: .CenterX, referHorizontal: .CenterX, vertical: .CenterY, referVertical: .CenterY)
+        case .Center:
+            return XMG_LayoutAttributes(horizontal: .CenterX, referHorizontal: .CenterX, vertical: .CenterY, referVertical: .CenterY)
         }
     }
 }
 
 extension UIView {
     
-
+    //MARK: - 填充子视图
     /**
     填充子视图
     
@@ -120,9 +129,9 @@ extension UIView {
         
         return cons
     }
-
+    //MARK: - 参照参考视图--内部对齐
     /**
-    参照参考视图内部对齐
+    参照参考视图--内部对齐
     
     :param: type      对齐方式
     :param: referView 参考视图
@@ -135,9 +144,9 @@ extension UIView {
         
         return xmg_AlignLayout(referView, attributes: type.layoutAttributes(true, isVertical: true), size: size, offset: offset)
     }
-
+    //MARK: - 参照参考视图--垂直对齐
     /**
-    参照参考视图垂直对齐
+    参照参考视图--垂直对齐
     
     :param: type      对齐方式
     :param: referView 参考视图
@@ -150,9 +159,9 @@ extension UIView {
         
         return xmg_AlignLayout(referView, attributes: type.layoutAttributes(false, isVertical: true), size: size, offset: offset)
     }
-    
+    //MARK: - 参照参考视图--水平对齐
     /**
-    参照参考视图水平对齐
+    参照参考视图--水平对齐
     
     :param: type      对齐方式
     :param: referView 参考视图
@@ -165,7 +174,7 @@ extension UIView {
         
         return xmg_AlignLayout(referView, attributes: type.layoutAttributes(false, isVertical: false), size: size, offset: offset)
     }
-
+    //MARK: - 在当前视图内部水平平铺控件--Tile平铺
     /**
     在当前视图内部水平平铺控件
     
@@ -199,7 +208,7 @@ extension UIView {
         addConstraints(cons)
         return cons
     }
-
+    //MARK: - 在当前视图内部垂直平铺控件
     /**
     在当前视图内部垂直平铺控件
     
@@ -234,7 +243,7 @@ extension UIView {
         
         return cons
     }
-
+    //MARK: - 从约束数组中查找指定 attribute 的约束
     /**
     从约束数组中查找指定 attribute 的约束
     
@@ -255,7 +264,7 @@ extension UIView {
     
     // MARK: - 私有函数
     /**
-    参照参考视图对齐布局
+    参照参考视图--对齐布局
     
     :param: referView  参考视图
     :param: attributes 参照属性
@@ -281,14 +290,14 @@ extension UIView {
         return cons
     }
     
-
+    
     /**
-    尺寸约束数组
-    
-    :param: size 视图大小
-    
-    :returns: 约束数组
-    */
+     尺寸约束数组
+     
+     :param: size 视图大小
+     
+     :returns: 约束数组
+     */
     private func xmg_sizeConstraints(size: CGSize) -> [NSLayoutConstraint] {
         
         var cons = [NSLayoutConstraint]()
@@ -299,14 +308,14 @@ extension UIView {
         return cons
     }
     
-
+    
     /**
-    尺寸约束数组
-    
-    :param: referView 参考视图，与参考视图大小一致
-    
-    :returns: 约束数组
-    */
+     尺寸约束数组
+     
+     :param: referView 参考视图，与参考视图大小一致
+     
+     :returns: 约束数组
+     */
     private func xmg_sizeConstraints(referView: UIView) -> [NSLayoutConstraint] {
         
         var cons = [NSLayoutConstraint]()
@@ -318,14 +327,14 @@ extension UIView {
     }
     
     /**
-    位置约束数组
-    
-    :param: referView  参考视图
-    :param: attributes 参照属性
-    :param: offset     偏移量
-    
-    :returns: 约束数组
-    */
+     位置约束数组
+     
+     :param: referView  参考视图
+     :param: attributes 参照属性
+     :param: offset     偏移量
+     
+     :returns: 约束数组
+     */
     private func xmg_positionConstraints(referView: UIView, attributes: XMG_LayoutAttributes, offset: CGPoint) -> [NSLayoutConstraint] {
         
         var cons = [NSLayoutConstraint]()

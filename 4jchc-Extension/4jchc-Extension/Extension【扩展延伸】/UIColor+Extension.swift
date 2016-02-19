@@ -27,7 +27,8 @@ extension UIColor {
 //        return UIColor(red: r, green: g, blue: b, alpha: 1)
 //    }
     
-    // 随机色
+    //MARK: - 随机色
+    ///  随机色
     static var randomColor:UIColor{
         get{
             return UIColor(red: randomNumber(), green: randomNumber(), blue: randomNumber() , alpha: 1.0)
@@ -45,15 +46,28 @@ extension UIColor {
     
     
     //UIColor(red: <#123#>/255.0, green: <#123#>/255.0, blue: <#123#>/255.0, alpha: 1.0)
-    
-    class func RGB(r:CGFloat,_ g:CGFloat, _ b:CGFloat, _ alpha:CGFloat)->UIColor{
-        
+    //MARK: - RGB色
+    ///  RGB色
+    class func RGB(r:CGFloat,_ g:CGFloat, _ b:CGFloat, _ alpha:CGFloat = 1.0)->UIColor{
         
         return UIColor(red: (r)/255.0, green: (g)/255.0, blue: (b)/255.0, alpha: alpha)
     }
     
+    //MARK:  绿巨人
+    ///  绿巨人
+    static func greenMain() -> UIColor {
+        return UIColor(red: (76/255.0), green: (217/255.0), blue: (100/255.0), alpha: 1.0)
+    }
     
-    
+    static func redMain() -> UIColor {
+        return UIColor(red: (255/255.0), green: (42/255.0), blue: (38/255.0), alpha: 1.0)
+    }
+    //MARK:  Global整体的Tint
+    ///  Global整体的Tint
+    func setupAsGlobalTint() {
+        // global tint in File inspector seems to have a no effect
+        UIView.appearance().tintColor = self
+    }
     
     convenience init(hex: Int) {
         let red = CGFloat((hex & 0xff0000) >> 16) / 255.0

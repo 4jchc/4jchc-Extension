@@ -401,7 +401,18 @@ class Filter {
         return newImage
     }
     
-    
+    //MARK: - 返回居中图片--显示图片和屏幕的比例
+    ///  返回居中图片--显示图片和屏幕的比例
+    private func displaySize(image: UIImage) -> CGSize
+    {
+        // 1.拿到图片的宽高比
+        let scale = image.size.height / image.size.width
+        // 2.根据宽高比计算高度
+        let width = UIScreen.mainScreen().bounds.width
+        let height =  width * scale
+        
+        return CGSize(width: width, height: height)
+    }
     
 }
 
@@ -445,5 +456,68 @@ extension UIImage {
 
 
 
-
+extension UIImage {
+    //MARK:  thumbnail简略的(拇指甲大小的,小型的)
+    ///  thumbnail简略的(拇指甲大小的,小型的)
+    func thumbnail(size: CGSize) -> UIImage {
+        
+        // crop the biggest square we can=
+        let heightOriginal = self.size.height
+        let widthOriginal = self.size.width
+        var requestedCrop: CGRect
+        if (heightOriginal > widthOriginal) {
+            let cropX = (heightOriginal - widthOriginal) / 2
+            requestedCrop = CGRectMake(cropX, 0, widthOriginal, widthOriginal)
+        } else {
+            let cropX = (widthOriginal - heightOriginal) / 2
+            requestedCrop = CGRectMake(cropX, 0, heightOriginal, heightOriginal)
+        }
+        var thumbnail = crop(requestedCrop)
+        
+        // scale it
+        thumbnail = scale(thumbnail, newSize: size)
+        
+        // make it circle
+        thumbnail = circleImage(thumbnail)
+        
+        return thumbnail
+    }
+    //MARK:  crop收获
+    ///  <#照片浏览的 cell#>
+    private func crop(var rect: CGRect) -> UIImage {
+        rect.origin.x*=self.scale
+        rect.origin.y*=self.scale
+        rect.size.width*=self.scale
+        rect.size.height*=self.scale
+        
+        let imageRef = CGImageCreateWithImageInRect(self.CGImage, rect)
+        let image = UIImage(CGImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
+        
+        return image
+    }
+    //MARK:  scale比例在原始图片上画出新的图片
+    ///  scale比例在原始图片上画出新的图片
+    private func scale(image: UIImage, newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        image.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    //MARK:  circle圆(圆形物,周期;vt.环绕Image
+    ///  scale比例在原始图片上画出新的图片
+    private func circleImage(image: UIImage) -> UIImage {
+        let newImage = image
+        let cornerRadius = image.size.height/2
+        UIGraphicsBeginImageContextWithOptions(image.size, false, 1.0)
+        let bounds = CGRect(origin: CGPointZero, size: image.size)
+        UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).addClip()
+        newImage.drawInRect(bounds)
+        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return finalImage
+    }
+}
 

@@ -23,6 +23,13 @@ public extension UIImageView {
     convenience init(imageName: String) {
         self.init(image: UIImage(named: imageName))
     }
+    //MARK:  返回round圆的图片
+    ///  返回round圆的图片
+    func roundImage() {
+        assert(self.image?.size.width == self.image?.size.height, "height and width should be same")
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.frame.size.width / 2;
+    }
 }
 
 

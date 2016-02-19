@@ -373,25 +373,21 @@ public extension String {
     
     
     
-    
-    
-    //MARK: - 是否包含子串
-    /// 判断字符串是否包含子串。
-    ///
-    /// - parameter substring 子串
-    ///
-    /// - returns:  如果找到，返回true,否则返回false
-    public func isContain(substring: String) ->Bool {
-        return (self as NSString).containsString(substring)
+
+    //MARK: - 是否包含字符串NSStringCompareOptions
+    /// 包含字符串NSStringCompareOptions
+    func containsString(aString:String, compareOption: NSStringCompareOptions) -> Bool {
+        if((self.rangeOfString(aString, options: compareOption)) != nil) {
+            return true
+        }
+        else {
+            return false
+        }
     }
     //MARK: - 是否包含字符串
     /// 包含字符串
-    public func contains(find: String) -> Bool {
-        
-        //            if let _ = self.rangeOfString(find) {
-        //                return true
-        //            }
-        //            return false
+    public func containsString(find: String) -> Bool {
+        //return (self as NSString).containsString(substring)
         return self.rangeOfString(find) != nil
         
     }
@@ -569,7 +565,52 @@ extension String {
 }
 
 
-
-
+//MARK: - 转换为基本数据类型
+extension String{
+    
+    /**
+    将String类型转换转换为Int类型
+    
+    - Parameter N/A
+    - Returns:Int    String转换后的Int值
+    */
+    func toInt()->Int{
+        return Int(self.toDouble())
+    }
+    /**
+     将String类型转换转换为CGFloat类型
+     
+     - Parameter N/A
+     - Returns:CGFloat    String转换后的CGFloat值
+     */
+    func toCGFloat()->CGFloat{
+        return CGFloat(self.toDouble())
+    }
+    /**
+     将String类型转换转换为Double类型
+     
+     - Parameter N/A
+     - Returns:Double    String转换后的Double值
+     */
+    func toDouble()->Double{
+        let lValue=Double(self)
+        if (lValue != nil){
+            return lValue!
+        }else{
+            return 0
+        }
+    }
+    //MARK:  将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
+    /**
+     将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
+     
+     - Parameter str:String 要拼接上的字符串
+     - Returns:N/A
+     */
+    func stringByAppendingPathComponent(str:String) -> String{
+        
+        return self.stringByAppendingFormat("/%@", str)
+    }
+}
 
 

@@ -33,31 +33,31 @@ class ViewController: UIViewController {
     func GCD(){
         
         //Creamos un objeto NSBlockOperation con un bloque que muestra por pantalla los numeros del 0-9999
-        let operation = NSBlockOperation(
+        let operation1 = NSBlockOperation(
             block: { () -> Void in
-                for var i = 0; i < 9999; i++ {
-                    print("\n\(i)")
+                for var i = 0; i < 9; i++ {
+                    printLog("\n operation1-\(i)")
                 }
         })
         
         //Creamos otro objeto NSBlockOperation que muestre el caracter '*'
         let operation2 = NSBlockOperation(
             block: { () -> Void in
-                for var i = 0; i < 9999; i++ {
-                    print("\n*")
+                for var i = 0; i < 9; i++ {
+                    printLog("\n operation2-\(i)*")
                 }
         })
         
         /* Y ejecutamos el metodo addDependency introduciendo como parametro el primer operation que creamos anteriormente */
-        operation2.addDependency(operation)
+        operation2.addDependency(operation1)
         
         //Creamos una NSOperationQueue y le añadimos nuestro objeto operation
         let myQueue = NSOperationQueue.mainQueue()
-        myQueue.addOperations([operation, operation2], waitUntilFinished: false)
+        myQueue.addOperations([operation1, operation2], waitUntilFinished: false)
         
         //Se ejecuta en el hilo principal
-        for var i = 0; i < 9999; i++ {
-            print("a")
+        for var i = 0; i < 9; i++ {
+            printLog("a")
         }
     }
     

@@ -3,13 +3,15 @@ import UIKit
 
 public extension NSTimer {
     /**
-     Creates and schedules a one-time `NSTimer` instance.
+     Creates and schedules日程表 a one-time `NSTimer` instance.
      
      :param: delay The delay before execution.
      :param: handler A closure to execute after `delay`.
      
      :returns: The newly-created `NSTimer` instance.
      */
+     //MARK:  one-time一次schedule日程表
+     ///  <#照片浏览的 cell#>
     public class func schedule(delay delay: NSTimeInterval, handler: NSTimer! -> Void) -> NSTimer {
         let fireDate = delay + CFAbsoluteTimeGetCurrent()
         let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, 0, 0, 0, handler)
@@ -18,13 +20,15 @@ public extension NSTimer {
     }
     
     /**
-     Creates and schedules a repeating `NSTimer` instance.
+     Creates and schedules日程表 a repeating反复的 `NSTimer` instance.
      
      :param: repeatInterval The interval between each execution of `handler`. Note that individual calls may be delayed; subsequent calls to `handler` will be based on the time the `NSTimer` was created.
      :param: handler A closure to execute after `delay`.
      
      :returns: The newly-created `NSTimer` instance.
      */
+     //MARK:  repeating反复的schedule日程表
+     ///  <#照片浏览的 cell#>
     public class func schedule(repeatInterval interval: NSTimeInterval, handler: NSTimer! -> Void) -> NSTimer {
         let fireDate = interval + CFAbsoluteTimeGetCurrent()
         let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, interval, 0, 0, handler)
@@ -158,3 +162,64 @@ private class HYBObjectWrapper: NSObject {
         self.count = count
     }
 }
+
+
+/*
+import Foundation
+
+class TimeKeeper {
+var interTime: NSTimer!
+var progress: UIProgressView!
+var currentProgress: Float!
+var max: Float!
+var responder: UIViewController!
+
+var paused: Bool!
+
+init(progress: UIProgressView, responder: UIViewController) {
+self.responder = responder
+self.progress = progress
+self.currentProgress = 0.0
+self.paused = false
+self.progress.setProgress(0.0, animated: false)
+
+NSNotificationCenter.defaultCenter().addObserver(responder, selector: "timeUp:", name: "TimeFinishedNotification", object: nil)
+
+self.max = Upgrade().isUpgraded() ? 10 : 7
+}
+
+func startTime() {
+interTime = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "fireUpdate:", userInfo: nil, repeats: true)
+}
+
+@objc func fireUpdate(timer: NSTimer) {
+currentProgress = currentProgress + 0.1
+progress!.setProgress(currentProgress / max, animated: true)
+print("Time: \(currentProgress / max)", terminator: "")
+
+if (currentProgress >= max) {
+dispatch_async(dispatch_get_main_queue()) {
+NSNotificationCenter.defaultCenter().postNotificationName("TimeFinishedNotification", object: nil)
+}
+}
+}
+
+func endTime() {
+interTime.invalidate()
+currentProgress = 0.0
+}
+
+func togglePause() {
+if (!paused) {
+self.startTime()
+} else {
+interTime.invalidate()
+}
+}
+}
+*/
+
+
+
+
+

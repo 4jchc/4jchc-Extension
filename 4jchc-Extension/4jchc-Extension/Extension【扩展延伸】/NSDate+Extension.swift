@@ -221,7 +221,40 @@ extension NSDate{
     
     
 }
-
+extension NSDate{
+    
+    func isAfter(date: NSDate) -> Bool{
+        return (self.compare(date) == NSComparisonResult.OrderedDescending)
+    }
+    
+    func isBefore(date: NSDate) -> Bool{
+        return (self.compare(date) == NSComparisonResult.OrderedAscending)
+    }
+    
+    func daysInBetweenDate(date: NSDate) -> Double {
+        var diff = self.timeIntervalSinceNow - date.timeIntervalSinceNow
+        diff = fabs(diff/86400)
+        return diff
+    }
+    
+    func hoursInBetweenDate(date: NSDate) -> Double {
+        var diff = self.timeIntervalSinceNow - date.timeIntervalSinceNow
+        diff = fabs(diff/3600)
+        return diff
+    }
+    
+    func minutesInBetweenDate(date: NSDate) -> Double {
+        var diff = self.timeIntervalSinceNow - date.timeIntervalSinceNow
+        diff = fabs(diff/60)
+        return diff
+    }
+    
+    func secondsInBetweenDate(date: NSDate) -> Double {
+        var diff = self.timeIntervalSinceNow - date.timeIntervalSinceNow
+        diff = fabs(diff)
+        return diff
+    }
+}
 
 //MARK: - 使用oc的框架 NSDate+Escort.m
 //extension NSDate {

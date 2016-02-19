@@ -55,12 +55,7 @@ public extension UIViewController {
 //        return vc
 //    }
     
-    
-    
-    
-    
-    
-    
+
     
     //MARK: - presentedViewController
     
@@ -90,5 +85,20 @@ extension UIViewController {
     
 }
 
-
-
+//MARK: - 添加提示框
+extension UIViewController {
+    
+    func presentDefaultErrorMsg(text: String) {
+        presentDefaultMsg("Error", text: text)
+    }
+    
+    func presentDefaultInfoMsg(text: String) {
+        presentDefaultMsg("Info", text: text)
+    }
+    
+    private func presentDefaultMsg(title: String, text: String) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}

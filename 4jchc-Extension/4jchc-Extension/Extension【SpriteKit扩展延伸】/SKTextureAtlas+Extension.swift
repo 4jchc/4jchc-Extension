@@ -21,7 +21,7 @@ extension SKTextureAtlas {
     */
    static func atlasWithName( var name:String) ->SKTextureAtlas{
     
-    if (IS_IPHONE_5) {
+    if (Is_Iphone_5) {
         name = NSString(format: "%@-568", name) as String
     } else if (IS_IPAD) {
         name = NSString(format: "%@-ipad", name) as String

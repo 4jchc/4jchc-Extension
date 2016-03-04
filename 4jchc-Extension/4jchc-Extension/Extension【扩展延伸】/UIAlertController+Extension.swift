@@ -78,7 +78,17 @@ extension UIAlertController{
     
     }
 
-
+public extension UIAlertController {
+    
+    public  override func show(animated animated: Bool, completion: (() -> Void)? = nil) {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.windowLevel = UIWindowLevelAlert
+        window.makeKeyAndVisible()
+        window.rootViewController = UIViewController()
+        window.rootViewController!.presentViewController(self, animated: animated, completion: completion)
+    }
+    
+}
 
 
 

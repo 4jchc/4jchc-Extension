@@ -102,3 +102,15 @@ extension UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
 }
+
+public extension UIViewController {
+    
+    public func show(animated animated: Bool, completion: (() -> Void)? = nil) {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.windowLevel = UIWindowLevelNormal
+        window.makeKeyAndVisible()
+        window.rootViewController = UIViewController()
+        window.rootViewController!.presentViewController(self, animated: animated, completion: completion)
+    }
+    
+}

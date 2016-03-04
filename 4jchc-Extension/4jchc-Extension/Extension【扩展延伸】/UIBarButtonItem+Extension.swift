@@ -18,7 +18,12 @@ extension UIBarButtonItem{
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: image), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage(named: image + "-click"), forState: UIControlState.Highlighted)
-        button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        if action != nil{
+            
+            button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+            
+        }
         button.size = button.currentBackgroundImage!.size;
         return UIBarButtonItem(customView: button)
     }
@@ -39,7 +44,11 @@ extension UIBarButtonItem{
         }
         button.setImage(UIImage(named: image), forState: UIControlState.Normal)
         button.setImage(UIImage(named: image + "-click"), forState: UIControlState.Highlighted)
-        button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+        if action != nil{
+            
+            button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+            
+        }
         //button.size = button.currentImage!.size;
         // 有图片和文字
         button.size = CGSizeMake(70, 30);
@@ -59,7 +68,11 @@ extension UIBarButtonItem{
         //创建一个 button
         let button = UIButton()
         //添加点击事件
-        button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+        if action != nil{
+            
+            button.addTarget(target, action: Selector(action!), forControlEvents: UIControlEvents.TouchUpInside)
+            
+        }
         //添加图片
         if image_Nor_Hig_Name.characters.count > 0 {
             button.setImage(UIImage(named: image_Nor_Hig_Name), forState: UIControlState.Normal)

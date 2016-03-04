@@ -67,5 +67,62 @@ class Animation: UIViewController {
     
     
     
+    //MARK: -  == 永久闪烁的动画 === opacity不透明CABasicACnimation
+    func opacityForever_Animation(time:CGFloat)->CABasicAnimation{
+        
+        let animation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")//必须写opacity才行。
+        
+        animation.fromValue = NSNumber(float: 1.0)
+        animation.toValue = Float(0.0) //这是透明度。
+        animation.autoreverses = true
+        animation.duration = Double(time);
+        animation.repeatCount = MAXFLOAT;
+        animation.removedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards;
+        //animation.timingFunction=[CAMediaTimingFunctionfunctionWithName:kCAMediaTimingFunctionEaseIn];///没有的话是均匀的动画。
+        return animation;
+        
+    }
 
+}
+
+
+
+import UIKit
+import QuartzCore
+
+class HelperAnimation: NSObject {
+    
+    let logSwitch:Bool = false
+    
+    class func startPulse (view:UIView) {
+        //println("[Animation] Pulse")
+        let changeAlpha:CABasicAnimation = CABasicAnimation(keyPath:"opacity") as CABasicAnimation
+        changeAlpha.fromValue = 0.3
+        changeAlpha.toValue = 0.8
+        changeAlpha.duration = 0.8
+        changeAlpha.repeatCount = 999
+        changeAlpha.autoreverses = true
+        view.layer.addAnimation(changeAlpha, forKey: "ChangeAlpha")
+        view.layer.speed = 1.0;
+    }
+    
+    class func stopPulse (view:UIView) {
+        //println("[Animation] Stop Pulse")
+        view.layer.removeAllAnimations()
+    }
+    
+    class func pulse (view:UIView, loops:Float) {
+        //println("[Animation] Pulse")
+        let changeAlpha:CABasicAnimation = CABasicAnimation(keyPath:"opacity") as CABasicAnimation
+        changeAlpha.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        changeAlpha.fromValue = 0.15
+        changeAlpha.toValue = 0.45
+        changeAlpha.duration = 1.2
+        changeAlpha.repeatCount = loops
+        changeAlpha.autoreverses = true
+        view.layer.addAnimation(changeAlpha, forKey: "ChangeAlpha")
+        view.layer.speed = 1.0;
+    }
+    
 }

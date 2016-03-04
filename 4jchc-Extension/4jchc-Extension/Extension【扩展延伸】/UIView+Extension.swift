@@ -20,6 +20,34 @@ extension UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         return nib.instantiateWithOwner(nil, options: nil).first as? UIView
     }
+
+    
+    
+    
+    
+    //=======GestureRecognizer begin(首饰相关的)========//
+    
+    //添加点击事件
+    func addTapGestureRecognizer(target target: AnyObject,action: Selector){
+        
+        let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: target, action: action)
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    //制作圆角
+    func makeCornerRadius(cornerRadius:CGFloat,borderColor:UIColor,borderWidth:CGFloat){
+        self.layer.borderColor = borderColor.CGColor
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderWidth = borderWidth
+    }
+    
+    func makeCornerRadius(cornerRadius:CGFloat,borderColor:UIColor){
+        self.layer.borderColor = borderColor.CGColor
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderWidth = 1
+    }
+    
+
 }
 
 
@@ -103,7 +131,8 @@ public extension UIView {
                     views: views))
         }
     }
-    
+    //MARK:  instantiate实例化 FromNib
+    ///  instantiate实例化 FromNib
     public class func instantiateFromNib<T: UIView>() -> T {
         let mainBundle = NSBundle.mainBundle()
         if let objects = mainBundle.loadNibNamed(self.className(), owner: self, options: nil) {
@@ -115,14 +144,6 @@ public extension UIView {
         fatalError("\(__FUNCTION__): No nib named \'\(self.className())\'")
     }
     
-    public class func nib() -> UINib {
-        return UINib(nibName: self.className(), bundle: nil)
-    }
-    
-    /**
-     Returns the name of this class based on a (poor?) assumption that it is the last
-     token in the fully qualified class name assigned by Swift.
-     */
      //MARK: - 返回这个类的名称
      ///  返回这个类的名称
     class func className() -> String {

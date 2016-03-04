@@ -11,7 +11,6 @@ import Foundation
 ///*****✅返回一个截屏图片-剪切的头像
 extension UIImage {
     
-    
 
     //MARK: - ✅返回一个截屏图片
     /// ✅返回一个截屏图片
@@ -43,18 +42,40 @@ extension UIImage {
     
 }
     
-    
+    //MARK: - 返回一个剪切的头像
+    /// 返回一个剪切的头像
+    func circleImage()->UIImage{
+        
+        // NO代表透明
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 0.0);
+        // 获得上下文
+        let ctx = UIGraphicsGetCurrentContext()
+        
+        // 添加一个圆
+        let rect:CGRect = CGRectMake(0, 0, self.size.width, self.size.height);
+        CGContextAddEllipseInRect(ctx, rect);
+        
+        // 裁剪
+        CGContextClip(ctx);
+        
+        // 将图片画上去
+        self.drawInRect(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage;
+    }
     
 
     //MARK: - ✅返回一个剪切的头像 border:
     /// ✅返回一个剪切的头像 border:
-    func imageWithHeader(name:NSString, border:CGFloat,borderColor color:UIColor) ->UIImage{
+    func imageWithHeader(name:String, border:CGFloat,borderColor color:UIColor) ->UIImage{
 
         // 圆环的宽度
         let borderW:CGFloat = border;
         
         // 加载旧的图片
-        let oldImage:UIImage =  UIImage(named: name as String)!
+        let oldImage:UIImage =  UIImage(named: name)!
         
         // 新的图片尺寸
         
@@ -175,6 +196,100 @@ extension UIImage {
     }
     
   }
+
+
+//MARK: - 💗 获得圆形的剪裁图片
+extension UIImage{
+    
+    
+    //MARK:  根据网络图片的地址下载图片并且返回圆形的剪裁图片
+    ///  根据网络图片的地址下载图片并且返回圆形的剪裁图片
+    class    func circleImageWithImageURL(image_url:String)->UIImage?{
+        //下载网络图片
+        let data = NSData(contentsOfURL: NSURL(string: image_url)!)
+        let olderImage = UIImage(data: data!)
+        //开启图片上下文
+        let contextW = olderImage?.size.width
+        let contextH = olderImage?.size.height
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(contextW!,contextH! ), false, 0.0);
+        //画小圆
+        let ctx=UIGraphicsGetCurrentContext()
+        CGContextAddEllipseInRect(ctx, CGRect(x: 0, y: 0, width: contextW!, height: contextH!))
+        CGContextClip(ctx)
+        olderImage?.drawInRect(CGRect(x: 0, y: 0, width: contextW!, height: contextH!))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    //MARK:  根据图片名字返回剪裁成圆形的图片
+    ///  根据图片名字返回剪裁成圆形的图片
+    class    func circleImageWithImageName(imageName:String)->UIImage?{
+        
+        if let olderImage = UIImage(named: imageName){
+            //开启图片上下文
+            let contextW = olderImage.size.width
+            let contextH = olderImage.size.height
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(contextW,contextH), false, 0.0);
+            //画小圆
+            let ctx=UIGraphicsGetCurrentContext()
+            CGContextAddEllipseInRect(ctx, CGRect(x: 0, y: 0, width: contextW, height: contextH))
+            CGContextClip(ctx)
+            olderImage.drawInRect(CGRect(x: 0, y: 0, width: contextW, height: contextH))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return newImage
+            
+        }else{
+            return nil
+        }
+    }
+
+    //MARK:  根据图片名字返回剪裁成圆形并且有边界效果的图片
+    ///  根据图片名字返回剪裁成圆形并且有边界效果的图片
+    class func circleImageWithBoder(imageName:String,borderWidth:CGFloat,borderColor:UIColor)->UIImage?{
+        
+        if let olderImage = UIImage(named:imageName){
+            //开启图片上下文
+            let contextW = olderImage.size.width + CGFloat(2) * borderWidth
+            let contextH = olderImage.size.height + CGFloat(2) * borderWidth
+            
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(contextW,contextH ), false, 0.0);
+            //取得图片上下文
+            let ctx=UIGraphicsGetCurrentContext()
+            //画大圆（边框）
+            borderColor.set()
+            
+            let bigRadius:CGFloat = contextW * CGFloat(0.5) // 大圆半径
+            let centerX: CGFloat = bigRadius // 圆心
+            let centerY: CGFloat = bigRadius
+            
+            CGContextAddArc(ctx, centerX, centerY, bigRadius, 0, CGFloat(M_PI * Double(2)), 0);
+            CGContextFillPath(ctx); // 画圆
+            //画小圆
+            
+            CGContextAddEllipseInRect(ctx, CGRect(x: 0, y: 0, width: olderImage.size.width, height: olderImage.size.height))
+            //剪裁
+            CGContextClip(ctx)
+            olderImage.drawInRect(CGRect(x: borderWidth, y: borderWidth, width: contextW, height: contextH))
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return newImage
+            
+        }else{
+            return nil
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
 public extension UIImage {
     
     //MARK: - 返回一个固定尺寸图片
@@ -295,7 +410,7 @@ extension UIImage {
 
 
 
-
+//MARK: - Filter-过滤器二维码图片
 class Filter {
     
     var name : String

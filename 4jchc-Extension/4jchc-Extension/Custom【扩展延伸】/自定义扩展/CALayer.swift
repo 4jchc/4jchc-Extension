@@ -22,14 +22,25 @@ class CALayer: UIViewController {
     }
     
 
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setupIconImageCircle()
+    {
+    var path = UIBezierPath(ovalInRect: iconImageButton.bounds)
+    
+    var maskLayer = CAShapeLayer()
+    maskLayer.path = path.CGPath
+    iconImageButton.layer.mask = maskLayer
+    
+    var outlineLayer = CAShapeLayer()
+    outlineLayer.lineWidth = 10.0
+    outlineLayer.fillColor = UIColor.clearColor().CGColor
+    outlineLayer.strokeColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0).CGColor
+    outlineLayer.path = path.CGPath
+    iconImageButton.layer.addSublayer(outlineLayer)
     }
+    
     */
 
 }

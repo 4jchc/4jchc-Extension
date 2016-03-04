@@ -85,6 +85,8 @@ let JDAppearanceTintColor = UIColor.orangeColor()
 
 let XMGGlobalBg:UIColor = UIColor.RGB(223, 223, 223)
 
+let XMGMessageFont:UIFont = UIFont.systemFontOfSize(12)
+
 /// 用户账户本地存储文件名
 let JDAccountNameLocal = "account.plist"
 
@@ -356,10 +358,138 @@ class CategoryListLayoutDraw: UICollectionViewLayout {
 
 
 
+//MARK: - 常用函数
+/*
+rand() ----随机数
 
+abs() / labs() ----整数绝对值
 
+fabs() / fabsf() / fabsl() ----浮点数绝对值
 
+floor() / floorf() / floorl() ----向下取整
 
+ceil() / ceilf() / ceill() ----向上取整
 
+round() / roundf() / roundl() ----四舍五入
 
+sqrt() / sqrtf() / sqrtl() ----求平方根
+
+fmax() / fmaxf() / fmaxl() ----求最大值
+
+fmin() / fminf() / fminl() ----求最小值
+
+hypot() / hypotf() / hypotl() ----求直角三角形斜边的长度
+
+fmod() / fmodf() / fmodl() ----求两数整除后的余数
+
+modf() / modff() / modfl() ----浮点数分解为整数和小数
+
+frexp() / frexpf() / frexpl() ----浮点数分解尾数和二为底的指数
+
+sin() / sinf() / sinl() ----求正弦值
+
+sinh() / sinhf() / sinhl() ----求双曲正弦值
+
+cos() / cosf() / cosl() ----求余弦值
+
+cosh() / coshf() / coshl() ----求双曲余弦值
+
+tan() / tanf() / tanl() ----求正切值
+
+tanh() / tanhf() / tanhl() ----求双曲正切值
+
+asin() / asinf() / asinl() ----求反正弦值
+
+asinh() / asinhf() / asinhl() ----求反双曲正弦值
+
+acos() / acosf() / acosl() ----求反余弦值
+
+acosh() / acoshf() / acoshl() ----求反双曲余弦值
+
+atan() / atanf() / atanl() ----求反正切值
+
+atan2() / atan2f() / atan2l() ----求坐标值的反正切值
+
+atanh() / atanhf() / atanhl() ----求反双曲正切值
+*/
+
+//MARK: - 动画相关
+class animation {
+    // vanish消失 OrAppear
+    class func vanishOrAppear(target: UIView, time: CFTimeInterval, from: CGFloat, to: CGFloat) {
+        let animation: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = CFTimeInterval(time)
+        target.layer.addAnimation(animation, forKey: "Image-opacity")
+        target.alpha = 0
+    }
+    
+    func setScale(toScale:Float!, duration:Double!) -> CABasicAnimation {
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        scale.toValue = toScale
+        scale.duration = duration
+        scale.removedOnCompletion = false
+        scale.fillMode = kCAFillModeForwards
+        return scale
+    }
+    // Opacity不透明
+    func setOpacity(fromOpacity:Float!, toOpacity:Float!, duration:Double!) -> CABasicAnimation {
+        let opacity = CABasicAnimation(keyPath: "opacity")
+        opacity.fromValue = fromOpacity
+        opacity.toValue = toOpacity
+        opacity.duration = duration
+        opacity.removedOnCompletion = false
+        opacity.fillMode = kCAFillModeForwards
+        return opacity
+    }
+    //MARK: -  == 永久闪烁的动画 === opacity不透明CABasicACnimation
+    func opacityForever_Animation(time:CGFloat)->CABasicAnimation{
+        
+        let animation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")//必须写opacity才行。
+        
+        animation.fromValue = NSNumber(float: 1.0)
+        animation.toValue = Float(0.0) //这是透明度。
+        animation.autoreverses = true
+        animation.duration = Double(time);
+        animation.repeatCount = MAXFLOAT;
+        animation.removedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards;
+        //animation.timingFunction=[CAMediaTimingFunctionfunctionWithName:kCAMediaTimingFunctionEaseIn];///没有的话是均匀的动画。
+        return animation;
+        
+    }
+    
+}
+extension UIView {
+    // 脉冲pulse
+    func pulse() {
+        self.layer.removeAnimationForKey("pulsingAnimation")
+        let pulsingAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        pulsingAnimation.fromValue = NSNumber(float: 1.0)
+        pulsingAnimation.toValue = NSNumber(float: 2.0)
+        
+        let alphaAnimation: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        alphaAnimation.fromValue = NSNumber(float: 0.5)
+        alphaAnimation.toValue = NSNumber(float: 0.0)
+        
+        let group: CAAnimationGroup = CAAnimationGroup()
+        group.duration = 2.0
+        group.repeatCount = Float.infinity
+        group.removedOnCompletion = false
+        group.animations = [pulsingAnimation, alphaAnimation]
+        
+        self.layer.addAnimation(group, forKey: "pulsingAnimation")
+    }
+}
+
+extension UIImageView {
+    func maskInCircle() {
+        let circle: UIBezierPath = UIBezierPath(ovalInRect: self.bounds)
+        let shapeLayer: CAShapeLayer = CAShapeLayer()
+        shapeLayer.path = circle.CGPath
+        shapeLayer.frame = self.bounds;
+        self.layer.mask = shapeLayer;
+    }
+}
 

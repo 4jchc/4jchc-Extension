@@ -50,7 +50,15 @@ public extension NSTimer {
 //    print("5 seconds")
 //}
 
-
+extension NSTimer {
+    
+    class func schedule(delay: NSTimeInterval, handler: NSTimer! -> Void) -> NSTimer {
+        let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, delay + CFAbsoluteTimeGetCurrent(), 0, 0, 0, handler)
+        CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, kCFRunLoopCommonModes)
+        
+        return timer
+    }
+}
 
 
 
@@ -162,6 +170,33 @@ private class HYBObjectWrapper: NSObject {
         self.count = count
     }
 }
+
+
+
+extension NSTimer {
+    class NSTimerCallbackHolder : NSObject {
+        var callback: () -> ()
+        
+        init(callback: () -> ()) {
+            self.callback = callback
+        }
+        
+        func tick(timer: NSTimer) {
+            callback()
+        }
+    }
+    
+    class func scheduledTimerWithTimeInterval(ti: NSTimeInterval, repeats yesOrNo: Bool, closure: () -> ()) -> NSTimer! {
+        let holder = NSTimerCallbackHolder(callback: closure)
+        holder.callback = closure
+        
+        return NSTimer.scheduledTimerWithTimeInterval(ti, target: holder, selector: Selector("tick:"), userInfo: nil, repeats: yesOrNo)
+    }
+}
+
+
+
+
 
 
 /*

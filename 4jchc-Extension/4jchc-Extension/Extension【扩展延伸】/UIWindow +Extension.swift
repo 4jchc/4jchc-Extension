@@ -35,3 +35,43 @@ extension UIWindow{
 }
 
 }
+class BaseWindow : UIWindow {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let orientation:UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
+        
+        switch orientation {
+        case .LandscapeLeft:
+            fallthrough
+        case .LandscapeRight:
+            // LandscapeLeft | LandscapeRight
+            self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.height, UIScreen.mainScreen().bounds.width)
+        default:
+            // Unknown | Portrait | PortraitUpsideDown
+            self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        }
+        
+        self.backgroundColor = UIColor.clearColor()
+        self.windowLevel = UIWindowLevelAlert + 1
+        
+        self.makeKeyWindow()
+        
+        self.makeKeyAndVisible()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIWindow {
+    /// EZSE: Creates and shows UIWindow. The size will show iPhone4 size until you add launch images with proper sizes. TODO: Add to readme
+    convenience init(viewController: UIViewController, backgroundColor: UIColor) {
+        self.init(frame: UIScreen.mainScreen().bounds)
+        self.rootViewController = viewController
+        self.backgroundColor = backgroundColor
+        self.makeKeyAndVisible()
+    }
+}

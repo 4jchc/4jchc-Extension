@@ -544,7 +544,9 @@ extension String {
     func trimLast(n: Int) -> String {
         return self.substringToIndex(self.startIndex.advancedBy(-1*n))
     }
-    
+
+    //MARK:  返回字符串的CGsiae
+    ///  返回字符串的CGsiae
     func sizeWithFont(font: UIFont, maxWidth: CGFloat) -> CGSize {
         let nsString = self as NSString
         let attributes = [NSFontAttributeName: font]

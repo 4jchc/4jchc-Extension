@@ -1,8 +1,5 @@
 
 
-
-import Foundation
-
 import Foundation
 
 //TODO make it template
@@ -17,51 +14,9 @@ public typealias JDictMappingWithErrorBlock = (key : AnyObject, object : AnyObje
 //TODO make it template
 public typealias JDictPredicateBlock = (key : AnyObject, object : AnyObject) -> Bool
 
-
-
-
-
-
-
-
-
-
-
-
+import Foundation
 
 public extension NSDictionary {
-    
-    func dictionaryByAddingObjectsFromDictionary(dictionary: NSDictionary) -> NSDictionary {
-        
-        let result = mutableCopy() as! NSMutableDictionary
-        
-        dictionary.enumerateKeysAndObjectsUsingBlock({ (key: AnyObject!, value: AnyObject!, stop: UnsafeMutablePointer<ObjCBool>) -> () in
-            result[key as! NSCopying] = value
-        })
-        
-        return result.copy() as! NSDictionary
-    }
-    
-    
-    
-    func toString(keyValueSeparator: String, elementSeparator: String)->String{
-        
-        let paraStr = NSMutableString()
-        
-        self.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
-            if paraStr.length == 0{
-                paraStr.appendString("\(key)\(keyValueSeparator)\(obj)")
-            }else{
-                paraStr.appendString("\(elementSeparator)\(key)\(keyValueSeparator)\(obj)")
-            }
-        })
-        return paraStr as String
-    }
-    
-    
-    
-    
-    
     
     func map(block: JDictMappingBlock) -> NSDictionary {
         
@@ -152,6 +107,46 @@ public extension NSDictionary {
         })
         
         return result.copy() as! NSDictionary
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+public extension NSDictionary {
+    
+    func dictionaryByAddingObjectsFromDictionary(dictionary: NSDictionary) -> NSDictionary {
+        
+        let result = mutableCopy() as! NSMutableDictionary
+        
+        dictionary.enumerateKeysAndObjectsUsingBlock({ (key: AnyObject!, value: AnyObject!, stop: UnsafeMutablePointer<ObjCBool>) -> () in
+            result[key as! NSCopying] = value
+        })
+        
+        return result.copy() as! NSDictionary
+    }
+    
+    
+    
+    func toString(keyValueSeparator: String, elementSeparator: String)->String{
+        
+        let paraStr = NSMutableString()
+        
+        self.enumerateKeysAndObjectsUsingBlock({ (key, obj, stop) -> Void in
+            if paraStr.length == 0{
+                paraStr.appendString("\(key)\(keyValueSeparator)\(obj)")
+            }else{
+                paraStr.appendString("\(elementSeparator)\(key)\(keyValueSeparator)\(obj)")
+            }
+        })
+        return paraStr as String
     }
     
 

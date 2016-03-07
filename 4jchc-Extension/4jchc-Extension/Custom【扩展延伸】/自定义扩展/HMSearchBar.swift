@@ -25,7 +25,6 @@ class HMSearchBar: UITextField {
         self.placeholder = "请输入搜索条件"
         self.background = UIImage(named: "searchbar_textfield_background")
         
-        
         /// 通过init来创建初始化绝大部分控件，控件都是没有尺寸
         let searchIcon:UIImageView = UIImageView()
         ///*****✅搜索图标--UIImageView
@@ -36,7 +35,6 @@ class HMSearchBar: UITextField {
         ///添加图片到左边
         self.leftView = searchIcon;
         self.leftViewMode = UITextFieldViewMode.Always
-        
     }
 
     required init(coder aDecoder: NSCoder) {

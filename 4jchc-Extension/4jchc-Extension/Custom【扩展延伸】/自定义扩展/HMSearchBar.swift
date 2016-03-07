@@ -20,7 +20,6 @@ class HMSearchBar: UITextField {
 //        self.frame.size.height = 30;
 //        self.frame.origin.x = 8
 //        self.frame.origin.y = 3
-        
         self.font = UIFont.systemFontOfSize(15.0)
         self.placeholder = "请输入搜索条件"
         self.background = UIImage(named: "searchbar_textfield_background")

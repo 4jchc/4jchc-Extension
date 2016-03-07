@@ -53,8 +53,6 @@ let Is_Ipad = UIDevice.currentDevice().userInterfaceIdiom == .Pad
 
 let Is_Retina = UIScreen.mainScreen().scale>=2.0 //&& UIScreen.mainScreen().respondsToSelector("scale")
 
-
-
 //MARK:-大写
 /*
 let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
@@ -77,9 +75,7 @@ let IS_RETINA = UIScreen.mainScreen().scale>=2.0 //&& UIScreen.mainScreen().resp
 
 let kFontSize = ((IS_IPAD) ? 40 : 14)
 
-
 //MARK: - 微博常量
-
 /// tabBar底部栏 颜色
 let JDAppearanceTintColor = UIColor.orangeColor()
 
@@ -101,10 +97,6 @@ typealias JDSuccessedCallBack = (isSuccess: Bool) -> ()
 public typealias ProgressHandler = (data: NSData) -> Void
 /// 界面切换 给appDelegate的通知
 let JDNotificationSwithInAppDelegate = "JDNotificationSwithInAppDelegate"
-
-
-
-
 
 
 //MARK: - 枚举案例

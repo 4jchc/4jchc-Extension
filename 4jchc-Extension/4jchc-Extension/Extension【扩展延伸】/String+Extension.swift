@@ -106,7 +106,7 @@ public extension String {
     // MARK: - get characters
     
     public subscript (i: Int) -> Character {
-        
+        // advanced高级的上升 By
         return  self[self.startIndex.advancedBy(i)]
     }
     

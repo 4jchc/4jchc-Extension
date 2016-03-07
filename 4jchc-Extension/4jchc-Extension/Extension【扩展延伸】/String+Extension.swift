@@ -99,10 +99,6 @@ public extension String {
 
         return NSDate.dateFromString(self, format: format)
     }
-
-    
-   
-    
     // MARK: - get characters
     
     public subscript (i: Int) -> Character {

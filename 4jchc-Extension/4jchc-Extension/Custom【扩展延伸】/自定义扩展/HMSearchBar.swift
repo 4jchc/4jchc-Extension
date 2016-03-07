@@ -9,8 +9,6 @@
 import UIKit
 
 class HMSearchBar: UITextField {
-
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

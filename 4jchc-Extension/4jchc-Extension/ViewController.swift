@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         
 
          printLog("ddjdj")
+        
+        printLog(" 4的毫秒=\(4.milliseconds)")
+        printLog("2秒=\(2.seconds)")
     }
     
     func GCD(){

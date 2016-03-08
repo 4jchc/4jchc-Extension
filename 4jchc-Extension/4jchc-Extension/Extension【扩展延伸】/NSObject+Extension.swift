@@ -97,6 +97,21 @@ extension NSObject {
             completion()
         }
     }
-    
+
+     //MARK: - 利用动态运行时  将数据模型转换为字典 暂不支持类型嵌套
+     ///  利用动态运行时  将数据模型转换为字典 暂不支持类型嵌套
+    func propertier_aps()-> [String: AnyObject] {
+        var props = [String: AnyObject]()
+        var outCount = UInt32()
+        let properties = class_copyPropertyList(classForCoder, &outCount)
+        for i in 0..<outCount {
+            let property = properties[Int(i)]
+            if let propertyName = String(CString: property_getName(property), encoding: NSUTF8StringEncoding), let propertyValue: AnyObject = valueForKey(propertyName) {
+                props.updateValue(propertyValue, forKey: propertyName)
+            }
+        }
+        free(properties)
+        return props
+    }
     
 }

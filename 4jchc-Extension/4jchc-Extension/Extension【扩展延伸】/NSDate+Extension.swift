@@ -443,6 +443,118 @@ extension NSDate{
     }
 }
 
+
+
+
+//MARK: - 扩展
+import Foundation
+
+enum DatePrintComponent {
+    case FullYear
+    case MonthNumber
+    case Day
+    case Hour24
+    case Seconds
+}
+
+extension NSDate {
+    func stringWithFormat(format:String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func printWithComponent(component:DatePrintComponent) -> String {
+        switch component {
+        case .FullYear:
+            return self.stringWithFormat("yyyy")
+        case .MonthNumber:
+            return self.stringWithFormat("MM")
+        case .Day:
+            return self.stringWithFormat("dd")
+        case .Hour24:
+            return self.stringWithFormat("HH")
+        case .Seconds:
+            return self.stringWithFormat("mm")
+        }
+    }
+    
+    subscript(component: DatePrintComponent) -> String {
+        return printWithComponent(component)
+    }
+}
+
+
+public func + (date:NSDate, time: NSTimeInterval) -> NSDate {
+    return date.dateByAddingTimeInterval(time)
+    
+}
+
+public func + (time: NSTimeInterval, date:NSDate) -> NSDate {
+    return date.dateByAddingTimeInterval(time)
+}
+
+
+public func - (date:NSDate, time: NSTimeInterval) -> NSDate {
+    return date.dateByAddingTimeInterval(-time)
+}
+
+public func - (time: NSTimeInterval, date:NSDate) -> NSDate {
+    return date.dateByAddingTimeInterval(-time)
+}
+
+public func > (left: NSDate, right: NSDate) -> Bool {
+    let compare = left.compare(right)
+    
+    if compare == NSComparisonResult.OrderedDescending {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+public func < (left: NSDate, right: NSDate) -> Bool {
+    let compare = right.compare(left)
+    
+    if compare == NSComparisonResult.OrderedDescending {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+
+public func >= (left: NSDate, right: NSDate) -> Bool {
+    let compare = left.compare(right)
+    
+    if compare == NSComparisonResult.OrderedDescending || compare == NSComparisonResult.OrderedSame {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+public func <= (left: NSDate, right: NSDate) -> Bool {
+    let compare = right.compare(left)
+    
+    if compare == NSComparisonResult.OrderedDescending || compare == NSComparisonResult.OrderedSame  {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+
+
+
+
+
+
+
 //MARK: - 使用oc的框架 NSDate+Escort.m
 //extension NSDate {
 //

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960C27B11C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960C27B01C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift */; };
 		960FCF6A1C67320100997732 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FCF691C67320100997732 /* UICollectionView+Extension.swift */; };
 		962F78A51C6F385A00EE6B83 /* HMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962F78A41C6F385A00EE6B83 /* HMSearchBar.swift */; };
 		9657FE3D1C52354500EB1D1B /* SpriteKit+临时代码段.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657FE3C1C52354500EB1D1B /* SpriteKit+临时代码段.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960C27B01C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTimeInterval+Extension.swift"; sourceTree = "<group>"; };
 		960FCF691C67320100997732 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		962F78A41C6F385A00EE6B83 /* HMSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSearchBar.swift; sourceTree = "<group>"; };
 		9657FE3C1C52354500EB1D1B /* SpriteKit+临时代码段.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpriteKit+临时代码段.swift"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				96E19B1E1C4B9B0E00EDEC6C /* NSOperationQueue+Extension.swift */,
 				96E19B201C4B9B0E00EDEC6C /* NSString-Size+Extension.swift */,
 				96E19B1F1C4B9B0E00EDEC6C /* NSString+Emoji+Extension.swift */,
+				960C27B01C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift */,
 				96E19B211C4B9B0E00EDEC6C /* NSTimer +Extension.swift */,
 				96E19B221C4B9B0E00EDEC6C /* NSURL+Extension.swift */,
 				96E19B231C4B9B0E00EDEC6C /* String+Extension.swift */,
@@ -619,6 +622,7 @@
 				96B7AA911C7EC958007AC158 /* 第三方框架总结.swift in Sources */,
 				96E19B4E1C4B9B0E00EDEC6C /* NSDictionary +Extension.swift in Sources */,
 				968650411C4C9AC100A8D995 /* NSError+Extension.swift in Sources */,
+				960C27B11C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift in Sources */,
 				96E19B581C4B9B0E00EDEC6C /* NSTimer +Extension.swift in Sources */,
 				96E19B741C4B9B0E00EDEC6C /* UIViewController +Extension.swift in Sources */,
 				96C001C11C72D4560014F47D /* XMGTabBarController.swift in Sources */,

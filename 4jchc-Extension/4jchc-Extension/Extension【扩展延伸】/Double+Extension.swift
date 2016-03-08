@@ -38,7 +38,7 @@ public extension Double {
 public extension Int {
     
     
-
+    
     //MARK:  2位小数Decimal:十进的;n.小数-->字符串String
     ///  2位小数Decimal:十进的;n.小数-->字符串String
     public func toStringWithDecimalPlaces(decimals:Int) -> String {
@@ -66,6 +66,9 @@ public extension Int {
         
         return Int(mini + arc4random_uniform(maxi - mini)) - offset
     }
+    
+
+    
 }
 
 extension Int {
@@ -91,12 +94,47 @@ extension Int {
     ///  float浮点数 Value
     var floatValue:  Float  {return Float(self)}
 }
-
+public extension Int {
+    
+    /** 毫秒 */
+    public var milliseconds: NSTimeInterval { return NSTimeInterval(self) * 0.001 }
+    public var millisecond: NSTimeInterval { return self.milliseconds }
+    
+    public var seconds: NSTimeInterval { return NSTimeInterval(self) * 1.milliseconds * 1000 }
+    public var second: NSTimeInterval { return self.seconds }
+    
+    public var minutes: NSTimeInterval { return NSTimeInterval(self) * 60.seconds }
+    public var minute: NSTimeInterval { return self.minutes }
+    
+    public var hours: NSTimeInterval { return NSTimeInterval(self) * 60.minutes }
+    public var hour: NSTimeInterval { return self.hours }
+    
+    public var days: NSTimeInterval { return NSTimeInterval(self) * 24.hours }
+    public var day: NSTimeInterval { return self.days }
+    
+    public var years: NSTimeInterval { return NSTimeInterval(self) * 365.days }
+    public var year: NSTimeInterval { return self.years }
+    
+    public var weeks: NSTimeInterval {return NSTimeInterval(self * 86400 * 7)}
+    public var week: NSTimeInterval {return self.weeks}
+    
+}
 
 //MARK: - CGFloat扩展
 public extension CGFloat {
+    
     public var floatValue: Float {
         return Float(self)
+    }
+}
+extension CGFloat
+{
+    public static func random() -> CGFloat {
+        return CGFloat(arc4random() / 0xFFFFFFFF)
+    }
+    
+    public static func random(min minimum: CGFloat, max maximum: CGFloat) -> CGFloat {
+        return CGFloat.random() * (max - min) + min
     }
 }
 

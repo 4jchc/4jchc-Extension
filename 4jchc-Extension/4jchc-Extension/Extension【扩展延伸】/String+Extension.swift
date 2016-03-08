@@ -24,6 +24,55 @@ import Foundation
 - 重新启动手机，tmp 目录会被清空
 - 系统磁盘空间不足时，系统也会自动清理
 */
+//MARK: - 转换为基本数据类型
+extension String{
+    
+    /**
+     将String类型转换转换为Int类型
+     
+     - Parameter N/A
+     - Returns:Int    String转换后的Int值
+     */
+    func toInt()->Int{
+        return Int(self.toDouble())
+    }
+    /**
+     将String类型转换转换为CGFloat类型
+     
+     - Parameter N/A
+     - Returns:CGFloat    String转换后的CGFloat值
+     */
+    func toCGFloat()->CGFloat{
+        return CGFloat(self.toDouble())
+    }
+    /**
+     将String类型转换转换为Double类型
+     
+     - Parameter N/A
+     - Returns:Double    String转换后的Double值
+     */
+    func toDouble()->Double{
+        let lValue=Double(self)
+        if (lValue != nil){
+            return lValue!
+        }else{
+            return 0
+        }
+    }
+    //MARK:  将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
+    /**
+    将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
+    
+    - Parameter str:String 要拼接上的字符串
+    - Returns:N/A
+    */
+    func stringByAppendingPathComponent(str:String) -> String{
+        
+        return self.stringByAppendingFormat("/%@", str)
+    }
+}
+
+
 public extension String {
     
     public func hasCharactersFromSet(characterSet: NSCharacterSet) -> Bool {
@@ -99,6 +148,20 @@ public extension String {
 
         return NSDate.dateFromString(self, format: format)
     }
+    
+    /** Extension扩展名 */
+    var pathExtension: String {
+        get {
+            return (self as NSString).pathExtension
+        }
+    }
+    /** Deleting正在删除Extension扩展名 */
+    var stringByDeletingPathExtension: String {
+        get {
+            return (self as NSString).stringByDeletingPathExtension
+        }
+    }
+    
     // MARK: - get characters
     
     public subscript (i: Int) -> Character {
@@ -563,52 +626,6 @@ extension String {
 }
 
 
-//MARK: - 转换为基本数据类型
-extension String{
-    
-    /**
-    将String类型转换转换为Int类型
-    
-    - Parameter N/A
-    - Returns:Int    String转换后的Int值
-    */
-    func toInt()->Int{
-        return Int(self.toDouble())
-    }
-    /**
-     将String类型转换转换为CGFloat类型
-     
-     - Parameter N/A
-     - Returns:CGFloat    String转换后的CGFloat值
-     */
-    func toCGFloat()->CGFloat{
-        return CGFloat(self.toDouble())
-    }
-    /**
-     将String类型转换转换为Double类型
-     
-     - Parameter N/A
-     - Returns:Double    String转换后的Double值
-     */
-    func toDouble()->Double{
-        let lValue=Double(self)
-        if (lValue != nil){
-            return lValue!
-        }else{
-            return 0
-        }
-    }
-    //MARK:  将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
-    /**
-     将新字符串按路径的方式拼接到原字符串上，即字符串直接添加'/'字符
-     
-     - Parameter str:String 要拼接上的字符串
-     - Returns:N/A
-     */
-    func stringByAppendingPathComponent(str:String) -> String{
-        
-        return self.stringByAppendingFormat("/%@", str)
-    }
-}
+
 
 

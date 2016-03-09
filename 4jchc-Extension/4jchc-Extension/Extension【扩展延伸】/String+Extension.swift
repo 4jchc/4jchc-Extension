@@ -71,7 +71,11 @@ extension String{
         return self.stringByAppendingFormat("/%@", str)
     }
 }
-
+extension String {
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
+    }
+}
 
 public extension String {
     
@@ -184,7 +188,6 @@ public extension String {
     
     
     // MARK - substring
-    
     public func removeLastCharacter() -> String {
         
         return self.substringToIndex(self.endIndex.predecessor())

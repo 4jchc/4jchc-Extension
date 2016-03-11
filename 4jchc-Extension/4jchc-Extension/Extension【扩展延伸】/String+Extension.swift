@@ -77,6 +77,64 @@ extension String {
     }
 }
 
+
+
+
+
+
+
+//MARK: - 目录
+extension String {
+    ///  将当前字符串拼接到doc目录后面
+    //MARK:  将当前字符串拼接到doc目录后面
+    func documentPath() -> String {
+        
+        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
+        return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+        
+        //let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last
+        //不可以这样写
+        //return (NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path! as NSString).lastPathComponent
+        
+        //return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
+    }
+    
+    
+    //MARK:  将当前字符串拼接到cache目录后面
+    ///  将当前字符串拼接到cache目录后面
+    func cachePath() -> String {
+        
+        //         let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
+        //         return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+        
+        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last
+        
+        //最后一个组成部分lastPathComponent
+        //不可以这样写
+        //return (NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path! as NSString).lastPathComponent
+        
+        return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
+    }
+    
+    
+    //MARK:  将当前字符串拼接到tmp目录后面
+    ///  将当前字符串拼接到tmp目录后面
+    func tempPath() -> String {
+        let path = NSTemporaryDirectory() as NSString
+        return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+        //最后一个组成部分lastPathComponent
+        
+        // return NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(self).path!
+        
+    }
+
+}
+
+
+
+
+
+
 public extension String {
     
     public func hasCharactersFromSet(characterSet: NSCharacterSet) -> Bool {
@@ -166,7 +224,7 @@ public extension String {
         }
     }
     
-    // MARK: - get characters
+    // MARK:  get characters
     
     public subscript (i: Int) -> Character {
         // advanced高级的上升 By
@@ -187,14 +245,14 @@ public extension String {
     
     
     
-    // MARK - substring
+    // MARK  substring
     public func removeLastCharacter() -> String {
         
         return self.substringToIndex(self.endIndex.predecessor())
     }
     
     
-    //MARK: - urlEncoded
+    //MARK:  urlEncoded
     func urlEncoded() -> String {
         if let encoded = self.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()){
             
@@ -204,54 +262,245 @@ public extension String {
         return self
     }
     
+ 
     
     
+
+
+    /// - returns: 字符串的长度
+    //MARK: - 字符串的长度
+    public func length() ->Int {
+        return self.characters.count
+    }
     
-    
-    
-    
-    
-    ///  将当前字符串拼接到doc目录后面
-    //MARK: - 将当前字符串拼接到doc目录后面
-    func documentPath() -> String {
+    // MARK: Trim整修 API
+    //MARK:  去掉字符串 -前-后 的空格，根据参数确定是否过滤换行符
+    /// 去掉字符串前后的空格，根据参数确定是否过滤换行符
+    ///
+    /// - parameter trimNewline 是否过滤换行符，默认为false
+    ///
+    /// - returns:   处理后的字符串
+    public func trim(trimNewline: Bool = false) ->String {
+        if trimNewline {
+            return self.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+        }
         
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
-        return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+        return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
+    }
+     //MARK:  去掉字符串 -前面 的空格，根据参数确定是否过滤换行符
+    /// 去掉字符串前面的空格，根据参数确定是否过滤换行符
+    ///
+    /// - parameter trimNewline 是否过滤换行符，默认为false
+    ///
+    /// - returns:   处理后的字符串
+    public func trimLeft(trimNewline: Bool = false) ->String {
+        if self.isEmpty {
+            return self
+        }
         
-        //let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last
-        //不可以这样写
-        //return (NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path! as NSString).lastPathComponent
+        var index = self.startIndex
+        while index != self.endIndex {
+            let ch = self.characters[index]
+            if ch == Character(" ") {
+                index++
+                continue
+            } else if ch == Character("\n") {
+                if trimNewline {
+                    index++
+                    continue
+                } else {
+                    break
+                }
+            }
+            
+            break
+        }
         
-        //return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
+        return self.substringFromIndex(index)
+    }
+     //MARK:  去掉字符串 -后面 的空格，根据参数确定是否过滤换行符
+    /// 去掉字符串后面的空格，根据参数确定是否过滤换行符
+    ///
+    /// - parameter trimNewline 是否过滤换行符，默认为false
+    ///
+    /// - returns:   处理后的字符串
+    public func trimRight(trimNewline: Bool = false) ->String {
+        if self.isEmpty {
+            return self
+        }
+        
+        var index = self.endIndex.predecessor()
+        while index != self.startIndex {
+            let ch = self.characters[index]
+            if ch == Character(" ") {
+                index--
+                continue
+            } else if ch == Character("\n") {
+                if trimNewline {
+                    index--
+                    continue
+                } else {
+                    index++
+                    break
+                }
+            }
+            
+            break
+        }
+        
+        return self.substringToIndex(index)
     }
     
     
-    //MARK: - 将当前字符串拼接到cache目录后面
-    ///  将当前字符串拼接到cache目录后面
-    func cachePath() -> String {
+     //MARK:  获取子串的起始位置
+    /// 获取子串的起始位置。
+    ///
+    /// - parameter substring 待查找的子字符串
+    ///
+    /// - returns:  如果找不到子串，返回NSNotFound，否则返回其所在起始位置
+    public func location(substring: String) ->Int {
+        return (self as NSString).rangeOfString(substring).location
+    }
+     //MARK:  根据起始位置和长度获取子串
+    /// 根据起始位置和长度获取子串。
+    ///
+    /// - parameter location  获取子串的起始位置
+    /// - parameter length    获取子串的长度
+    ///
+    /// - returns:  如果位置和长度都合理，则返回子串，否则返回nil
+    public func substring(location: Int, length: Int) ->String? {
+        if location < 0 && location >= self.length() {
+            return nil
+        }
         
-        //         let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!  as NSString
-        //         return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
+        if length <= 0 || length >= self.length() {
+            return nil
+        }
         
-        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last
-        
-        //最后一个组成部分lastPathComponent
-        //不可以这样写
-        //return (NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path! as NSString).lastPathComponent
-        
-        return NSURL(fileURLWithPath: path!).URLByAppendingPathComponent(self).path!
+        return (self as NSString).substringWithRange(NSMakeRange(location, length))
+    }
+     //MARK:  根据下标获取对应的字符。若索引正确，返回对应的字符，否则返回nil
+    /// 根据下标获取对应的字符。若索引正确，返回对应的字符，否则返回nil
+    ///
+    /// - parameter index 索引位置
+    ///
+    /// - returns: 如果位置正确，返回对应的字符，否则返回nil
+    public subscript(index: Int) ->Character? {
+        get {
+            if let str = substring(index, length: 1) {
+                return Character(str)
+            }
+            
+            return nil
+        }
     }
     
     
-    //MARK: - 将当前字符串拼接到tmp目录后面
-    ///  将当前字符串拼接到tmp目录后面
-    func tempPath() -> String {
-        let path = NSTemporaryDirectory() as NSString
-        return path.stringByAppendingPathComponent((self as NSString).lastPathComponent)
-        //最后一个组成部分lastPathComponent
+    
+    
+    
+
+    //MARK:  是否包含字符串NSStringCompareOptions
+    /// 包含字符串NSStringCompareOptions
+    func containsString(aString:String, compareOption: NSStringCompareOptions) -> Bool {
+        if((self.rangeOfString(aString, options: compareOption)) != nil) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    //MARK: 是否包含字符串
+    /// 包含字符串
+    public func containsString(find: String) -> Bool {
+        //return (self as NSString).containsString(find)
+        return self.rangeOfString(find) != nil
         
-        // return NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(self).path!
+    }
+    //MARK: 是否包含小写字母
+    /// 是否包含小写字母
+    func containsLowercaseString(aString: String) -> Bool {
         
+        return self.lowercaseString.rangeOfString(aString.lowercaseString) != nil
+    }
+    
+    //MARK:  是否包含http
+    /// 包含http
+    func isHttpLocalPath() -> Bool {
+        return self.rangeOfString("http") == nil
+    }
+    //MARK:  是否全是数字组成
+    /// 判断字符串是否全是数字组成
+    ///
+    /// - returns:  若为全数字组成，返回true，否则返回false
+    public func isOnlyNumbers() ->Bool {
+        let set = NSCharacterSet.decimalDigitCharacterSet().invertedSet
+        let range = (self as NSString).rangeOfCharacterFromSet(set)
+        
+        return range.location == NSNotFound
+    }
+    //MARK:  是否全是字母组成
+    /// 判断字符串是否全是字母组成
+    ///
+    /// - returns:  若为全字母组成，返回true，否则返回false
+    public func isOnlyLetters() ->Bool {
+        let set = NSCharacterSet.letterCharacterSet().invertedSet
+        let range = (self as NSString).rangeOfCharacterFromSet(set)
+        
+        return range.location == NSNotFound
+    }
+    //MARK:  否全是字母和数字组成
+    /// 判断字符串是否全是字母和数字组成
+    ///
+    /// - returns:  若为全字母和数字组成，返回true，否则返回false
+    public func isAlphanum() ->Bool {
+        let set = NSCharacterSet.alphanumericCharacterSet().invertedSet
+        let range = (self as NSString).rangeOfCharacterFromSet(set)
+        
+        return range.location == NSNotFound
+    }
+    
+
+    
+}
+
+//MARK:  - 正则表达式
+extension String {
+    
+    
+
+    // MARK: 判断字符串是否是有效的邮箱格式Validation 确认
+    /// 若为有效的邮箱格式，返回true，否则返回false
+    public func isValidEmail() ->Bool {
+        let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regEx)
+        
+        return predicate.evaluateWithObject(self)
+    }
+    
+    ///  :returns:  href
+    func hrefLink() -> (href: String, linkText: String)? {
+        
+        // 1. 匹配方案
+        let pattern = "<a.*?href=\"(.*?)\".*?>(.*?)</a>"
+        
+        // 2. 实例化表达式
+        let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.DotMatchesLineSeparators)
+        
+        // 3. 匹配
+        if let result = regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, length())) {
+            
+            // href
+            let range1 = result.rangeAtIndex(1)
+            // link text
+            let range2 = result.rangeAtIndex(2)
+            
+            let href = (self as NSString).substringWithRange(range1)
+            let linkText = (self as NSString).substringWithRange(range2)
+            
+            return (href, linkText)
+        }
+        return nil
     }
     
     
@@ -259,6 +508,63 @@ public extension String {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    /**
+     正则表达式,判断邮箱格式
+     
+     - parameter address: 邮箱地址
+     
+     - returns: true or false
+     */
+    static func validateEmail(email address:String)->Bool{
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        guard let regex = RegexHelper(emailRegex) else{
+            return false
+        }
+        return regex.match(address)
+    }
+    
+    /**
+     正则表达式 判断手机格式
+     
+     - parameter number: 手机号码
+     
+     - returns: ture or false
+     */
+    static func validatePhone(phone number:String)->Bool{
+        let phoneRegex = "1[3|5|7|8|][0-9]{9}"
+        guard let regex = RegexHelper(phoneRegex) else{
+            print("init failed")
+            return false
+        }
+        return regex.match(number)
+    }
+    
+    //MARK:  结构体类
+    ///  结构体类
+    struct RegexHelper {
+        let regex: NSRegularExpression?
+        init?(_ pattern: String) {
+            do{
+                regex = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+            }catch{
+                return nil
+            }
+        }
+        
+        func match(input: String) -> Bool {
+            guard let res = regex?.matchesInString(input,options: [], range: NSMakeRange(0, input.characters.count)) else{
+                return false
+            }
+            return res.count > 0
+        }
+    }
     
     //        /// 删除字符串中 href 的引用
     //        func removeHref() -> String? {
@@ -299,219 +605,21 @@ public extension String {
     //            return nil
     //        }
     
-
     
     
-
-    /// - returns: 字符串的长度
-    //MARK: - 字符串的长度
-    public func length() ->Int {
-        return self.characters.count
-    }
-    
-    // MARK: Trim整修 API
-    //MARK: - 去掉字符串 -前-后 的空格，根据参数确定是否过滤换行符
-    /// 去掉字符串前后的空格，根据参数确定是否过滤换行符
-    ///
-    /// - parameter trimNewline 是否过滤换行符，默认为false
-    ///
-    /// - returns:   处理后的字符串
-    public func trim(trimNewline: Bool = false) ->String {
-        if trimNewline {
-            return self.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
-        }
-        
-        return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
-    }
-     //MARK: - 去掉字符串 -前面 的空格，根据参数确定是否过滤换行符
-    /// 去掉字符串前面的空格，根据参数确定是否过滤换行符
-    ///
-    /// - parameter trimNewline 是否过滤换行符，默认为false
-    ///
-    /// - returns:   处理后的字符串
-    public func trimLeft(trimNewline: Bool = false) ->String {
-        if self.isEmpty {
-            return self
-        }
-        
-        var index = self.startIndex
-        while index != self.endIndex {
-            let ch = self.characters[index]
-            if ch == Character(" ") {
-                index++
-                continue
-            } else if ch == Character("\n") {
-                if trimNewline {
-                    index++
-                    continue
-                } else {
-                    break
-                }
-            }
-            
-            break
-        }
-        
-        return self.substringFromIndex(index)
-    }
-     //MARK: - 去掉字符串 -后面 的空格，根据参数确定是否过滤换行符
-    /// 去掉字符串后面的空格，根据参数确定是否过滤换行符
-    ///
-    /// - parameter trimNewline 是否过滤换行符，默认为false
-    ///
-    /// - returns:   处理后的字符串
-    public func trimRight(trimNewline: Bool = false) ->String {
-        if self.isEmpty {
-            return self
-        }
-        
-        var index = self.endIndex.predecessor()
-        while index != self.startIndex {
-            let ch = self.characters[index]
-            if ch == Character(" ") {
-                index--
-                continue
-            } else if ch == Character("\n") {
-                if trimNewline {
-                    index--
-                    continue
-                } else {
-                    index++
-                    break
-                }
-            }
-            
-            break
-        }
-        
-        return self.substringToIndex(index)
-    }
-    
-    
-     //MARK: - 获取子串的起始位置
-    /// 获取子串的起始位置。
-    ///
-    /// - parameter substring 待查找的子字符串
-    ///
-    /// - returns:  如果找不到子串，返回NSNotFound，否则返回其所在起始位置
-    public func location(substring: String) ->Int {
-        return (self as NSString).rangeOfString(substring).location
-    }
-     //MARK: - 根据起始位置和长度获取子串
-    /// 根据起始位置和长度获取子串。
-    ///
-    /// - parameter location  获取子串的起始位置
-    /// - parameter length    获取子串的长度
-    ///
-    /// - returns:  如果位置和长度都合理，则返回子串，否则返回nil
-    public func substring(location: Int, length: Int) ->String? {
-        if location < 0 && location >= self.length() {
-            return nil
-        }
-        
-        if length <= 0 || length >= self.length() {
-            return nil
-        }
-        
-        return (self as NSString).substringWithRange(NSMakeRange(location, length))
-    }
-     //MARK: - 根据下标获取对应的字符。若索引正确，返回对应的字符，否则返回nil
-    /// 根据下标获取对应的字符。若索引正确，返回对应的字符，否则返回nil
-    ///
-    /// - parameter index 索引位置
-    ///
-    /// - returns: 如果位置正确，返回对应的字符，否则返回nil
-    public subscript(index: Int) ->Character? {
-        get {
-            if let str = substring(index, length: 1) {
-                return Character(str)
-            }
-            
-            return nil
-        }
-    }
-    
-    
-    
-    
-    
-
-    //MARK: - 是否包含字符串NSStringCompareOptions
-    /// 包含字符串NSStringCompareOptions
-    func containsString(aString:String, compareOption: NSStringCompareOptions) -> Bool {
-        if((self.rangeOfString(aString, options: compareOption)) != nil) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    //MARK: - 是否包含字符串
-    /// 包含字符串
-    public func containsString(find: String) -> Bool {
-        //return (self as NSString).containsString(substring)
-        return self.rangeOfString(find) != nil
-        
-    }
-    //MARK: 是否包含小写字母
-    /// 是否包含小写字母
-    func containsLowercaseString(aString: String) -> Bool {
-        
-        return self.lowercaseString.rangeOfString(aString.lowercaseString) != nil
-    }
-    
-    //MARK: - 是否包含http
-    /// 包含http
-    func isHttpLocalPath() -> Bool {
-        return self.rangeOfString("http") == nil
-    }
-    //MARK: - 是否全是数字组成
-    /// 判断字符串是否全是数字组成
-    ///
-    /// - returns:  若为全数字组成，返回true，否则返回false
-    public func isOnlyNumbers() ->Bool {
-        let set = NSCharacterSet.decimalDigitCharacterSet().invertedSet
-        let range = (self as NSString).rangeOfCharacterFromSet(set)
-        
-        return range.location == NSNotFound
-    }
-    //MARK: - 是否全是字母组成
-    /// 判断字符串是否全是字母组成
-    ///
-    /// - returns:  若为全字母组成，返回true，否则返回false
-    public func isOnlyLetters() ->Bool {
-        let set = NSCharacterSet.letterCharacterSet().invertedSet
-        let range = (self as NSString).rangeOfCharacterFromSet(set)
-        
-        return range.location == NSNotFound
-    }
-    //MARK: - 否全是字母和数字组成
-    /// 判断字符串是否全是字母和数字组成
-    ///
-    /// - returns:  若为全字母和数字组成，返回true，否则返回false
-    public func isAlphanum() ->Bool {
-        let set = NSCharacterSet.alphanumericCharacterSet().invertedSet
-        let range = (self as NSString).rangeOfCharacterFromSet(set)
-        
-        return range.location == NSNotFound
-    }
-    
-    // MARK: Validation 确认 API
-    //MARK: - 否全是字母和数字组成
-    /// 判断字符串是否是有效的邮箱格式
-    ///
-    /// - returns:  若为有效的邮箱格式，返回true，否则返回false
-    public func isValidEmail() ->Bool {
-        let regEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regEx)
-        
-        return predicate.evaluateWithObject(self)
-    }
     
 }
 
 
 
+
+
+
+
+
+
+
+// MARK: - Localization
 extension String {
     
     var length1: Int {
@@ -522,7 +630,7 @@ extension String {
     //
     //        return self.characters.count
     //    }
-    // MARK: - Localization
+    
     
     func localized() -> String {
         return NSLocalizedString(self, comment: "")
@@ -540,7 +648,7 @@ extension String {
         }
     }
     
-    // MARK: - Regex
+    // MARK:  Regex
     
     func match(pattern: String, options: NSRegularExpressionOptions = NSRegularExpressionOptions(rawValue: 0)) -> Bool
     {

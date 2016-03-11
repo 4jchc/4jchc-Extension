@@ -18,6 +18,7 @@
 		966A73A51C6AFBA500017907 /* UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A73A41C6AFBA500017907 /* UIScrollViewDelegate.swift */; };
 		966E2F6B1C6DAA89009B36A6 /* NSIndexPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966E2F6A1C6DAA89009B36A6 /* NSIndexPath+Extension.swift */; };
 		9676E7D51C4685B20003E61E /* Gcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676E7D41C4685B20003E61E /* Gcd.swift */; };
+		967C58611C9414B900C2F120 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967C58601C9414B900C2F120 /* String+Regex.swift */; };
 		9686503F1C4C910F00A8D995 /* SKSpriteNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */; };
 		968650411C4C9AC100A8D995 /* NSError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650401C4C9AC100A8D995 /* NSError+Extension.swift */; };
 		968650A21C4CB91800A8D995 /* 常量.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968650A11C4CB91800A8D995 /* 常量.swift */; };
@@ -130,6 +131,7 @@
 		966A73A41C6AFBA500017907 /* UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewDelegate.swift; sourceTree = "<group>"; };
 		966E2F6A1C6DAA89009B36A6 /* NSIndexPath+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+Extension.swift"; sourceTree = "<group>"; };
 		9676E7D41C4685B20003E61E /* Gcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gcd.swift; sourceTree = "<group>"; };
+		967C58601C9414B900C2F120 /* String+Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		9686503E1C4C910F00A8D995 /* SKSpriteNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extension.swift"; sourceTree = "<group>"; };
 		968650401C4C9AC100A8D995 /* NSError+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Extension.swift"; sourceTree = "<group>"; };
 		968650A11C4CB91800A8D995 /* 常量.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "常量.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9604F01C1C928099003F4439 /* 常用Tools */ = {
+			isa = PBXGroup;
+			children = (
+				96E19B0C1C4B9B0E00EDEC6C /* Foundation.swift */,
+				96E19B2A1C4B9B0E00EDEC6C /* UIColor+Extension.swift */,
+				96E19B231C4B9B0E00EDEC6C /* String+Extension.swift */,
+				96E19B0D1C4B9B0E00EDEC6C /* Frame+Extension.swift */,
+				96E19B0B1C4B9B0E00EDEC6C /* Double+Extension.swift */,
+				96E19B151C4B9B0E00EDEC6C /* NSDate+Extension.swift */,
+				96E19B331C4B9B0E00EDEC6C /* UIScreen+Extension.swift */,
+				96E19B141C4B9B0E00EDEC6C /* NSData+Extension.swift */,
+				96E19B2E1C4B9B0E00EDEC6C /* UIImageView +Extension.swift */,
+			);
+			name = "常用Tools";
+			sourceTree = "<group>";
+		};
 		9688A92D1C5A224C0002FE2D /* 控制器常用方法 */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,22 +384,19 @@
 		96E19B071C4B9B0E00EDEC6C /* Extension【扩展延伸】 */ = {
 			isa = PBXGroup;
 			children = (
+				967C58601C9414B900C2F120 /* String+Regex.swift */,
 				968650A11C4CB91800A8D995 /* 常量.swift */,
+				9604F01C1C928099003F4439 /* 常用Tools */,
 				96E19B081C4B9B0E00EDEC6C /* Array +Extension.swift */,
+				961F2A121C8ED219002399B5 /* CALayer+Extension.swift */,
 				96E19B091C4B9B0E00EDEC6C /* ColorType.swift */,
 				96E19B0A1C4B9B0E00EDEC6C /* Dictionary +Extension.swift */,
-				96E19B0B1C4B9B0E00EDEC6C /* Double+Extension.swift */,
-				96E19B0C1C4B9B0E00EDEC6C /* Foundation.swift */,
-				96E19B0D1C4B9B0E00EDEC6C /* Frame+Extension.swift */,
 				96E19B0E1C4B9B0E00EDEC6C /* GCD.swift */,
 				968650AE1C4D32BE00A8D995 /* NSArray+Extension.swift */,
 				96E19B101C4B9B0E00EDEC6C /* NSBlockOperation.swift */,
 				96E19B111C4B9B0E00EDEC6C /* NSBundle+Extension.swift */,
 				96E19B121C4B9B0E00EDEC6C /* NSCache +Extension.swift */,
 				96E19B131C4B9B0E00EDEC6C /* NSCalendar.swift */,
-				96E19B141C4B9B0E00EDEC6C /* NSData+Extension.swift */,
-				961F2A0E1C8E95F3002399B5 /* UIToolbar+Extension.swift */,
-				96E19B151C4B9B0E00EDEC6C /* NSDate+Extension.swift */,
 				96E19B161C4B9B0E00EDEC6C /* NSDateFormatter.swift */,
 				96E19B171C4B9B0E00EDEC6C /* NSDictionary +Extension.swift */,
 				968650401C4C9AC100A8D995 /* NSError+Extension.swift */,
@@ -398,22 +413,17 @@
 				960C27B01C8DBFFA00E0CB99 /* NSTimeInterval+Extension.swift */,
 				96E19B211C4B9B0E00EDEC6C /* NSTimer +Extension.swift */,
 				96E19B221C4B9B0E00EDEC6C /* NSURL+Extension.swift */,
-				96E19B231C4B9B0E00EDEC6C /* String+Extension.swift */,
 				96E19B251C4B9B0E00EDEC6C /* UIAlertController+Extension.swift */,
 				96E19B261C4B9B0E00EDEC6C /* UIApplication +Extension.swift */,
 				96E19B271C4B9B0E00EDEC6C /* UIBarButtonItem+Extension.swift */,
 				96E19B281C4B9B0E00EDEC6C /* UIButton+Extention.swift */,
-				961F2A121C8ED219002399B5 /* CALayer+Extension.swift */,
 				960FCF691C67320100997732 /* UICollectionView+Extension.swift */,
-				96E19B2A1C4B9B0E00EDEC6C /* UIColor+Extension.swift */,
 				96E19B2B1C4B9B0E00EDEC6C /* UIDevice+Extension.swift */,
 				96E19B2C1C4B9B0E00EDEC6C /* UIImage+Extension.swift */,
-				96E19B2E1C4B9B0E00EDEC6C /* UIImageView +Extension.swift */,
 				96E19B2F1C4B9B0E00EDEC6C /* UIImageView+SDWebImage.swift */,
 				96E19B301C4B9B0E00EDEC6C /* UIKit+Extension.swift */,
 				96E19B311C4B9B0E00EDEC6C /* UILabel +Extension.swift */,
 				96E19B321C4B9B0E00EDEC6C /* UINib+Extension.swift */,
-				96E19B331C4B9B0E00EDEC6C /* UIScreen+Extension.swift */,
 				96E19B341C4B9B0E00EDEC6C /* UISegmentedControl+Extension.swift */,
 				96E19B351C4B9B0E00EDEC6C /* UIStoryboard.swift */,
 				96E19B361C4B9B0E00EDEC6C /* UITabBarController+UITabBar.swift */,
@@ -421,6 +431,7 @@
 				96E19B381C4B9B0E00EDEC6C /* UITableViewCell +Extention.swift */,
 				96E19B391C4B9B0E00EDEC6C /* UITextField+Extension.swift */,
 				96E19B3A1C4B9B0E00EDEC6C /* UITextView+Extension.swift */,
+				961F2A0E1C8E95F3002399B5 /* UIToolbar+Extension.swift */,
 				96E19B3B1C4B9B0E00EDEC6C /* UIView+AutoLayout.swift */,
 				96E19B3C1C4B9B0E00EDEC6C /* UIView+Extension.swift */,
 				96E19B3D1C4B9B0E00EDEC6C /* UIViewController +Extension.swift */,
@@ -579,6 +590,7 @@
 			files = (
 				968650AF1C4D32BE00A8D995 /* NSArray+Extension.swift in Sources */,
 				96E19B451C4B9B0E00EDEC6C /* GCD.swift in Sources */,
+				967C58611C9414B900C2F120 /* String+Regex.swift in Sources */,
 				96E19B6E1C4B9B0E00EDEC6C /* UITableView +Extention.swift in Sources */,
 				96E19B711C4B9B0E00EDEC6C /* UITextView+Extension.swift in Sources */,
 				96E19B501C4B9B0E00EDEC6C /* NSLayoutConstraint+Extension.swift in Sources */,

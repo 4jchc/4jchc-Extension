@@ -611,10 +611,26 @@ extension String {
 }
 
 
+//MARK: - ASCII格式
+extension String {
+    
+    //MARK: ASCII格式
+    func convertString(string: String) -> String {
+        let data = string.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
+        return NSString(data: data!, encoding: NSASCIIStringEncoding) as! String
+    }
+
+    //MARK:  printable可印刷的 Ascii
+    ///  printable可印刷的 Ascii
+    func printableAscii() -> String {
+    
+    //return String(bytes: ((self.utf8).forEach({$0 >= 32})), encoding: NSUTF8StringEncoding) ?? ""
+    return String(bytes: (self.utf8).filter{$0  >= 32 }, encoding: NSUTF8StringEncoding) ?? ""
+    }//'filter' is unavailable: call the 'filter()' method on the sequence
 
 
-
-
+    
+}
 
 
 

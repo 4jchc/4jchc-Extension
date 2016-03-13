@@ -1,6 +1,70 @@
 
 import UIKit
 
+
+
+// MARK: - 扩展UIViewController 描述性的名称:
+extension UIViewController {
+    
+    private struct AssociatedKeys {
+        static var DescriptiveName = "xb_DescriptiveName"
+    }
+    
+    ///描述性的名称:
+    var descriptiveName: String? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.DescriptiveName) as? String
+        }
+        
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(
+                    self,
+                    &AssociatedKeys.DescriptiveName,
+                    newValue,
+                    .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+                )
+            }
+        }
+    }
+}
+
+// MARK: - 扩展释放的提示
+extension UIViewController {
+    
+    public override class func initialize() {
+        struct Static {
+            static var token: dispatch_once_t = 0
+        }
+        
+        // make sure this isn't a subclass
+        if self !== UIViewController.self {
+            return
+        }
+        
+        dispatch_once(&Static.token) {
+            let originalSelector = Selector("dealloc")
+            let swizzledSelector = Selector("xb_deallocSwizzle")
+            
+            let originalMethod = class_getInstanceMethod(self, originalSelector)
+            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            
+            let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
+            
+            if didAddMethod {
+                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+            } else {
+                method_exchangeImplementations(originalMethod, swizzledMethod)
+            }
+        }
+    }
+    
+    // MARK: - Method Swizzling
+    func xb_deallocSwizzle() {
+        debugPrint("释放了\(self.descriptiveName!)")
+    }
+}
+
 //private let kLoadingOverlay = MQLoadingOverlay()
 
 public extension UIViewController {

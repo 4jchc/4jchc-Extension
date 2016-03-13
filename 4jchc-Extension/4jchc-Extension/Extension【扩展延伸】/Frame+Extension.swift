@@ -90,7 +90,21 @@ extension UIView{
             return self.frame.origin
         }
     }
+    var top: CGFloat {
+        return self.frame.origin.y;
+    }
     
+    var bottom: CGFloat {
+        return self.frame.origin.y + self.frame.size.height
+    }
+    
+    var right: CGFloat {
+        return self.frame.origin.x + self.frame.size.width;
+    }
+    
+    var left: CGFloat {
+        return self.frame.origin.x
+    }
 
 }
 extension UIView{

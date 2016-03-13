@@ -4,6 +4,55 @@ import Foundation
 
 
 
+// MARK: -
+extension UIView {
+    
+    /// 找到view所在的控制器
+    var viewController: UIViewController? {
+        
+        var responder: UIResponder? = self.nextResponder()
+        while (responder != nil) {
+            if responder?.isKindOfClass(UIViewController.self) == true {
+                return responder as? UIViewController
+            }
+            responder = responder?.nextResponder()
+        }
+        return nil
+    }
+    
+    
+    
+     //MARK:  找到第一个子视图(包括这个视图)
+     ///  找到第一个子视图(包括这个视图)
+    func findSubViewWithSubViewClass(clazz: AnyClass) -> UIView? {
+        
+        if self.isKindOfClass(clazz) {
+            return self
+        }
+        
+        for subview in self.subviews {
+            if let view = subview.findSubViewWithSubViewClass(clazz) {
+                return view
+            }
+        }
+        return nil;
+    }
+    
+    
+
+     //MARK:  找到第一个父视图
+     ///  找到第一个父视图
+    func findSuperViewWithSuperViewClass(clazz: AnyClass) -> UIView? {
+        
+        if self.isKindOfClass(clazz) {
+            return self
+        } else if let suview = self.superview {
+            return suview.findSuperViewWithSuperViewClass(clazz)
+        } else {
+            return nil
+        }
+    }
+}
 
 extension UIView {
     

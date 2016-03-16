@@ -13,7 +13,7 @@ import Foundation
 class Thread: NSObject {
     
     private static let queue = dispatch_queue_create("serial-worker", DISPATCH_QUEUE_SERIAL)
-    
+    // dispatch_ async
     class func run(block:()->(), completion:(()->())? = nil) {
         dispatch_async(Thread.queue) {
             block()

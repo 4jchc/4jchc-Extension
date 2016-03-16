@@ -18,4 +18,21 @@ extension UIImageView {
 //    func cz_setImageWithURL(url: NSURL!, placeholderImage placeholder: UIImage!) {
 //        sd_setImageWithURL(url, placeholderImage: placeholder)
 //    }
+    
+    /*
+    extension UIImageView {
+    
+    func setHeader(url:String){
+    
+    let placeholder:UIImage = UIImage(named: "defaultUserIcon")!
+    
+    
+    self.sd_setImageWithURL(NSURL(string: url), placeholderImage: placeholder) { (image, error, cacheType, imageURL) -> Void in
+    
+    self.image = image != nil ? image.circleImage() : placeholder;
+    }
+    }
+    
+    }
+    */
 }

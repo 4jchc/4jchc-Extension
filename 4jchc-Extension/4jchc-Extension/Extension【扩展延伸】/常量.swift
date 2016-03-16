@@ -453,8 +453,10 @@ class animation {
     }
     
 }
+//MARK: - 脉冲pulse
+
 extension UIView {
-    // 脉冲pulse
+    ///  脉冲pulse
     func pulse() {
         self.layer.removeAnimationForKey("pulsingAnimation")
         let pulsingAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
@@ -484,7 +486,6 @@ extension UIImageView {
         self.layer.mask = shapeLayer;
     }
 }
-
 
 
 

@@ -196,6 +196,28 @@ extension UIImage {
     }
     
   }
+//MARK: - CGBlendMode画颜色
+extension UIImage
+{
+    func tint(color: UIColor, blendMode: CGBlendMode) -> UIImage
+    {
+        let drawRect = CGRectMake(0.0, 0.0, size.width, size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        //let context = UIGraphicsGetCurrentContext()
+        //CGContextClipToMask(context, drawRect, CGImage)
+        color.setFill()
+        UIRectFill(drawRect)
+        drawInRect(drawRect, blendMode: blendMode, alpha: 1.0)
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return tintedImage
+    }
+}
+
+
+
+
+
 
 //MARK: - 根据文字的高度和传来的文字来生成水印文字
 extension UIImage {

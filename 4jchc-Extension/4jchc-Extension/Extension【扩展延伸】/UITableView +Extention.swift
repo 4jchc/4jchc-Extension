@@ -36,3 +36,43 @@ extension UITableView {
         self.registerNib(nib, forCellReuseIdentifier: identifier)
     }
 }
+
+extension UITableView {
+    
+    func reloadDataWithAnimation() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            for section in 0..<self.numberOfSections {
+                for row in 0..<self.numberOfRowsInSection(section) {
+                    NSThread.sleepForTimeInterval(0.2)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        var paths = [NSIndexPath]()
+                        paths.append(NSIndexPath(forRow: row, inSection: section))
+                        weak var weakTableView:UITableView? = self
+                        weakTableView?.reloadRowsAtIndexPaths(paths, withRowAnimation: UITableViewRowAnimation.Left)
+                    })
+                }
+            }
+        }
+    }
+}
+/*
+override func reloadRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
+print("reloading from table view")
+for indexPath in indexPaths {
+let stages = DataContainerSingleton.getInstance().stages
+if (stages[indexPath.section].steps[indexPath.row].isSelected) {
+print("trying to select cell")
+selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+}
+}
+
+}
+*/
+
+
+
+
+
+
+
+

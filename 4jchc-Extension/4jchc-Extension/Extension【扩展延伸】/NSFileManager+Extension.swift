@@ -78,7 +78,29 @@ extension NSFileManager {
     }
 }
 
+/*
+//写入数据Documents目录
+- (BOOL)writeApplicationData:(NSData *)data toFile:(NSString *)fileName {
 
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *docDir = [paths objectAtIndex:0];
+if (!docDir) {
+NSLog(@"Documents directory not found!");
+return NO;
+}
+NSString *filePath = [docDir stringByAppendingPathComponent:fileName];
+return [data writeToFile:filePath atomically:YES];
+}
+
+//读取数据Documents目录
+- (NSData *)applicationDataFromFile:(NSString *)fileName {
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *docDir = [paths objectAtIndex:0];
+NSString *filePath = [docDir stringByAppendingPathComponent:fileName];
+NSData *data = [[[NSData alloc] initWithContentsOfFile:filePath] autorelease];
+return data;
+}
+*/
 
 
 
